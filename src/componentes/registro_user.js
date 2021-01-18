@@ -24,14 +24,26 @@ function RegistroUsuario() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const  {  dni, foto, nombre, apellido, email, tfno, fechaAlta, fechaBaja, creditos, password, administrador } = registro
   
 
 const handleInputChange = (e) => {
-    // console.log(event.target.name)
-    // console.log(event.target.value)
+    // console.log(e.target.name)
+    // console.log(e.target.value)
     setRegistro({
         ...registro,
-        [e.target.name] : e.target.value
+        [e.target.dni]: e.target.value,
+        [e.target.foto] : e.target.value,
+        [e.target.name] : e.target.value,
+        [e.target.apellido] : e.target.value,
+        [e.target.email] : e.target.value,
+        [e.target.tfno] : e.target.value,
+        [e.target.fechaAlta] : e.target.value,
+        [e.target.fechaBaja] : e.target.value,
+        [e.target.creditos] : e.target.value,
+        [e.target.password] : e.target.value,
+        [e.target.administrador] : e.target.value,
     })
 }
 
@@ -42,7 +54,8 @@ const addUser = () => {
     headers: {
       "Content-Type": "application/json",
     },
-        body: JSON.stringify({ registro}),
+       // body: JSON.stringify({ dni, foto, nombre, apellido, email, tfno, fechaAlta, fechaBaja, creditos, password, administrador }),
+        body: JSON.stringify(registro),
   })
      .then(res => res.json())
       .then(res => {
