@@ -6,56 +6,93 @@ import { Modal } from 'react-bootstrap';
 
 function RegistroUsuario() {
     const [data, setData] = useState([]);
-    const [registro, setRegistro] = useState({
-        dni: '',
-        foto: '',
-        nombre: '',
-        apellido: '',
-        email: '',
-        tfno: '',
-        fechaAlta: '',
-        fechaBaja: '',
-        creditos: '',
-        password: '',
-        administrador: ''
-    })
+    const [dni, setDni] = useState('')
+    const [foto, setFoto] = useState('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBmfaerMMCR6jgdXwmlfYFycBhBCBKAXftOw&usqp=CAU')
+    const [nombre, setNombre] = useState('')
+    const [apellido, setApellido] = useState('')
+    const [email, setEmail] = useState('')
+    const [tfno, setTfno] = useState('')
+    const [fechaAlta, setFechaAlta] = useState('')
+    const [fechaBaja, setFechaBaja] = useState('')
+    const [creditos, setCreditos] = useState('')
+    const [password, setPassword] = useState('')
+    const [administrador, setAdministrador] = useState(false)
+
 /* Modal */
     const [mensaje, setMensaje] = useState("");
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const  {  dni, foto, nombre, apellido, email, tfno, fechaAlta, fechaBaja, creditos, password, administrador } = registro
   
 
-const handleInputChange = (e) => {
-    // console.log(e.target.name)
-    // console.log(e.target.value)
-    setRegistro({
-        ...registro,
-        [e.target.dni]: e.target.value,
-        [e.target.foto] : e.target.value,
-        [e.target.name] : e.target.value,
-        [e.target.apellido] : e.target.value,
-        [e.target.email] : e.target.value,
-        [e.target.tfno] : e.target.value,
-        [e.target.fechaAlta] : e.target.value,
-        [e.target.fechaBaja] : e.target.value,
-        [e.target.creditos] : e.target.value,
-        [e.target.password] : e.target.value,
-        [e.target.administrador] : e.target.value,
-    })
-}
+    const handleChangeDni = (e) => {
+        e.preventDefault();
+         setDni(e.target.value) 
+    }
+    const handleChangeFoto = (e) => {
+        e.preventDefault();
+         setFoto(e.target.value) 
+    }
+    const handleChangeNombre = (e) => {
+        e.preventDefault();
+         setNombre(e.target.value) 
+    }
+    const handleChangeApellido = (e) => {
+        e.preventDefault();
+         setApellido(e.target.value) 
+    }
+    const handleChangeEmail = (e) => {
+        e.preventDefault();
+         setEmail(e.target.value) 
+    }
+    const handleChangeTfno = (e) => {
+        e.preventDefault();
+         setTfno(e.target.value) 
+    }
+    const handleChangeFechaAlta = (e) => {
+        e.preventDefault();
+         setFechaAlta(e.target.value) 
+    }
+    const handleChangeFechaBaja = (e) => {
+        e.preventDefault();
+         setFechaBaja(e.target.value) 
+    }
+    const handleChangeCreditos = (e) => {
+        e.preventDefault();
+         setCreditos(e.target.value) 
+    }
+    const handleChangePassword = (e) => {
+        e.preventDefault();
+         setPassword(e.target.value) 
+    }
 
- 
+     const handleChangeAdministrador = (e) => {
+        e.preventDefault();
+         setAdministrador(e.target.value) 
+    }
+
 const addUser = () => { 
-    fetch("http://reservaPuesto/add", {
+    fetch("/users/add", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-       // body: JSON.stringify({ dni, foto, nombre, apellido, email, tfno, fechaAlta, fechaBaja, creditos, password, administrador }),
-        body: JSON.stringify(registro),
+        body: JSON.stringify (
+        {
+            dni: dni,
+            foto : foto, 
+            nombre : nombre,
+            apellido : apellido,
+            email : email,
+            tfno : tfno,
+            fechaAlta : fechaAlta,
+            fechaBaja : fechaBaja, 
+            creditos : creditos, 
+            password: password,
+            administrador: administrador
+        }
+    ),
   })
      .then(res => res.json())
       .then(res => {
@@ -78,24 +115,23 @@ const addUser = () => {
                 <div className="row vh-100 px-4">
                     <div className="col-xs-12 col-lg-4 px-4">
                         <div className="area-foto">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBmfaerMMCR6jgdXwmlfYFycBhBCBKAXftOw&usqp=CAU" alt="foto-usuario" />
+                            <img src= { foto } alt="foto-usuario" />
                             <h5 className="text-white my-4">Cambiar foto</h5>
                         </div>
                     <div>
                             
                         <div className="row">
                                 <div className="col-xs-12">
-                                    <label className="file-label" htmlFor="file-input">File:</label>
-                                    <input type="file" name="attachment[]" multiple="multiple" onChange={ handleInputChange } /> 
-                                        <small>Max size 10MB.</small>
+                                    <label htmlFor="foto" className="form-label text-white">Foto</label>
+                                    <input type="url"  className="form-control" id="foto" placeholder="NuevaFoto" onChange={ handleChangeFoto } />
                                 </div>
 
 
-                        <div className="col-xs-12 separador"></div>   
+        
                                 <div className="row credit">
-                                     <div className="col-xs-6">
+                                     <div className="col-xs-12">
                                          <label htmlFor="creditos" className="form-label text-white">Créditos</label>
-                                         <input type="number" className="form-control" id="creditos" placeholder="Créditos" onChange={ handleInputChange } />
+                                         <input type="number" className="form-control" id="creditos" placeholder="Créditos" onChange={ handleChangeCreditos } />
                                         </div>
                                 </div>
                         </div>
@@ -112,7 +148,7 @@ const addUser = () => {
                                     <div className="row">
                                         <div className="col-xs-6 col-xl-6  mb-3">
                                             <label htmlFor="dni" className="form-label">DNI</label>
-                                            <input type="text" className="form-control" id="dni" placeholder="Ej:12345678P" onChange={ handleInputChange } />
+                                            <input type="text" className="form-control" id="dni" placeholder="Ej:12345678P" onChange={ handleChangeDni } />
                                         </div>
                                     </div>
 
@@ -120,13 +156,13 @@ const addUser = () => {
                                         <div className="col-xs-6 col-xl-6  mb-3">
                                             <label htmlFor="nombre" className="form-label">Nombre</label>
                                             <input type="text" className="form-control" id="nombre"
-                                                placeholder="nombre" onChange={ handleInputChange } />
+                                                placeholder="nombre" onChange={ handleChangeNombre } />
                                         </div>
                                             
                                         <div className="col-xs-6 col-xl-6  mb-3">
                                             <label htmlFor="apellido" className="form-label">Apellido</label>
                                             <input type="text" className="form-control" id="apellido"
-                                                placeholder="Apellido" onChange={ handleInputChange } />
+                                                placeholder="Apellido" onChange={ handleChangeApellido } />
                                         </div>
                                     </div>
 
@@ -134,13 +170,13 @@ const addUser = () => {
                                         <div className="col-xs-6 col-xl-6  mb-3">
                                             <label htmlFor="email" className="form-label">Email</label>
                                             <input type="email" className="form-control" id="email"
-                                                placeholder="Ej:napellido@empresa.es" onChange={ handleInputChange } />
+                                                placeholder="Ej:napellido@empresa.es" onChange={ handleChangeEmail } />
                                             </div>
                                             
                                                 <div className="col-xs-6 col-xl-6 mb-3">
                                             <label htmlFor="telefono" className="form-label">Teléfono</label>
                                             <input type="tel" className="form-control" id="telefono"
-                                                placeholder="Ej:600123123" onChange={ handleInputChange } />
+                                                placeholder="Ej:600123123" onChange={ handleChangeTfno } />
                                         </div>
                                         </div>
                                         
@@ -150,18 +186,24 @@ const addUser = () => {
                                         <div className="col-xs-6 col-xl-6 mb-3">
                                             <label htmlFor="alta" className="form-label">Fecha alta</label>
                                             <input type="date" className="form-control" id="alta"
-                                                placeholder="fecha alta" onChange={ handleInputChange } />
+                                                placeholder="fecha alta" onChange={ handleChangeFechaAlta } />
                                         </div>
                                         <div className="col-xs-6 col-xl-6 mb-3">
                                             <label htmlFor="baja" className="form-label">Fecha baja</label>
-                                            <input type="date" className="form-control" id="baja" placeholder="fecha baja" onChange={ handleInputChange } />
+                                            <input type="date" className="form-control" id="baja" placeholder="fecha baja" onChange={ handleChangeFechaBaja } />
                                         </div>
-                                        </div>
+                                    </div>
+                                        
                                         
                                         <div className="row">
-                                            <div className="col-xs-12 my-3">
+                                            <div className="col-xs-6 col-xl-6 mb-3">
+                                                <label htmlFor="passsword" className="form-label">Password</label>
+                                                <input type="password" className="form-control" id="passwors" placeholder="password" onChange={ handleChangePassword } />
+                                            </div>
+
+                                             <div className="col-xs-6 col-xl-6 mb-3">
                                                 <div className="form-check">
-                                                    <input className="form-check-input" type="checkbox" value="true" id="administrador" onChange={ handleInputChange } />
+                                                    <input className="form-check-input" type="checkbox" value="true" id="administrador" onChange={ handleChangeAdministrador } />
                                                     <label className="form-check-label" htmlFor="administrador">
                                                         Administrador
                                                     </label>

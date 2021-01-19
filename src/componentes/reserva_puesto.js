@@ -1,13 +1,13 @@
 import React from 'react';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { Calendar } from "react-modern-calendar-datepicker";
-import { Dropdown } from 'react-bootstrap';
+//import { Dropdown } from 'react-bootstrap';
 //import { DropdownButton } from 'react-bootstrap';
 //import { ButtonGroup } from 'react-bootstrap';
-import { SplitButton } from 'react-bootstrap';
+//import { SplitButton } from 'react-bootstrap';
 import Plano from './Plano/plano';
-//import { Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 
 function ReservaPuesto() {
@@ -17,11 +17,63 @@ function ReservaPuesto() {
     day: new Date().getDate(),
 };
 
-const [selectedDay, setSelectedDay] = useState(defaultValue);
+  
+    const [mensaje, setMensaje] = useState("");
+    const [dni, setDni] = useState("");
+    const [nombre, setNombre] = useState("");
+    const [apellido, setApellido] = useState("");
+    const [puesto, setPuesto] = useState("");
+    const [selectedDay, setSelectedDay] = useState(defaultValue);
+    const [data, setData] = useState([]);
+    
+    /* Modal */
+    const [show, setShow] = useState(false);
 
-//const [dataReserva, setDataReserva] = useState([]);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const reservarPuesto = () => { 
+        fetch("/reservaPuesto/add", {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json",
+            },
+                body: JSON.stringify({
+                    dni: dni,
+                    nombre: nombre,
+                    apellido: apellido,
+                    puesto: puesto,
+                    fecha: selectedDay,
+
+                }),
+        })
+            .then(res => res.json())
+            .then(res => {
+                if (res.error === true) {
+                setMensaje(res.mensaje)
+                handleShow()
+                
+                
+                } else {
+                setMensaje(res.mensaje)
+                setData(res.alta)
+                handleShow()
+            } 
+        });
+  }
+
+    
+  useEffect(() => {
+    fetch("/reservaPuesto/add")
+      .then((res) => res.json())
+      .then((res) => {
+          setData(res);
+          console.log(res)
+      });
+  }, []);
+
  
-
+ 
  return (
     <main className="bg-registro1 content p-0">
         <div className="container-fluid p-0">
@@ -65,41 +117,6 @@ const [selectedDay, setSelectedDay] = useState(defaultValue);
                                                 onChange={setSelectedDay}
                                                 shouldHighlightWeekends
                                             />
-                                           
-                                            <div className="seleccion-hora mt-2">
-                                                <SplitButton
-                                                menuAlign={{ lg: 'left' }}
-                                                    title="Rango de horas"
-                                                    size="lg"
-                                                 
-                                                id="dropdown-menu-align-responsive-2">
-                                                    
-                                                <Dropdown.Item eventKey="1" className="bg-light">
-                                                    <span>08:00 - 09:50</span>
-                                                </Dropdown.Item>
-
-                                                <Dropdown.Item eventKey="2">
-                                                   <span>10:00 - 11:50</span>
-                                                    </Dropdown.Item>
-                                                    
-                                                <Dropdown.Item eventKey="3">
-                                                   <span>12:00 - 13:50</span>
-                                                    </Dropdown.Item>
-                                                    
-                                                <Dropdown.Item eventKey="4">
-                                                   <span>14:00 - 15:50</span>
-                                                    </Dropdown.Item>
-                                                    
-                                                <Dropdown.Item eventKey="5">
-                                                   <span>16:00 - 17:50</span>
-                                                    </Dropdown.Item>
-
-                                                <Dropdown.Item eventKey="6">
-                                                   <span>18:00 - 19:50</span>
-                                                    </Dropdown.Item>
-                                                    
-                                                </SplitButton>
-                                            </div>                                            
                                      
                                         </div>
                                 </div>
@@ -109,19 +126,9 @@ const [selectedDay, setSelectedDay] = useState(defaultValue);
 
 
                 <div className="row justify-content-center my-3 px-3">
-                    <Button variant="btn-block mt-4">Registrar</Button>
+                         <Button variant="btn-block mt-4" onClick={ reservarPuesto }>Reservar puesto</Button>
                 </div>
 
-                    <div className="col-xs-12">
-                        <div className="card mr-3">
-                            <div className="card-body">
-                                <h5 className="card-title">Selecciona hora</h5>
-                                <p className="card-text">
-                                    Poner input fecha
-                                </p>
-                            </div>
-                        </div>
-                    </div>
 
                     <div className="col-xs-12">
                         <div className="card mr-3">
@@ -151,6 +158,11 @@ const [selectedDay, setSelectedDay] = useState(defaultValue);
             
        
     
+                <Modal show={ show } onHide={ handleClose }>
+                    <Modal.Header closeButton>
+                    <Modal.Title>{ mensaje }</Modal.Title>
+                    </Modal.Header>
+                </Modal>
     </main>
 
     )
