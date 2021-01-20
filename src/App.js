@@ -27,18 +27,18 @@ function App() {
   
 /* Plano */
     //const [colorPuesto, setColorPuesto] = useState("");
-  const [puesto, setPuesto] = useState("st11");
+  
+  const [puestoColor, setPuestoColor] = useState("st11");
+  const [puestoId, setPuestoId] = useState("");
 
   const handlePuesto = (e) => { 
       e.preventDefault();
-       
-      if (puesto === "st11") {
-        setPuesto("st11-ocupado")
-  
+      if (puestoColor === "st11") {
+        setPuestoColor("st11-ocupado")
       } else {
-          setPuesto("st11")
+          setPuestoColor("st11")
       }
-     setPuesto(e.target.id)
+     setPuestoId(e.target.id)
   }
 
 
@@ -127,7 +127,7 @@ const handleHamburger = (e) => {
           <Sidebar sidebar= { sidebar } />
           <div className="main">
             <Cabecera cambiarSidebar={handleHamburger} navFlexible={ nav100 } />
-            <Reserva handlePuesto={ handlePuesto }/>
+            <Reserva puestoId={puestoId} handlePuesto={handlePuesto }/>
           </div>
         </div>
       </Route>

@@ -38,7 +38,7 @@ function ReservaPuesto(props) {
                     dni: dni,
                     nombre: nombre,
                     apellido: apellido,
-                    puesto: props.puesto,
+                    puesto: props.puestoId,
                     fecha: daySelected,
 
                 }),
@@ -91,7 +91,7 @@ function ReservaPuesto(props) {
                         
                         <div className="row">
                             <div className="col-xs-12 bg-white p-3 mx-3">
-                                <Plano />
+                             <Plano handlePuesto={ props.handlePuesto}/>
                             </div>
              
                     </div>

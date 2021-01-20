@@ -6404,7 +6404,7 @@ return (
                 </g>
                 <g id="Mesa4-3"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 1 -1 0 208.21046978426375 0) matrix(1 0 0 1 0 0)">
-                    <path id="M4-3" className={props.puesto}  onClick={props.handlePuesto} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
+                    <path id="M4-3" className={props.puestoColor}  onClick={props.handlePuesto} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
         			c4.1,0,6.2,2.2,6.2,6.6V26.3L21.2,26.3z" />
                     <path className="st13"
                         d="M-1.9,19.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
