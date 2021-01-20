@@ -6,10 +6,9 @@ import { Redirect } from 'react-router-dom';
 
 
 function Login(props) {
-
+   
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
 
 
     const handleChangeEmail = (e) => {
@@ -21,15 +20,14 @@ function Login(props) {
     }
 
     if (props.logueado) {
-        if (props.administrador === false) {
+         if (props.usuario.administrador === false) {
             return <Redirect to="/home" />
         } else { 
             return <Redirect to="/home-admin" /> 
         }
+ 
 
-       
-
-    } else {
+    } else { 
     
         return (
             <div className="login-wrapper">

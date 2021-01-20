@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from "react";
-import "react-modern-calendar-datepicker/lib/DatePicker.css";
-import { Calendar } from "react-modern-calendar-datepicker";
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 //import { Dropdown } from 'react-bootstrap';
 //import { DropdownButton } from 'react-bootstrap';
 //import { ButtonGroup } from 'react-bootstrap';
@@ -10,27 +10,23 @@ import Plano from './Plano/plano';
 import { Modal } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 
-function ReservaPuesto() {
-    const defaultValue = {
-    year: new Date().getFullYear(),
-    month: new Date().getMonth(),
-    day: new Date().getDate(),
-};
-
-  
+function ReservaPuesto(props) {
     const [mensaje, setMensaje] = useState("");
     const [dni, setDni] = useState("");
     const [nombre, setNombre] = useState("");
     const [apellido, setApellido] = useState("");
-    const [puesto, setPuesto] = useState("");
-    const [selectedDay, setSelectedDay] = useState(defaultValue);
+    const [daySelected, onChange] = useState(new Date());
+
     const [data, setData] = useState([]);
+
+    console.log(daySelected)
     
     /* Modal */
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
 
     const reservarPuesto = () => { 
         fetch("/reservaPuesto/add", {
@@ -42,8 +38,8 @@ function ReservaPuesto() {
                     dni: dni,
                     nombre: nombre,
                     apellido: apellido,
-                    puesto: puesto,
-                    fecha: selectedDay,
+                    puesto: props.puesto,
+                    fecha: daySelected,
 
                 }),
         })
@@ -52,7 +48,6 @@ function ReservaPuesto() {
                 if (res.error === true) {
                 setMensaje(res.mensaje)
                 handleShow()
-                
                 
                 } else {
                 setMensaje(res.mensaje)
@@ -112,12 +107,11 @@ function ReservaPuesto() {
                                     <div className="calendar">
                                         <h4 className="card-title">Selecciona día y hora</h4>
                                         <div className="">
-                                            <Calendar
-                                                value={selectedDay}
-                                                onChange={setSelectedDay}
-                                                shouldHighlightWeekends
+                                           <Calendar
+                                                onChange={onChange}
+                                                daySelected={daySelected}
                                             />
-                                     
+                                                                            
                                         </div>
                                 </div>
                             </div>

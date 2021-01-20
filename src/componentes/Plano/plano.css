@@ -80,14 +80,39 @@
   stroke: #6aa228;
 }
 
-/*  Sillas Mesas */
+/************************************/
+/*          PUESTO COLORES          */
+/************************************/
 
-.st11 {
+/* .st11 {
   fill-rule: evenodd;
   clip-rule: evenodd;
   fill: #5b5b5b;
   stroke: #3d3d3d;
+} */
+
+.st11 {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  fill: #ccc;
+  stroke: #ccc;
 }
+
+.st11-ocupado {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  fill: red;
+  stroke: red;
+}
+
+.st11-pendiente {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  fill: orange;
+  stroke: orange;
+}
+
+/************************************/
 
 .st12 {
   display: none;
@@ -333,5 +358,3 @@
 .st52 {
   fill: #3d3d3d;
 }
-
-

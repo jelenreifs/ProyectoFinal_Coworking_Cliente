@@ -17,6 +17,7 @@ function RegistroUsuario() {
     const [creditos, setCreditos] = useState('')
     const [password, setPassword] = useState('')
     const [administrador, setAdministrador] = useState(false)
+    console.log(administrador)
 
 /* Modal */
     const [mensaje, setMensaje] = useState("");
@@ -69,7 +70,11 @@ function RegistroUsuario() {
 
      const handleChangeAdministrador = (e) => {
         e.preventDefault();
-         setAdministrador(e.target.value) 
+         if (administrador === false) {
+             setAdministrador(true)
+         } else { 
+            setAdministrador(false)
+         }
     }
 
 const addUser = () => { 
@@ -203,7 +208,7 @@ const addUser = () => {
 
                                              <div className="col-xs-6 col-xl-6 mb-3">
                                                 <div className="form-check">
-                                                    <input className="form-check-input" type="checkbox" value="true" id="administrador" onChange={ handleChangeAdministrador } />
+                                                    <input className="form-check-input" type="checkbox" value={ administrador} id="administrador" onClick={ handleChangeAdministrador } />
                                                     <label className="form-check-label" htmlFor="administrador">
                                                         Administrador
                                                     </label>

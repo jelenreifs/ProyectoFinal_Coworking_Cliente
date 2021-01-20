@@ -13,6 +13,7 @@ import ConfiguracionUsuario from "./componentes/config_user";
 
 
 import './App.css';
+import '../src/componentes/Plano/plano.css';
 
 
 function App() {
@@ -24,7 +25,23 @@ function App() {
   const [administrador, setAdministrador] = useState(false);
 
   
+/* Plano */
+    //const [colorPuesto, setColorPuesto] = useState("");
+  const [puesto, setPuesto] = useState("st11");
+
+  const handlePuesto = (e) => { 
+      e.preventDefault();
+       
+      if (puesto === "st11") {
+        setPuesto("st11-ocupado")
   
+      } else {
+          setPuesto("st11")
+      }
+     setPuesto(e.target.id)
+  }
+
+
 
 /* Modal */
 const [show, setShow] = useState(false);
@@ -33,21 +50,17 @@ const handleClose = () => setShow(false);
 const handleShow = () => setShow(true);
   
 
-/* History */
-/* let history = useHistory();
-const handleHome= () => history.push("/home"); */
-
-
-    const handleHamburger = (e) => { 
-        e.preventDefault();
-        if (sidebar === "sidebar") {
-          setSidebar("sidebar collapsed");
-          setNav100("navbar navbar-expand navbar-bg2")
-        } else {
-          setSidebar("sidebar");
-           setNav100("navbar navbar-expand navbar-bg")
-          }
-    }
+/* Sidebar */
+const handleHamburger = (e) => { 
+    e.preventDefault();
+    if (sidebar === "sidebar") {
+      setSidebar("sidebar collapsed");
+      setNav100("navbar navbar-expand navbar-bg2")
+    } else {
+      setSidebar("sidebar");
+        setNav100("navbar navbar-expand navbar-bg")
+      }
+}
   
   
   const loginUser = (email, password) => { 
@@ -72,26 +85,20 @@ const handleHome= () => history.push("/home"); */
             } else {
               setMensaje("")
               setData(res.usuario)
+              console.log(res)
               setLogueado(true)
-              if (res.administrador === false) {
-                setAdministrador(false)
-              } else { 
-                 setAdministrador(true)
-              } 
-                      
-            } 
-        
+              setAdministrador(res.usuario.administrador)
+                console.log(res.usuario.administrador)
+            }
         });
-   
   }
  
-  
 
 
   return (
     <BrowserRouter>
       <Route exact path="/">
-        <Login loginUser={loginUser} mensaje={mensaje} show={show} handleClose={handleClose} handleShow={handleShow} logueado={logueado} administrador={administrador}/>
+        <Login loginUser={loginUser} mensaje={mensaje} show={show} handleClose={handleClose} handleShow={handleShow} logueado={logueado} administrador={administrador} usuario={ data} />
       </Route>
       
      <Route exact path="/home">
@@ -120,7 +127,7 @@ const handleHome= () => history.push("/home"); */
           <Sidebar sidebar= { sidebar } />
           <div className="main">
             <Cabecera cambiarSidebar={handleHamburger} navFlexible={ nav100 } />
-            <Reserva />
+            <Reserva handlePuesto={ handlePuesto }/>
           </div>
         </div>
       </Route>
