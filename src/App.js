@@ -8,12 +8,15 @@ import Sidebar from "./componentes/sidebar";
 import Cabecera from "./componentes/cabecera";
 import Home from "./componentes/home";
 import Reserva from "./componentes/reserva_puesto";
-import RegistroUsuario from "./componentes/registro_user";
 import ConfiguracionUsuario from "./componentes/config_user";
+import AltaUsuario from "./componentes/alta_user";
+import BajaUsuario from "./componentes/baja_user";
+import Dashboard from "./componentes/dashboard";
+import MisReservas from "./componentes/mis_reservas";
 
 
 import './App.css';
-import '../src/componentes/Plano/plano.css';
+import './componentes/Plano/plano.css';
 
 
 function App() {
@@ -26,17 +29,16 @@ function App() {
 
   
 /* Plano */
-    //const [colorPuesto, setColorPuesto] = useState("");
-  
   const [puestoColor, setPuestoColor] = useState("st11");
   const [puestoId, setPuestoId] = useState("");
+  
 
   const handlePuesto = (e) => { 
       e.preventDefault();
       if (puestoColor === "st11") {
         setPuestoColor("st11-ocupado")
       } else {
-          setPuestoColor("st11")
+        setPuestoColor("st11")
       }
      setPuestoId(e.target.id)
   }
@@ -44,10 +46,10 @@ function App() {
 
 
 /* Modal */
-const [show, setShow] = useState(false);
-
-const handleClose = () => setShow(false);
-const handleShow = () => setShow(true);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  
   
 
 /* Sidebar */
@@ -94,18 +96,29 @@ const handleHamburger = (e) => {
   }
  
 
-
   return (
     <BrowserRouter>
       <Route exact path="/">
-        <Login loginUser={loginUser} mensaje={mensaje} show={show} handleClose={handleClose} handleShow={handleShow} logueado={logueado} administrador={administrador} usuario={ data} />
+        <Login
+          loginUser={loginUser}
+          mensaje={mensaje}
+          show={show}
+          handleClose={handleClose}
+          handleShow={handleShow}
+          logueado={logueado}
+          administrador={administrador}
+          usuario={data}
+        />
       </Route>
       
      <Route exact path="/home">
         <div className="wrapper">
           <Sidebar sidebar= { sidebar } />
           <div className="main">
-            <Cabecera cambiarSidebar={handleHamburger} navFlexible={ nav100 }/>
+            <Cabecera
+              cambiarSidebar={handleHamburger}
+              navFlexible={nav100}
+            />
             <Home />
           </div>
         </div>
@@ -116,7 +129,10 @@ const handleHamburger = (e) => {
           <Sidebar sidebar= { sidebar } />
           <div className="main">
              <p> ADMINISTRADOR</p>
-            <Cabecera cambiarSidebar={handleHamburger} navFlexible={ nav100 }/>
+            <Cabecera
+              cambiarSidebar={handleHamburger}
+              navFlexible={nav100}
+            />
             <Home />
           </div>
         </div>
@@ -126,33 +142,95 @@ const handleHamburger = (e) => {
         <div className="wrapper">
           <Sidebar sidebar= { sidebar } />
           <div className="main">
-            <Cabecera cambiarSidebar={handleHamburger} navFlexible={ nav100 } />
-            <Reserva puestoId={puestoId} handlePuesto={handlePuesto }/>
+            <Cabecera
+              cambiarSidebar={handleHamburger}
+              navFlexible={nav100}
+            />
+            <Reserva
+              puestoId={puestoId}
+              puestoColor={puestoColor}
+              handlePuesto={handlePuesto}
+            />
           </div>
         </div>
       </Route>
 
 
-    <Route exact path="/registro-usuario">
+    <Route exact path="/alta-usuario">
         <div className="wrapper">
-          <Sidebar sidebar= { sidebar } />
+         <Sidebar sidebar={sidebar} />
           <div className="main">
-             <Cabecera cambiarSidebar={handleHamburger} navFlexible={ nav100 } />
-            <RegistroUsuario />
+            <Cabecera
+              cambiarSidebar={handleHamburger} 
+              navFlexible={nav100} />
+            <AltaUsuario />
           </div>
         </div>
       </Route>
+
+
+    <Route exact path="/baja-usuario">
+        <div className="wrapper">
+         <Sidebar sidebar={sidebar} />
+          <div className="main">
+            <Cabecera
+              cambiarSidebar={handleHamburger} 
+              navFlexible={nav100} />
+            <BajaUsuario />
+          </div>
+        </div>
+      </Route>
+
 
       <Route exact path="/configuracion-usuario">
         <div className="wrapper">
           <Sidebar sidebar= { sidebar } />
           <div className="main">
-             <Cabecera cambiarSidebar={handleHamburger} navFlexible={ nav100 } />
+            <Cabecera
+              cambiarSidebar={handleHamburger}
+              navFlexible={nav100} />
             <ConfiguracionUsuario />
           </div>
         </div>
       </Route>
-    
+
+      <Route exact path="/mis-reservas">
+        <div className="wrapper">
+          <Sidebar sidebar= { sidebar } />
+          <div className="main">
+            <Cabecera
+              cambiarSidebar={handleHamburger}
+              navFlexible={nav100} />
+            <MisReservas />
+          </div>
+        </div>
+      </Route>
+
+
+
+    <Route exact path="/configuracion-usuario">
+        <div className="wrapper">
+          <Sidebar sidebar= { sidebar } />
+          <div className="main">
+            <Cabecera
+              cambiarSidebar={handleHamburger}
+              navFlexible={nav100} />
+            <ConfiguracionUsuario />
+          </div>
+        </div>
+      </Route>
+
+          <Route exact path="/dashboard">
+        <div className="wrapper">
+          <Sidebar sidebar= { sidebar } />
+          <div className="main">
+            <Cabecera
+              cambiarSidebar={handleHamburger}
+              navFlexible={nav100} />
+            <Dashboard />
+          </div>
+        </div>
+      </Route>
 
       </BrowserRouter>
   )

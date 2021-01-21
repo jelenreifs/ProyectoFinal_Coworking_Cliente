@@ -26,7 +26,7 @@ function Home() {
                                         </Link>
                                     </div>
                                     <p className="card-text">
-                                        Reserva tu puesto de trabajo con antelación
+                                       <span>Reserva</span>Espacios de trabajo en bloque para trabajar en equipo.
                                     </p>
                                 </div>
                             </div>
@@ -42,7 +42,7 @@ function Home() {
                                         </Link>
                                     </div>
                                     <p className="card-text">
-                                        Reserva una sala de reuniones y los puestos para los asistentes
+                                        Decide dónde y cuándo celebrar reuniones con facilidad
                                     </p>
                                 </div>
                             </div>

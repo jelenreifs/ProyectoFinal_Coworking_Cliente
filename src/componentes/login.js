@@ -21,9 +21,10 @@ function Login(props) {
 
     if (props.logueado) {
          if (props.usuario.administrador === false) {
-            return <Redirect to="/home" />
+             return <Redirect to="/home" />
+             
         } else { 
-            return <Redirect to="/home-admin" /> 
+             return <Redirect to="/home-admin" /> 
         }
  
 

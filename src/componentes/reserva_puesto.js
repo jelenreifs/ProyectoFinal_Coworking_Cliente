@@ -2,6 +2,9 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import moment from 'moment';
+//import moment-timezone from 'moment';
+
 //import { Dropdown } from 'react-bootstrap';
 //import { DropdownButton } from 'react-bootstrap';
 //import { ButtonGroup } from 'react-bootstrap';
@@ -10,16 +13,24 @@ import Plano from './Plano/plano';
 import { Modal } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 
+import './Plano/plano.css';
+
 function ReservaPuesto(props) {
+
+
+
     const [mensaje, setMensaje] = useState("");
     const [dni, setDni] = useState("");
     const [nombre, setNombre] = useState("");
     const [apellido, setApellido] = useState("");
     const [daySelected, onChange] = useState(new Date());
-
     const [data, setData] = useState([]);
 
-    console.log(daySelected)
+     /* Formateo de Fecha */
+    //moment.locale('es');
+   const diaSelect = moment(daySelected).format("DD/MM/YYYY")
+   console.log(diaSelect)
+   
     
     /* Modal */
     const [show, setShow] = useState(false);
@@ -27,8 +38,13 @@ function ReservaPuesto(props) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+ 
 
-    const reservarPuesto = () => { 
+/************************************************/
+/*                AÑADIR RESERVA               */
+/************************************************/
+    
+    const addReserva = () => { 
         fetch("/reservaPuesto/add", {
             method: "POST",
             headers: {
@@ -39,8 +55,7 @@ function ReservaPuesto(props) {
                     nombre: nombre,
                     apellido: apellido,
                     puesto: props.puestoId,
-                    fecha: daySelected,
-
+                    fecha: diaSelect
                 }),
         })
             .then(res => res.json())
@@ -57,17 +72,7 @@ function ReservaPuesto(props) {
         });
   }
 
-    
-  useEffect(() => {
-    fetch("/reservaPuesto/add")
-      .then((res) => res.json())
-      .then((res) => {
-          setData(res);
-          console.log(res)
-      });
-  }, []);
 
- 
  
  return (
     <main className="bg-registro1 content p-0">
@@ -91,12 +96,11 @@ function ReservaPuesto(props) {
                         
                         <div className="row">
                             <div className="col-xs-12 bg-white p-3 mx-3">
-                             <Plano handlePuesto={ props.handlePuesto}/>
+                             <Plano handlePuesto={props.handlePuesto} puestoColor={ props.puestoColor}/>
                             </div>
              
                     </div>
                         
-                      
                   
                 </div>
 
@@ -120,7 +124,7 @@ function ReservaPuesto(props) {
 
 
                 <div className="row justify-content-center my-3 px-3">
-                         <Button variant="btn-block mt-4" onClick={ reservarPuesto }>Reservar puesto</Button>
+                         <Button variant="btn-block mt-4" onClick={ addReserva }>Reservar puesto</Button>
                 </div>
 
 
@@ -128,9 +132,11 @@ function ReservaPuesto(props) {
                         <div className="card mr-3">
                             <div className="card-body">
                                 <h5 className="card-title">Reserva actual</h5>
-                                <p className="card-text">
-                                    Poner datos de la reserva
-                                </p>
+                                <ul className="card-text">
+                                     <li>{data.nombre} { data.apellido}</li>
+                                     <li>Puesto: { data.puesto}</li>
+                                     <li>Día: { data.fecha}</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -151,7 +157,6 @@ function ReservaPuesto(props) {
             </div>
             
        
-    
                 <Modal show={ show } onHide={ handleClose }>
                     <Modal.Header closeButton>
                     <Modal.Title>{ mensaje }</Modal.Title>

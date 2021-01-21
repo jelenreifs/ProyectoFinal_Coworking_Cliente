@@ -6,7 +6,9 @@ import { useState } from 'react';
 
 
 function Sidebar(props) {
+
   const location = useLocation();
+  console.log(location);
 	
 const [homeActive, setHomeActive] = useState(() => {
 		if (location.pathname === "/Home") {
@@ -19,12 +21,12 @@ const [homeActive, setHomeActive] = useState(() => {
 	});
 
 	const [puestoActive, setPuestoActive] = useState(() => {
-			if (location.pathname === "/reserva-puesto") {
+		if (location.pathname === "/reserva-puesto") {
 			const initialState = "sidebar-item active";
-		return initialState;
-			} else {
+			return initialState;
+		} else {
 			const initialState = "sidebar-item";
-		return initialState;
+			return initialState;
 			}
 	});
 
@@ -32,12 +34,12 @@ const [homeActive, setHomeActive] = useState(() => {
 
 	const [reunionActive, setReunionActive] = useState(() => {
 		if (location.pathname === "#") {
-		const initialState = "sidebar-item active";
-		return initialState;
+			const initialState = "sidebar-item active";
+			return initialState;
 		} else {
-		const initialState = "sidebar-item";
-		return initialState;
-			}
+			const initialState = "sidebar-item";
+			return initialState;
+		}
 	});
 
 
@@ -53,7 +55,7 @@ const [homeActive, setHomeActive] = useState(() => {
 	});
 
 
-		const [notificacionActive, setNotificacionActive] = useState(() => {
+	const [notificacionActive, setNotificacionActive] = useState(() => {
 	
 		if (location.pathname === "#") {
 			const initialState = "sidebar-item active";
@@ -64,17 +66,42 @@ const [homeActive, setHomeActive] = useState(() => {
 			}
 	});
 
-
-
-
-/* 	const handleHomeActive = (e) => { 
-        e.preventDefault();
-        setHomeActive("sidebar-item")
-          } */
+	const [dashboardActive, setDashboradActive] = useState(() => {
 	
+		if (location.pathname === "/dashboard") {
+			const initialState = "sidebar-item active";
+			return initialState;
+		} else {
+			const initialState = "sidebar-item";
+			return initialState;
+			}
+	});
 
 
+	const [altaActive, setAltaActive] = useState(() => {
 	
+		if (location.pathname === "/alta-usuario") {
+			const initialState = "sidebar-item active";
+			return initialState;
+		} else {
+			const initialState = "sidebar-item";
+			return initialState;
+			}
+	});
+
+	const [bajaActive, setBajaActive] = useState(() => {
+	
+		if (location.pathname === "/baja-usuario") {
+			const initialState = "sidebar-item active";
+			return initialState;
+		} else {
+			const initialState = "sidebar-item";
+			return initialState;
+			}
+	});
+
+
+
 
     return (
        	<nav id="sidebar" className={props.sidebar} >
@@ -93,14 +120,34 @@ const [homeActive, setHomeActive] = useState(() => {
 							</div>
 						</Link>
 					</li>
+	
 
+					<li className="sidebar-header">
+						Administrador
+					</li>
 
-					<li className={ homeActive }>
+					<li className={ dashboardActive }>
 						<Link to="/Home" className="sidebar-link">
 							<i className="align-middle" data-feather="sliders"></i>
-							<span className="align-middle">Home</span>
+							<span className="align-middle">Dashboard</span>
 						</Link>
 					</li>
+
+					<li className={ altaActive }>
+						<Link to="/Home" className="sidebar-link">
+							<i className="align-middle" data-feather="sliders"></i>
+							<span className="align-middle">Alta de usuario</span>
+						</Link>
+					</li>
+
+					<li className={ bajaActive }>
+						<Link to="/Home" className="sidebar-link">
+							<i className="align-middle" data-feather="sliders"></i>
+							<span className="align-middle">Baja de usuario usuario</span>
+						</Link>
+					</li>
+
+
 
 					<li className="sidebar-header">
 						Tipo de reserva
