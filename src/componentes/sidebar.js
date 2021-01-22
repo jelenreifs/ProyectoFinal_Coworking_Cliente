@@ -28,7 +28,6 @@ const [homeActive, setHomeActive] = useState(() => {
 			}
 	});
 
-	
 
 	const [reunionActive, setReunionActive] = useState(() => {
 		if (location.pathname === "#") {
@@ -42,7 +41,6 @@ const [homeActive, setHomeActive] = useState(() => {
 
 
 	const [parkingActive, setParkingActive] = useState(() => {
-	
 		if (location.pathname === "#") {
 			const initialState = "sidebar-item active";
 			return initialState;
@@ -53,8 +51,7 @@ const [homeActive, setHomeActive] = useState(() => {
 	});
 
 
-		const [notificacionActive, setNotificacionActive] = useState(() => {
-	
+	const [notificacionActive, setNotificacionActive] = useState(() => {
 		if (location.pathname === "#") {
 			const initialState = "sidebar-item active";
 			return initialState;
@@ -65,16 +62,6 @@ const [homeActive, setHomeActive] = useState(() => {
 	});
 
 
-
-
-/* 	const handleHomeActive = (e) => { 
-        e.preventDefault();
-        setHomeActive("sidebar-item")
-          } */
-	
-
-
-	
 
     return (
        	<nav id="sidebar" className={props.sidebar} >
@@ -96,7 +83,8 @@ const [homeActive, setHomeActive] = useState(() => {
 
 
 					<li className={ homeActive }>
-						<Link to="/Home" className="sidebar-link">
+						<Link to="/home" className="sidebar-link">
+							<img className="align-middle" src="./img/icons/home.svg" alt="ico-home" /> 
 							<i className="align-middle" data-feather="sliders"></i>
 							<span className="align-middle">Home</span>
 						</Link>
@@ -108,22 +96,22 @@ const [homeActive, setHomeActive] = useState(() => {
 
 					<li className={ puestoActive }>
 						<Link to="/reserva-puesto" className="sidebar-link" >
-							<i className="align-middle" data-feather="user"></i>
+							<img className="align-middle" src="./img/icons/monitor.svg" alt="ico-puesto" /> 
 							<span className="align-middle">Puesto de trabajo</span>
 						</Link>
                     </li >
                     
                     <li className={ reunionActive }>
 						<Link to="#" className="sidebar-link">
-							<i className="align-middle" data-feather="settings"></i>
+							<img className="align-middle" src="./img/icons/meeting.svg" alt="ico-sala-reunion" /> 
 							<span className="align-middle">Sala de reuniones</span>
 						</Link>
 					</li>
 
 					<li className={ parkingActive }>
 						<Link to="#" className="sidebar-link" >
-							<i className="align-middle" data-feather="credit-card"></i> <span
-								className="align-middle">Parking</span>
+							<img className="align-middle" src="./img/icons/car.svg" alt="ico-parking" /> 
+							<span className="align-middle">Parking</span>
 						</Link>
 					</li>
 
@@ -133,7 +121,7 @@ const [homeActive, setHomeActive] = useState(() => {
 
 					<li  className={ notificacionActive }>
 						<Link to="#" className="sidebar-link">
-							<i className="align-middle" data-feather="credit-card"></i>
+							<img className="align-middle" src="./img/icons/bell.svg" alt="ico-notificacion" /> 
 							<span className="align-middle">Mensajes</span>
 						</Link>
 					</li>

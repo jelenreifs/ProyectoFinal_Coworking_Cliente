@@ -5,7 +5,7 @@ import { useState } from 'react';
 //import { Modal } from 'react-bootstrap';
 
 
-function Sidebar(props) {
+function SidebarAdmin(props) {
 
   const location = useLocation();
   console.log(location);
@@ -126,28 +126,34 @@ const [homeActive, setHomeActive] = useState(() => {
 						Administrador
 					</li>
 
+					<li className={ homeActive }>
+						<Link to="/home" className="sidebar-link">
+							<img className="align-middle" src="./img/icons/home.svg" alt="ico-home" /> 
+							<span className="align-middle">Home</span>
+						</Link>
+					</li>
+
+					
 					<li className={ dashboardActive }>
-						<Link to="/Home" className="sidebar-link">
-							<i className="align-middle" data-feather="sliders"></i>
+						<Link to="/dashboard" className="sidebar-link">
+							<img className="align-middle" src="./img/icons/dashboard.svg" alt="ico-dashboard" /> 
 							<span className="align-middle">Dashboard</span>
 						</Link>
 					</li>
 
 					<li className={ altaActive }>
-						<Link to="/Home" className="sidebar-link">
-							<i className="align-middle" data-feather="sliders"></i>
-							<span className="align-middle">Alta de usuario</span>
+						<Link to="/alta-usuario" className="sidebar-link">
+							<img className="align-middle" src="./img/icons/alta-user.svg" alt="ico-alta-usuario" /> 
+							<span className="align-middle">Alta usuario</span>
 						</Link>
 					</li>
 
 					<li className={ bajaActive }>
-						<Link to="/Home" className="sidebar-link">
-							<i className="align-middle" data-feather="sliders"></i>
-							<span className="align-middle">Baja de usuario usuario</span>
+						<Link to="/baja-usuario" className="sidebar-link">
+							<img className="align-middle" src="./img/icons/baja-user.svg" alt="ico-baja-usuario" /> 
+							<span className="align-middle">Baja de usuario</span>
 						</Link>
 					</li>
-
-
 
 					<li className="sidebar-header">
 						Tipo de reserva
@@ -155,22 +161,22 @@ const [homeActive, setHomeActive] = useState(() => {
 
 					<li className={ puestoActive }>
 						<Link to="/reserva-puesto" className="sidebar-link" >
-							<i className="align-middle" data-feather="user"></i>
+							<img className="align-middle" src="./img/icons/monitor.svg" alt="ico-puesto" /> 
 							<span className="align-middle">Puesto de trabajo</span>
 						</Link>
                     </li >
                     
-                    <li className={ reunionActive }>
+                       <li className={ reunionActive }>
 						<Link to="#" className="sidebar-link">
-							<i className="align-middle" data-feather="settings"></i>
+							<img className="align-middle" src="./img/icons/meeting.svg" alt="ico-sala-reunion" /> 
 							<span className="align-middle">Sala de reuniones</span>
 						</Link>
 					</li>
 
 					<li className={ parkingActive }>
 						<Link to="#" className="sidebar-link" >
-							<i className="align-middle" data-feather="credit-card"></i> <span
-								className="align-middle">Parking</span>
+							<img className="align-middle" src="./img/icons/car.svg" alt="ico-parking" /> 
+							<span className="align-middle">Parking</span>
 						</Link>
 					</li>
 
@@ -180,7 +186,7 @@ const [homeActive, setHomeActive] = useState(() => {
 
 					<li  className={ notificacionActive }>
 						<Link to="#" className="sidebar-link">
-							<i className="align-middle" data-feather="credit-card"></i>
+							<img className="align-middle" src="./img/icons/bell.svg" alt="ico-notificacion" /> 
 							<span className="align-middle">Mensajes</span>
 						</Link>
 					</li>
@@ -191,4 +197,4 @@ const [homeActive, setHomeActive] = useState(() => {
     )
 }
 
-export default Sidebar;
+export default SidebarAdmin;

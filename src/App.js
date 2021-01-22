@@ -5,6 +5,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 //import feather  from 'feather-icons';
 import Login from './componentes/login';
 import Sidebar from "./componentes/sidebar";
+import SidebarAdmin from "./componentes/sidebar_admin";
 import Cabecera from "./componentes/cabecera";
 import Home from "./componentes/home";
 import Reserva from "./componentes/reserva_puesto";
@@ -21,11 +22,14 @@ import './componentes/Plano/plano.css';
 
 function App() {
   const [sidebar, setSidebar] = useState("sidebar");
+  const [sidebarAdmin, setSidebarAdmin] = useState("sidebar");
   const [nav100, setNav100] = useState("navbar navbar-expand navbar-bg");
   const [mensaje, setMensaje] = useState("");
   const [data, setData] = useState([]);
   const [logueado, setLogueado] = useState(false);
   const [administrador, setAdministrador] = useState(false);
+  console.log(data)
+   console.log(data.administrador)
 
   
 /* Plano */
@@ -55,12 +59,14 @@ function App() {
 /* Sidebar */
 const handleHamburger = (e) => { 
     e.preventDefault();
-    if (sidebar === "sidebar") {
+    if (sidebar === "sidebar" && sidebarAdmin === "sidebar" ) {
       setSidebar("sidebar collapsed");
+      setSidebarAdmin("sidebar collapsed");
       setNav100("navbar navbar-expand navbar-bg2")
     } else {
       setSidebar("sidebar");
-        setNav100("navbar navbar-expand navbar-bg")
+      setSidebarAdmin("sidebar");
+      setNav100("navbar navbar-expand navbar-bg")
       }
 }
   
@@ -113,7 +119,8 @@ const handleHamburger = (e) => {
       
      <Route exact path="/home">
         <div className="wrapper">
-          <Sidebar sidebar= { sidebar } />
+           { data.administrador ? <SidebarAdmin sidebar= { sidebar } /> :  <Sidebar sidebar= { sidebar } /> }
+        
           <div className="main">
             <Cabecera
               cambiarSidebar={handleHamburger}
@@ -126,7 +133,7 @@ const handleHamburger = (e) => {
 
       <Route exact path="/home-admin">
         <div className="wrapper">
-          <Sidebar sidebar= { sidebar } />
+           { data.administrador ? <SidebarAdmin sidebar= { sidebar } /> :  <Sidebar sidebar= { sidebar } /> }
           <div className="main">
              <p> ADMINISTRADOR</p>
             <Cabecera
@@ -140,7 +147,7 @@ const handleHamburger = (e) => {
 
     <Route exact path="/reserva-puesto">
         <div className="wrapper">
-          <Sidebar sidebar= { sidebar } />
+           { data.administrador ? <SidebarAdmin sidebar= { sidebar } /> : <Sidebar sidebar= { sidebar } /> }
           <div className="main">
             <Cabecera
               cambiarSidebar={handleHamburger}
@@ -158,7 +165,7 @@ const handleHamburger = (e) => {
 
     <Route exact path="/alta-usuario">
         <div className="wrapper">
-         <Sidebar sidebar={sidebar} />
+          { data.administrador ? <SidebarAdmin sidebar= { sidebar } /> : <Sidebar sidebar= { sidebar } /> }
           <div className="main">
             <Cabecera
               cambiarSidebar={handleHamburger} 
@@ -171,7 +178,7 @@ const handleHamburger = (e) => {
 
     <Route exact path="/baja-usuario">
         <div className="wrapper">
-         <Sidebar sidebar={sidebar} />
+          { data.administrador ? <SidebarAdmin sidebar= { sidebar } /> : <Sidebar sidebar= { sidebar } /> }
           <div className="main">
             <Cabecera
               cambiarSidebar={handleHamburger} 
@@ -184,7 +191,7 @@ const handleHamburger = (e) => {
 
       <Route exact path="/configuracion-usuario">
         <div className="wrapper">
-          <Sidebar sidebar= { sidebar } />
+          { data.administrador ? <SidebarAdmin sidebar= { sidebar } /> : <Sidebar sidebar= { sidebar } /> }
           <div className="main">
             <Cabecera
               cambiarSidebar={handleHamburger}
@@ -196,7 +203,7 @@ const handleHamburger = (e) => {
 
       <Route exact path="/mis-reservas">
         <div className="wrapper">
-          <Sidebar sidebar= { sidebar } />
+          { data.administrador ? <SidebarAdmin sidebar= { sidebar } /> : <Sidebar sidebar= { sidebar } /> }
           <div className="main">
             <Cabecera
               cambiarSidebar={handleHamburger}
@@ -210,7 +217,7 @@ const handleHamburger = (e) => {
 
     <Route exact path="/configuracion-usuario">
         <div className="wrapper">
-          <Sidebar sidebar= { sidebar } />
+           { data.administrador ? <SidebarAdmin sidebar= { sidebar } /> : <Sidebar sidebar= { sidebar } /> }
           <div className="main">
             <Cabecera
               cambiarSidebar={handleHamburger}
@@ -222,7 +229,7 @@ const handleHamburger = (e) => {
 
           <Route exact path="/dashboard">
         <div className="wrapper">
-          <Sidebar sidebar= { sidebar } />
+           { data.administrador ? <SidebarAdmin sidebar= { sidebar } /> : <Sidebar sidebar= { sidebar } /> }
           <div className="main">
             <Cabecera
               cambiarSidebar={handleHamburger}

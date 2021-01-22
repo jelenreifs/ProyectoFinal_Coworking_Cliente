@@ -1,9 +1,14 @@
 import React from 'react';
-//import { useState } from 'react';
+import { useState } from 'react';
 import './plano.css';
 
  function Plano (props) {
     console.log(props)
+
+    const [puestoSelect, setPuestoSelect] = useState("");
+
+
+     
 
 return (
     <div className="plano-wrapper">

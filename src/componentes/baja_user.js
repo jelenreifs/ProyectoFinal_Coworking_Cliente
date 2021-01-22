@@ -1,12 +1,43 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
+import { Link} from 'react-router-dom';
 
-
-import { Button } from 'react-bootstrap';
+//import { Button } from 'react-bootstrap';
 //import { Modal } from 'react-bootstrap';
 //import { Link } from 'react-router-dom';
 
 function BajaUsuario() {
+    const [data, setData] = useState([]);
 
+
+ /*******************************************/
+/*          Montrar usuarios         */
+/******************************************/
+  useEffect(() => {
+    fetch("/users")
+      .then((res) => res.json())
+      .then((res) => {
+        setData(res);
+      });
+  }, []);
+    
+    const usuarios = data.map((usuario, index) => {
+        return (
+            <tr key={index}>
+                <td>{usuario.dni}</td>
+                <td>{usuario.nombre} {usuario.apellido}</td>
+                <td className="d-xs-none">
+                    <Link to={usuario.email}>
+                        {usuario.email}
+                    </Link>
+                </td>
+                <td className="d-xs-none">{usuario.fechaAlta}</td>
+                <td className="d-flex justify-content-center">
+                    <img src="./img/icons/trash.svg" alt="ico-home" /> 
+                </td>
+            </tr>
+        )
+     })
 
     return (
         <main className="bg-home content p-0">
@@ -15,43 +46,18 @@ function BajaUsuario() {
                     <div className="col-12 col-xl-12">
                          <h3 className="text-white">Baja de usuario</h3>
                         <div className="card">
-                            <div className="card-header">
-                                <h5 className="card-title">Baja de usuario</h5>
-                            </div>
                             <table className="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>Dni</th>
                                         <th>Nombre Apellido</th>
-                                        <th className="d-none d-md-table-cell">Email</th>
-                                        <th>Fecha Alta</th>
-                                        <th>Acciones</th>
+                                        <th className="d-none d-md-table-cell d-xs-none">Email</th>
+                                        <th className="d-xs-none">Fecha Alta</th>
+                                        <th className="d-flex justify-content-center">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>12345678</td>
-                                        <td>Pepe López</td>
-                                        <td className="d-none d-md-table-cell">plopez@coworking.es</td>
-                                        <td>12-34-56</td>
-                                        <td className="table-action">
-                                            <div>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="feather feather-edit-2 align-middle">
-                                                    <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z">
-                                                    </path>
-                                                </svg>
-                                            </div>
-                                            <div>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="feather feather-trash align-middle">
-                                                    <polyline points="3 6 5 6 21 6">
-                                                    </polyline>
-                                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                                                    </path>
-                                                </svg>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                   
+                                    {usuarios}
                                 </tbody>
                             </table>
                         </div>
