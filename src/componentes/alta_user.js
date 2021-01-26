@@ -68,29 +68,16 @@ function AltaUsuario() {
          setPassword(e.target.value) 
     }
 
-/*      const handleChangeAdministrador = (e) => {
-        e.preventDefault();
-         if (administrador === false) {
-             setAdministrador(true)
-         } else { 
-            setAdministrador(false)
-         }
-    } */
-
-    /*      const handleChangeAdministrador = (e) => {
-        e.preventDefault();
-         if (administrador === false) {
-             setAdministrador(true)
-         } else { 
-            setAdministrador(false)
-         }
-    } */
 
     const handleChangeAdministrador = () => {
         setAdministrador(!administrador);
     };
 
 
+
+/************************************************/
+/*                AÑADIR USUARIO               */
+/************************************************/
 
 const addUser = () => { 
     fetch("/users/add", {
@@ -126,14 +113,51 @@ const addUser = () => {
         handleShow()
        }  
        });
-  }
+    }
+    
 
+
+    
+/* /************************************************/
+/*                MODIFICAR FOTO              */
+/************************************************/
+    
+/*const updatePhoto = () => { 
+    fetch("/users", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+        body: JSON.stringify (
+        {
+            foto : foto, 
+        }
+    ),
+  })
+     .then(res => res.json())
+      .then(res => {
+        if (res.error === true) {
+          setMensaje(res.mensaje)
+          handleShow()
+          
+        } else {
+        setMensaje(res.mensaje)
+        setData(res);
+        handleShow()
+       }  
+       });
+  } */
+
+    
+    
+    
 
     return (
      <main className="bg-home content p-0">
             <div className="container-fluid p-0">
                 <div className="row vh-100 px-4">
                     <div className="col-xs-12 col-lg-4 px-4">
+               
                         <div className="area-foto">
                             <img src= { foto } alt="foto-usuario" />
                             <h5 className="text-white my-4">Cambiar foto</h5>
@@ -151,21 +175,12 @@ const addUser = () => {
                                         id="foto"
                                         placeholder="NuevaFoto"
                                         onChange={handleChangeFoto} />
-                                </div>
-
-
-        
-                                <div className="row credit">
-                                     <div className="col-xs-12">
-                                         <label htmlFor="creditos" className="form-label text-white">Créditos</label>
-                                        <input
-                                            type="number"
-                                            className="form-control"
-                                            id="creditos"
-                                            placeholder="Créditos"
-                                            onChange={handleChangeCreditos} />
-                                        </div>
-                                </div>
+                                </div> 
+                                
+                          <div className="row justify-content-center my-3 px-3">
+                                <Button variant="btn btn-xs-block mt-4">Actualizar foto</Button>
+                            </div>
+                    
                         </div>
 
                     </div>
@@ -176,19 +191,7 @@ const addUser = () => {
                         <div className="col-xs-12">
                             <div className="card mr-3">
                                 <div className="card-body">
-                                    <h4 className="text-primary">Añadir usuario</h4>
-                                    <div className="row">
-                                        <div className="col-xs-6 col-xl-6  mb-3">
-                                            <label htmlFor="dni" className="form-label">DNI</label>
-                                                <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    id="dni"
-                                                    placeholder="Ej:12345678P"
-                                                    onChange={handleChangeDni} />
-                                        </div>
-                                    </div>
-
+                                        <h4 className="text-primary">Añadir usuario</h4>
                                     <div className="row">
                                         <div className="col-xs-6 col-xl-6  mb-3">
                                             <label htmlFor="nombre" className="form-label">Nombre</label>
@@ -210,19 +213,20 @@ const addUser = () => {
                                                     onChange={handleChangeApellido} />
                                         </div>
                                     </div>
+                                        
 
                                     <div className="row">
                                         <div className="col-xs-6 col-xl-6  mb-3">
-                                            <label htmlFor="email" className="form-label">Email</label>
+                                            <label htmlFor="dni" className="form-label">DNI</label>
                                                 <input
-                                                    type="email"
+                                                    type="text"
                                                     className="form-control"
-                                                    id="email"
-                                                    placeholder="Ej:napellido@empresa.es"
-                                                    onChange={handleChangeEmail} />
+                                                    id="dni"
+                                                    placeholder="Ej:12345678P"
+                                                    onChange={handleChangeDni} />
                                             </div>
                                             
-                                            <div className="col-xs-6 col-xl-6 mb-3">
+                                              <div className="col-xs-6 col-xl-6 mb-3">
                                                 <label htmlFor="telefono" className="form-label">Teléfono</label>
                                                 <input
                                                     type="tel"
@@ -231,6 +235,28 @@ const addUser = () => {
                                                     placeholder="Ej:600123123"
                                                     onChange={handleChangeTfno} />
                                             </div>
+                                    </div>
+
+                                  
+                                    <div className="row">
+                                            <div className="col-xs-6 col-xl-6  mb-3">
+                                                <label htmlFor="email" className="form-label">Email</label>
+                                                    <input
+                                                        type="email"
+                                                        className="form-control"
+                                                        id="email"
+                                                        placeholder="Ej:napellido@empresa.es"
+                                                        onChange={handleChangeEmail} />
+                                            </div>
+                                            <div className="col-xs-6 col-xl-6 mb-3">
+                                                <label htmlFor="passsword" className="form-label">Password</label>
+                                                <input type="password"
+                                                    className="form-control"
+                                                    id="passwors"
+                                                    placeholder="password"
+                                                    onChange={handleChangePassword} />
+                                            </div>
+                                          
                                         </div>
                                         
                                     <div className="col-xs-12 separador"></div>
@@ -253,23 +279,24 @@ const addUser = () => {
                                                     id="baja"
                                                     placeholder="fecha baja"
                                                     onChange={handleChangeFechaBaja} />
+                                            </div>
                                         </div>
-                                    </div>
-                                        
+                                            
                                         
                                         <div className="row">
-                                            <div className="col-xs-6 col-xl-6 mb-3">
-                                                <label htmlFor="passsword" className="form-label">Password</label>
-                                                <input type="password"
+                                             <div className="col-xs-12 col-xl-2 mb-3 ">
+                                                <label htmlFor="creditos" className="form-label">Créditos</label>
+                                                <input
+                                                    type="number"
                                                     className="form-control"
-                                                    id="passwors"
-                                                    placeholder="password"
-                                                    onChange={handleChangePassword} />
+                                                    id="creditos"
+                                                    placeholder="Créditos"
+                                                    onChange={handleChangeCreditos} />
                                             </div>
+                                        
 
-                                             <div className="col-xs-6 col-xl-6 mb-3">
+                                             <div className="col-xs-6 col-xl-4 mb-3 d-flex align-items-end pl-4 pb-2">
                                                 <div className="form-check">
-                                                    <input className="form-check-input" type="checkbox" value={administrador} id="administrador" onClick={handleChangeAdministrador} />
                                                     <input
                                                         className="form-check-input"
                                                         type="checkbox"
@@ -287,7 +314,7 @@ const addUser = () => {
                                         </div>
                                         
                                     <div className="row justify-content-center my-3 px-3">
-                                        <Button variant="btn btn-xs-block mt-4" onClick={addUser}>Login</Button>
+                                        <Button variant="btn btn-xs-block mt-4" onClick={addUser}>Registrar usuario</Button>
                                     </div>
                             </div>
                         </div>
@@ -296,11 +323,11 @@ const addUser = () => {
             </div>
             </div> 
             </div>
-                <Modal show={show} onHide={handleClose}>
-                    <Modal.Header closeButton>
-                    <Modal.Title>{ mensaje}</Modal.Title>
-                    </Modal.Header>
-                        </Modal>
+    <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+        <Modal.Title>{ mensaje}</Modal.Title>
+        </Modal.Header>
+    </Modal>
     </main>
     )
 }

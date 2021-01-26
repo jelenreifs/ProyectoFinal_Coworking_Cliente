@@ -7,6 +7,7 @@
     "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.0",
+    "apexcharts": "^3.23.1",
     "bootstrap": "^4.5.3",
     "cors": "^2.8.5",
     "feather-icons": "^4.28.0",

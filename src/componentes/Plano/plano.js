@@ -1,14 +1,9 @@
 import React from 'react';
-import { useState } from 'react';
 import './plano.css';
 
  function Plano (props) {
     console.log(props)
 
-    const [puestoSelect, setPuestoSelect] = useState("");
-
-
-     
 
 return (
     <div className="plano-wrapper">
@@ -6032,7 +6027,7 @@ return (
 
                 <g id="Mesa8-6"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 -1 1 0 21.70412979586413 151.20997823982336) matrix(1 0 0 1 0 0)">
-                    <path id="M8-6" className={props.puestoColor} onClick={props.handlePuesto} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
+                    <path id="M8-6"   className={props.asientos.estado} onClick={props.manejarEstado} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
         			c4.1,0,6.2,2.2,6.2,6.6V20.3L41.2,20.3z" />
                     <path className="st13"
                         d="M18.1,13.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6045,7 +6040,7 @@ return (
 
                 <g id="Mesa8-5"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 -1 1 0 98.57938814024804 150.49152646901334) matrix(1 0 0 1 0 0)">
-                    <path id="M8-5" className={props.puestoColor} onClick={props.handlePuesto} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
+                    <path id="M8-5"   className={props.asientos.estado} onClick={props.manejarEstado} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
         			c4.1,0,6.2,2.2,6.2,6.6V20.3L41.2,20.3z" />
                     <path className="st13"
                         d="M18.1,13.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6058,7 +6053,7 @@ return (
 
                 <g id="Mesa8-4"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 -1 1 0 174.98052951594815 151.20997823982358) matrix(1 0 0 1 0 0)">
-                    <path id="M8-4" className={props.puestoColor} onClick={props.handlePuesto} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
+                    <path id="M8-4"  className={props.asientos.estado} onClick={props.manejarEstado} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
         			c4.1,0,6.2,2.2,6.2,6.6V20.3L41.2,20.3z" />
                     <path className="st13"
                         d="M18.1,13.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6070,7 +6065,7 @@ return (
                 </g>
                 <g id="Mesa8-3"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 1 -1 0 208.21046978426375 0) matrix(1 0 0 1 0 0)">
-                    <path id="M8-3" className={props.puestoColor} onClick={props.handlePuesto} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
+                    <path id="M8-3"  className={props.asientos.estado} onClick={props.manejarEstado} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
         			c4.1,0,6.2,2.2,6.2,6.6V26.3L21.2,26.3z" />
                     <path className="st13"
                         d="M-1.9,19.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6083,7 +6078,7 @@ return (
 
                 <g id="Mesa8-2"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 1 -1 0 131.33521143988 0.7184517708094518) matrix(1 0 0 1 0 0)">
-                    <path id="M8-2" className={props.puestoColor} onClick={props.handlePuesto} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
+                    <path id="M8-2"  className={props.asientos.estado} onClick={props.manejarEstado} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
         			c4.1,0,6.2,2.2,6.2,6.6V26.3L21.2,26.3z" />
                     <path className="st13"
                         d="M-1.9,19.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6095,7 +6090,7 @@ return (
                 </g>
                 <g id="Mesa8-1"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 1 -1 0 54.93407006417886 0) matrix(1 0 0 1 0 0)">
-                    <path id="M8-1" className={props.puestoColor} onClick={props.handlePuesto} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
+                    <path id="M8-1"  className={props.asientos.estado} onClick={props.manejarEstado} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
         			c4.1,0,6.2,2.2,6.2,6.6V26.3L21.2,26.3z" />
                     <path className="st13"
                         d="M-1.9,19.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6117,7 +6112,7 @@ return (
 
                 <g id="Mesa7-6"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 -1 1 0 21.704129795864123 151.20997823982333) matrix(1 0 0 1 0 0)">
-                    <path id="M7-6" className={props.puestoColor} onClick={props.handlePuesto} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
+                    <path id="M7-6"  className={props.asientos.estado} onClick={props.manejarEstado} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
         			c4.1,0,6.2,2.2,6.2,6.6V20.3L41.2,20.3z" />
                     <path className="st13"
                         d="M18.1,13.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6130,7 +6125,7 @@ return (
 
                 <g id="Mesa7-5"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 -1 1 0 98.5793881402481 150.49152646901334) matrix(1 0 0 1 0 0)">
-                    <path id="M7-5" className={props.puestoColor} onClick={props.handlePuesto} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
+                    <path id="M7-5"  className={props.asientos.estado} onClick={props.manejarEstado} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
         			c4.1,0,6.2,2.2,6.2,6.6V20.3L41.2,20.3z" />
                     <path className="st13"
                         d="M18.1,13.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6143,7 +6138,7 @@ return (
 
                 <g id="Mesa7-4"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 -1 1 0 174.9805295159482 151.20997823982358) matrix(1 0 0 1 0 0)">
-                    <path id="M7-4" className={props.puestoColor} onClick={props.handlePuesto} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
+                    <path id="M7-4"  className={props.asientos.estado} onClick={props.manejarEstado} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
         			c4.1,0,6.2,2.2,6.2,6.6V20.3L41.2,20.3z" />
                     <path className="st13"
                         d="M18.1,13.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6155,7 +6150,7 @@ return (
                 </g>
                 <g id="Mesa7-3"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 1 -1 0 208.2104697842638 0) matrix(1 0 0 1 0 0)">
-                    <path id="M7-3" className={props.puestoColor} onClick={props.handlePuesto} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
+                    <path id="M7-3"  className={props.asientos.estado} onClick={props.manejarEstado} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
         			c4.1,0,6.2,2.2,6.2,6.6V26.3L21.2,26.3z" />
                     <path className="st13"
                         d="M-1.9,19.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6168,7 +6163,7 @@ return (
 
                 <g id="Mesa7-2"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 1 -1 0 131.33521143988 0.7184517708094376) matrix(1 0 0 1 0 0)">
-                    <path id="M7-2" className={props.puestoColor} onClick={props.handlePuesto} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
+                    <path id="M7-2"  className={props.asientos.estado} onClick={props.manejarEstado} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
         			c4.1,0,6.2,2.2,6.2,6.6V26.3L21.2,26.3z" />
                     <path className="st13"
                         d="M-1.9,19.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6180,7 +6175,7 @@ return (
                 </g>
                 <g id="Mesa7-1"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 1 -1 0 54.93407006417888 0) matrix(1 0 0 1 0 0)">
-                    <path id="M7-1" className={props.puestoColor} onClick={props.handlePuesto} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
+                    <path id="M7-1"  className={props.asientos.estado} onClick={props.manejarEstado} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
         			c4.1,0,6.2,2.2,6.2,6.6V26.3L21.2,26.3z" />
                     <path className="st13"
                         d="M-1.9,19.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6202,7 +6197,7 @@ return (
 
                 <g id="Mesa6-6"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 -1 1 0 21.70412979586415 151.20997823982333) matrix(1 0 0 1 0 0)">
-                    <path id="M6-6" className={props.puestoColor} onClick={props.handlePuesto} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
+                    <path id="M6-6"  className={props.asientos.estado} onClick={props.manejarEstado} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
         			c4.1,0,6.2,2.2,6.2,6.6V20.3L41.2,20.3z" />
                     <path className="st13"
                         d="M18.1,13.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6215,7 +6210,7 @@ return (
 
                 <g id="Mesa6-5"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 -1 1 0 98.57938814024801 150.49152646901334) matrix(1 0 0 1 0 0)">
-                    <path id="M6-5" className={props.puestoColor} onClick={props.handlePuesto} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
+                    <path id="M6-5"  className={props.asientos.estado} onClick={props.manejarEstado} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
         			c4.1,0,6.2,2.2,6.2,6.6V20.3L41.2,20.3z" />
                     <path className="st13"
                         d="M18.1,13.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6228,7 +6223,7 @@ return (
 
                 <g id="Mesa6-4"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 -1 1 0 174.98052951594812 151.20997823982356) matrix(1 0 0 1 0 0)">
-                    <path id="M6-4" className={props.puestoColor} onClick={props.handlePuesto} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
+                    <path id="M6-4"  className={props.asientos.estado} onClick={props.manejarEstado} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
         			c4.1,0,6.2,2.2,6.2,6.6V20.3L41.2,20.3z" />
                     <path className="st13"
                         d="M18.1,13.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6240,7 +6235,7 @@ return (
                 </g>
                 <g id="Mesa6-3"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 1 -1 0 208.21046978426375 0) matrix(1 0 0 1 0 0)">
-                    <path id="M6-3_1_" className={props.puestoColor} onClick={props.handlePuesto} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
+                    <path id="M6-3_1_"  className={props.asientos.estado} onClick={props.manejarEstado} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
         			c4.1,0,6.2,2.2,6.2,6.6V26.3L21.2,26.3z" />
                     <path className="st13"
                         d="M-1.9,19.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6253,7 +6248,7 @@ return (
 
                 <g id="Mesa6-2"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 1 -1 0 131.33521143988 0.7184517708094376) matrix(1 0 0 1 0 0)">
-                    <path id="M6-3"className={props.puestoColor} onClick={props.handlePuesto} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
+                    <path id="M6-3" className={props.asientos.estado} onClick={props.manejarEstado} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
         			c4.1,0,6.2,2.2,6.2,6.6V26.3L21.2,26.3z" />
                     <path className="st13"
                         d="M-1.9,19.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6265,7 +6260,7 @@ return (
                 </g>
                 <g id="Mesa6-1"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 1 -1 0 54.93407006417886 0) matrix(1 0 0 1 0 0)">
-                    <path id="M6-1" className={props.puestoColor} onClick={props.handlePuesto} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
+                    <path id="M6-1"  className={props.asientos.estado} onClick={props.manejarEstado} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
         			c4.1,0,6.2,2.2,6.2,6.6V26.3L21.2,26.3z" />
                     <path className="st13"
                         d="M-1.9,19.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6287,7 +6282,7 @@ return (
 
                 <g id="Mesa5-6"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 -1 1 0 21.704129795864123 151.2099782398233) matrix(1 0 0 1 0 0)">
-                    <path id="M5-6" className={props.puestoColor} onClick={props.handlePuesto} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
+                    <path id="M5-6"  className={props.asientos.estado} onClick={props.manejarEstado} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
         			c4.1,0,6.2,2.2,6.2,6.6V20.3L41.2,20.3z" />
                     <path className="st13"
                         d="M18.1,13.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6300,7 +6295,7 @@ return (
 
                 <g id="Mesa5-5"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 -1 1 0 98.57938814024801 150.49152646901334) matrix(1 0 0 1 0 0)">
-                    <path id="M5-5" className={props.puestoColor} onClick={props.handlePuesto} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
+                    <path id="M5-5"  className={props.asientos.estado} onClick={props.manejarEstado} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
         			c4.1,0,6.2,2.2,6.2,6.6V20.3L41.2,20.3z" />
                     <path className="st13"
                         d="M18.1,13.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6313,7 +6308,7 @@ return (
 
                 <g id="Mesa5-4"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 -1 1 0 174.9805295159481 151.20997823982356) matrix(1 0 0 1 0 0)">
-                    <path id="M5-4" className={props.puestoColor} onClick={props.handlePuesto} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
+                    <path id="M5-4"  className={props.asientos.estado} onClick={props.manejarEstado} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
         			c4.1,0,6.2,2.2,6.2,6.6V20.3L41.2,20.3z" />
                     <path className="st13"
                         d="M18.1,13.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6325,7 +6320,7 @@ return (
                 </g>
                 <g id="Mesa5-3"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 1 -1 0 208.21046978426375 0) matrix(1 0 0 1 0 0)">
-                    <path id="M5-3" className={props.puestoColor} onClick={props.handlePuesto} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
+                    <path id="M5-3"  className={props.asientos.estado} onClick={props.manejarEstado} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
         			c4.1,0,6.2,2.2,6.2,6.6V26.3L21.2,26.3z" />
                     <path className="st13"
                         d="M-1.9,19.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6338,7 +6333,7 @@ return (
 
                 <g id="Mesa5-2"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 1 -1 0 131.33521143988 0.7184517708094376) matrix(1 0 0 1 0 0)">
-                    <path id="M5-2" className={props.puestoColor} onClick={props.handlePuesto} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
+                    <path id="M5-2"  className={props.asientos.estado} onClick={props.manejarEstado} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
         			c4.1,0,6.2,2.2,6.2,6.6V26.3L21.2,26.3z" />
                     <path className="st13"
                         d="M-1.9,19.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6350,7 +6345,7 @@ return (
                 </g>
                 <g id="Mesa5-1"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 1 -1 0 54.93407006417886 0) matrix(1 0 0 1 0 0)">
-                    <path id="M5-1" className={props.puestoColor} onClick={props.handlePuesto} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
+                    <path id="M5-1"  className={props.asientos.estado} onClick={props.manejarEstado} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
         			c4.1,0,6.2,2.2,6.2,6.6V26.3L21.2,26.3z" />
                     <path className="st13"
                         d="M-1.9,19.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6372,7 +6367,7 @@ return (
 
                 <g id="Mesa4-6"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 -1 1 0 21.704129795864123 151.20997823982333) matrix(1 0 0 1 0 0)">
-                    <path id="M4-6" className={props.puestoColor} onClick={props.handlePuesto} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
+                    <path id="M4-6"  className={props.asientos.estado} onClick={props.manejarEstado} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
         			c4.1,0,6.2,2.2,6.2,6.6V20.3L41.2,20.3z" />
                     <path className="st13"
                         d="M18.1,13.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6385,7 +6380,7 @@ return (
 
                 <g id="Mesa4-5"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 -1 1 0 98.57938814024807 150.4915264690133) matrix(1 0 0 1 0 0)">
-                    <path id="M4-5" className={props.puestoColor} onClick={props.handlePuesto} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
+                    <path id="M4-5"  className={props.asientos.estado} onClick={props.manejarEstado} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
         			c4.1,0,6.2,2.2,6.2,6.6V20.3L41.2,20.3z" />
                     <path className="st13"
                         d="M18.1,13.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6398,7 +6393,7 @@ return (
 
                 <g id="Mesa4-4"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 -1 1 0 174.9805295159481 151.2099782398236) matrix(1 0 0 1 0 0)">
-                    <path id="M4-4" className={props.puestoColor} onClick={props.handlePuesto} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
+                    <path id="M4-4"  className={props.asientos.estado} onClick={props.manejarEstado} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
         			c4.1,0,6.2,2.2,6.2,6.6V20.3L41.2,20.3z" />
                     <path className="st13"
                         d="M18.1,13.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6410,7 +6405,7 @@ return (
                 </g>
                 <g id="Mesa4-3"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 1 -1 0 208.21046978426375 0) matrix(1 0 0 1 0 0)">
-                    <path id="M4-3" className={props.puestoColor}  onClick={props.handlePuesto} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
+                    <path id="M4-3"  className={props.asientos.estado}  onClick={props.manejarEstado} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
         			c4.1,0,6.2,2.2,6.2,6.6V26.3L21.2,26.3z" />
                     <path className="st13"
                         d="M-1.9,19.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6423,7 +6418,7 @@ return (
 
                 <g id="Mesa4-2"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 1 -1 0 131.33521143988 0.7184517708094376) matrix(1 0 0 1 0 0)">
-                    <path id="M4-2" className={props.puestoColor} onClick={props.handlePuesto} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
+                    <path id="M4-2"  className={props.asientos.estado} onClick={props.manejarEstado} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
         			c4.1,0,6.2,2.2,6.2,6.6V26.3L21.2,26.3z" />
                     <path className="st13"
                         d="M-1.9,19.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6435,7 +6430,7 @@ return (
                 </g>
                 <g id="Mesa4-1"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 1 -1 0 54.93407006417886 0) matrix(1 0 0 1 0 0)">
-                    <path id="M4-1" className={props.puestoColor} onClick={props.handlePuesto} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
+                    <path id="M4-1"  className={props.asientos.estado} onClick={props.manejarEstado} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
         			c4.1,0,6.2,2.2,6.2,6.6V26.3L21.2,26.3z" />
                     <path className="st13"
                         d="M-1.9,19.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6457,7 +6452,7 @@ return (
 
                 <g id="Mesa3-6"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 -1 1 0 21.704129795864123 151.20997823982333) matrix(1 0 0 1 0 0)">
-                    <path id="M3-6" className={props.puestoColor} onClick={props.handlePuesto} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
+                    <path id="M3-6"  className={props.asientos.estado} onClick={props.manejarEstado} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
         			c4.1,0,6.2,2.2,6.2,6.6V20.3L41.2,20.3z" />
                     <path className="st13"
                         d="M18.1,13.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6470,7 +6465,7 @@ return (
 
                 <g id="Mesa3-5"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 -1 1 0 98.57938814024807 150.4915264690133) matrix(1 0 0 1 0 0)">
-                    <path id="M3-5"  className={props.puestoColor} onClick={props.handlePuesto} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
+                    <path id="M3-5"   className={props.asientos.estado} onClick={props.manejarEstado} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
         			c4.1,0,6.2,2.2,6.2,6.6V20.3L41.2,20.3z" />
                     <path className="st13"
                         d="M18.1,13.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6483,7 +6478,7 @@ return (
 
                 <g id="Mesa3-4"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 -1 1 0 174.9805295159481 151.2099782398236) matrix(1 0 0 1 0 0)">
-                    <path id="M3-4" className={props.puestoColor} onClick={props.handlePuesto} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
+                    <path id="M3-4"  className={props.asientos.estado} onClick={props.manejarEstado} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
         			c4.1,0,6.2,2.2,6.2,6.6V20.3L41.2,20.3z" />
                     <path className="st13"
                         d="M18.1,13.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6495,7 +6490,7 @@ return (
                 </g>
                 <g id="Mesa3-3"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 1 -1 0 208.21046978426375 0) matrix(1 0 0 1 0 0)">
-                    <path id="M3-3" className={props.puestoColor} onClick={props.handlePuesto} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
+                    <path id="M3-3"  className={props.asientos.estado} onClick={props.manejarEstado} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
         			c4.1,0,6.2,2.2,6.2,6.6V26.3L21.2,26.3z" />
                     <path className="st13"
                         d="M-1.9,19.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6508,7 +6503,7 @@ return (
 
                 <g id="Mesa3-2"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 1 -1 0 131.33521143988 0.7184517708094376) matrix(1 0 0 1 0 0)">
-                    <path id="M3-2" className={props.puestoColor} onClick={props.handlePuesto} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
+                    <path id="M3-2"  className={props.asientos.estado} onClick={props.manejarEstado} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
         			c4.1,0,6.2,2.2,6.2,6.6V26.3L21.2,26.3z" />
                     <path className="st13"
                         d="M-1.9,19.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6520,7 +6515,7 @@ return (
                 </g>
                 <g id="Mesa3-1"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 1 -1 0 54.93407006417886 0) matrix(1 0 0 1 0 0)">
-                    <path id="M3-1"className={props.puestoColor} onClick={props.handlePuesto} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
+                    <path id="M3-1" className={props.asientos.estado} onClick={props.manejarEstado} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
         			c4.1,0,6.2,2.2,6.2,6.6V26.3L21.2,26.3z" />
                     <path className="st13"
                         d="M-1.9,19.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6570,7 +6565,7 @@ return (
 
                 <g id="Mesa2-6"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 -1 1 0 21.70412979586411 151.20997823982336) matrix(1 0 0 1 0 0)">
-                    <path id="M2-6" className={props.puestoColor} onClick={props.handlePuesto} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
+                    <path id="M2-6"  className={props.asientos.estado} onClick={props.manejarEstado} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
         			c4.1,0,6.2,2.2,6.2,6.6V20.3L41.2,20.3z" />
                     <path className="st13"
                         d="M18.1,13.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6583,7 +6578,7 @@ return (
 
                 <g id="Mesa2-5"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 -1 1 0 98.5793881402481 150.49152646901337) matrix(1 0 0 1 0 0)">
-                    <path id="M2-5" className={props.puestoColor} onClick={props.handlePuesto} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
+                    <path id="M2-5"  className={props.asientos.estado} onClick={props.manejarEstado} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
         			c4.1,0,6.2,2.2,6.2,6.6V20.3L41.2,20.3z" />
                     <path className="st13"
                         d="M18.1,13.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6596,7 +6591,7 @@ return (
 
                 <g id="Mesa2-4"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 -1 1 0 174.9805295159482 151.20997823982356) matrix(1 0 0 1 0 0)">
-                    <path id="M2-4" className={props.puestoColor} onClick={props.handlePuesto} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
+                    <path id="M2-4"  className={props.asientos.estado} onClick={props.manejarEstado} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
         			c4.1,0,6.2,2.2,6.2,6.6V20.3L41.2,20.3z" />
                     <path className="st13"
                         d="M18.1,13.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6608,7 +6603,7 @@ return (
                 </g>
                 <g id="Mesa2-3"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 1 -1 0 208.2104697842638 0) matrix(1 0 0 1 0 0)">
-                    <path id="M2-3" className={props.puestoColor} onClick={props.handlePuesto} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
+                    <path id="M2-3"  className={props.asientos.estado} onClick={props.manejarEstado} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
         			c4.1,0,6.2,2.2,6.2,6.6V26.3L21.2,26.3z" />
                     <path className="st13"
                         d="M-1.9,19.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6621,7 +6616,7 @@ return (
 
                 <g id="Mesa2-2"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 1 -1 0 131.33521143988003 0.7184517708094518) matrix(1 0 0 1 0 0)">
-                    <path id="M2-2" className={props.puestoColor} onClick={props.handlePuesto} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
+                    <path id="M2-2"  className={props.asientos.estado} onClick={props.manejarEstado} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
         			c4.1,0,6.2,2.2,6.2,6.6V26.3L21.2,26.3z" />
                     <path className="st13"
                         d="M-1.9,19.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6633,7 +6628,7 @@ return (
                 </g>
                 <g id="Mesa2-1"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 1 -1 0 54.93407006417888 0) matrix(1 0 0 1 0 0)">
-                    <path id="M2-1" className={props.puestoColor} onClick={props.handlePuesto} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
+                    <path id="M2-1"  className={props.asientos.estado} onClick={props.manejarEstado} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
         			c4.1,0,6.2,2.2,6.2,6.6V26.3L21.2,26.3z" />
                     <path className="st13"
                         d="M-1.9,19.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6655,7 +6650,7 @@ return (
 
                 <g id="Mesa1-6"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 -1 1 0 21.70412979586411 151.20997823982336) matrix(1 0 0 1 0 0)">
-                    <path id="M1-6" className={props.puestoColor} onClick={props.handlePuesto} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
+                    <path id="M1-6"  className={props.asientos.estado} onClick={props.manejarEstado} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
         			c4.1,0,6.2,2.2,6.2,6.6V20.3L41.2,20.3z" />
                     <path className="st13"
                         d="M18.1,13.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6668,7 +6663,7 @@ return (
 
                 <g id="Mesa1-5"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 -1 1 0 98.5793881402481 150.49152646901337) matrix(1 0 0 1 0 0)">
-                    <path id="M1-5" className={props.puestoColor} onClick={props.handlePuesto} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
+                    <path id="M1-5"  className={props.asientos.estado} onClick={props.manejarEstado} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
         			c4.1,0,6.2,2.2,6.2,6.6V20.3L41.2,20.3z" />
                     <path className="st13"
                         d="M18.1,13.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6681,7 +6676,7 @@ return (
 
                 <g id="Mesa1-4"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 -1 1 0 174.9805295159482 151.20997823982356) matrix(1 0 0 1 0 0)">
-                    <path id="M1-4" className={props.puestoColor} onClick={props.handlePuesto} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
+                    <path id="M1-4"  className={props.asientos.estado} onClick={props.manejarEstado} d="M41.2,20.3c0,4.4-2.1,6.6-6.2,6.6H22.7c-4.1,0-6.2-2.2-6.2-6.6V7c0-4.4,2-6.6,6.2-6.6H35
         			c4.1,0,6.2,2.2,6.2,6.6V20.3L41.2,20.3z" />
                     <path className="st13"
                         d="M18.1,13.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6693,7 +6688,7 @@ return (
                 </g>
                 <g id="Mesa1-3"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 1 -1 0 208.2104697842638 0) matrix(1 0 0 1 0 0)">
-                    <path id="M1-3" className={props.puestoColor} onClick={props.handlePuesto} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
+                    <path id="M1-3"  className={props.asientos.estado} onClick={props.manejarEstado} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
         			c4.1,0,6.2,2.2,6.2,6.6V26.3L21.2,26.3z" />
                     <path className="st13"
                         d="M-1.9,19.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6706,7 +6701,7 @@ return (
 
                 <g id="Mesa1-2"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 1 -1 0 131.33521143988003 0.7184517708094518) matrix(1 0 0 1 0 0)">
-                    <path id="M1-2" className={props.puestoColor} onClick={props.handlePuesto} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
+                    <path id="M1-2"  className={props.asientos.estado} onClick={props.manejarEstado} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
         			c4.1,0,6.2,2.2,6.2,6.6V26.3L21.2,26.3z" />
                     <path className="st13"
                         d="M-1.9,19.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2
@@ -6718,7 +6713,7 @@ return (
                 </g>
                 <g id="Mesa1-1"
                     transform="matrix(1 0 0 1 0 0) matrix(1 0 0 1 0 0) matrix(0 1 -1 0 54.93407006417888 0) matrix(1 0 0 1 0 0)">
-                    <path id="M1-1" className={props.puestoColor} onClick={props.handlePuesto} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
+                    <path id="M1-1"  className={props.asientos.estado} onClick={props.manejarEstado} d="M21.2,26.3c0,4.4-2.1,6.6-6.2,6.6H2.7c-4.1,0-6.2-2.2-6.2-6.6V13c0-4.4,2-6.6,6.2-6.6H15
         			c4.1,0,6.2,2.2,6.2,6.6V26.3L21.2,26.3z" />
                     <path className="st13"
                         d="M-1.9,19.6c0-2.2,0.2-4.6,0.5-7.3s0.5-4,0.5-3.9c-0.1-2-1-3-2.8-3c-0.9,0-1.3,0-1.2,0c-3.3,0-5,4.8-4.9,14.2

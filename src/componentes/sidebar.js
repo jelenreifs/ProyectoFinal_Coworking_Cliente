@@ -67,7 +67,7 @@ const [homeActive, setHomeActive] = useState(() => {
        	<nav id="sidebar" className={props.sidebar} >
 			<div className="sidebar-content js-simplebar">
 				<Link to="#" className="sidebar-brand">
-					<span className="align-middle">LogoAplicacion</span>
+					<img id="logo" className="align-middle" src="./img/Logo_Coowork_2.svg" alt="logotipo" />
 				</Link>
 
 				<ul className="sidebar-nav">

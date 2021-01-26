@@ -1,21 +1,50 @@
 import React from 'react';
 import { useState, useEffect } from "react";
-//import Chart from "react-apexcharts";
+import Chart from "react-apexcharts";
+import ApexCharts from 'apexcharts'
 
 
 
 function Dashboard() {
- 
+
+    let series = [{
+      name: 'Puestos',
+      data: [],
+        }] ; 
+
+
+    let options = {
+        chart: {
+            height: 240,
+            type: 'bar',
+        },
+        plotOptions: {
+            bar: {
+            dataLabels: {
+                position: 'top', // top, center, bottom
+            },
+            }
+        },
+    };
+
+    const [chart, setChart] = useState(options);
+    const [datosChart, setDatosChart] = useState(series);
     const [data, setData] = useState([]);
-    
+
+
+
 
 /************************************************/
-/*          MOSTRAR TODAS LAS RESERVAS          */
+/*          MOSTRAR HISTORIAL DE RESERVAS          */
 /************************************************/
 useEffect(() => {
     fetch("/reservaPuesto")
       .then((res) => res.json())
-      .then((res) => {
+        .then((res) => {
+            const mostrarPuestos = res.map(item => item.id)
+                setDatosChart([{
+                name: 'Puestos',
+                data: mostrarPuestos }])
         setData(res);
       });
   }, []);
@@ -23,11 +52,13 @@ useEffect(() => {
 
    const reservas = data.map((reserva, index) => {
       return (
-          <ul key={ index}>
-            <li >{ reserva.nombre} { reserva.apellido} </li>
-            <li> Puesto: {reserva.puesto} </li>
-            <li> Hora: {reserva.hora} </li>
-          </ul>
+          <div key={ index} className="reservas">
+            <h5>{reserva.nombre} {reserva.apellido}</h5>
+              <div className="d-flex justify-content-sm-left justify-content-lg-between">
+                <p> Puesto: <span>{reserva.id}</span> </p>
+                <p> Hora:<span> {reserva.fecha}</span> </p>
+            </div>
+          </div>
           
        )
    })
@@ -43,7 +74,7 @@ useEffect(() => {
     <main className="bg-registro1 content p-0">
         <div className="container-fluid p-0">
             <div className="row vh-100">
-                <div className="col-xs-12 col-lg-8 p-4">
+                <div className="col-xs-12 col-lg-9 p-4">
                     <div className="row">
                         <h3 className="text-white">Dashboard</h3>
                     </div>
@@ -51,30 +82,45 @@ useEffect(() => {
                         <div className="col-xs-12 col-xl-6">
                             <div className="card mt-3 mr-3">
                                 <div className="card-body">
-                                    <h5 className="card-title">Grafica 1</h5>
-                                    <p className="card-text">
-                                        Gráfico 1
-                                    </p>
-                                </div>
+                                    <h5 className="card-title">Los meses más reservados</h5>
+                                     <div className="card-grafico">
+                                        <Chart
+                                        options={chart}
+                                        series={datosChart}
+                                        type="bar"
+                                        width="480"
+                                    />
+                                    </div>
+                                <div>
                             </div>
                         </div>
+    
+                        </div>
+                         </div>
+                         
 
-                        <div className="col-xs-12 col-xl-6">
+                             <div className="col-xs-12 col-xl-6">
                             <div className="card mt-3 mr-3">
                                 <div className="card-body">
-                                    <h5 className="card-title">Grafica 2</h5>
-                                    <p className="card-text">
-                                        Gráfico 2
-                                    </p>
-                                </div>
+                                    <h5 className="card-title">Los puestos más reservados</h5>
+                                     <div className="card-grafico">
+                                        <Chart
+                                        options={chart}
+                                        series={datosChart}
+                                        type="bar"
+                                        width="480"
+                                    />
+                                    </div>
+                                <div>
                             </div>
                         </div>
-
+                        </div>
+                        </div>
 					</div>
                 </div>
 
-                <div className="col-xs-12 col-lg-4 bg-lidht">
-                     <h5 className="card-title">Historial de reservas</h5>
+                <div className="col-xs-12 col-lg-3 bg-light aside">
+                     <h4>Historial de reservas</h4>
                      { reservas }
                 </div>
             </div>

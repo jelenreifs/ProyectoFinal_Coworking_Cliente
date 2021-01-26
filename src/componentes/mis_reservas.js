@@ -1,19 +1,41 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 
 
-function MisReservas() {
+
+function MisReservas(props) {
+    const [data, setData] = useState([]);
 
 
-    return (
+  /*******************************************/
+/*             Montrar usuarios            */
+/*******************************************/
+  useEffect(() => {
+    fetch("/reservaPuesto")
+      .then((res) => res.json())
+      .then((res) => {
+        setData(res);
+      });
+  }, []); 
+  
+
+ 
+const userLogueado = data.filter(element => element.dni === props.dataUser.dni);
+const reservasUser = userLogueado.map(item => 
+        <tr>
+            <td> { item.fecha } </td>
+             <td> { item.id } </td>
+             <td> {  props.dataUser.creditos } </td>
+        </tr>
+    )   
+    
+return (
         <main className="bg-home content p-0">
 			<div className="container-fluid p-0">
                 <div className="row vh-100 px-4">
                     <div className="col-12 col-xl-12">
                          <h3 className="text-white">Mis reservas</h3>
                         <div className="card">
-                            <div className="card-header">
-                                <h5 className="card-title">Reservas de puestos</h5>
-                            </div>
                             <table className="table table-striped">
                                 <thead>
                                     <tr>
@@ -23,12 +45,7 @@ function MisReservas() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>12-34-56</td>
-                                        <td>Puesto</td>
-                                        <td>234</td>
-                                    </tr>
-                                   
+                                {reservasUser }
                                 </tbody>
                             </table>
                         </div>

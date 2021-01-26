@@ -96,6 +96,7 @@
   clip-rule: evenodd;
   fill: #ccc;
   stroke: #ccc;
+  cursor: pointer;
 }
 
 .st11-ocupado {
@@ -103,6 +104,15 @@
   clip-rule: evenodd;
   fill: red;
   stroke: red;
+  cursor: pointer;
+}
+
+.ocupado {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  fill: red;
+  stroke: red;
+  cursor: pointer;
 }
 
 .st11-pendiente {
@@ -110,6 +120,14 @@
   clip-rule: evenodd;
   fill: orange;
   stroke: orange;
+}
+
+.libre {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  fill: #ccc;
+  stroke: #ccc;
+  cursor: pointer;
 }
 
 /************************************/

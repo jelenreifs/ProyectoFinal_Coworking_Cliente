@@ -2,17 +2,24 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { Link} from 'react-router-dom';
 
-//import { Button } from 'react-bootstrap';
-//import { Modal } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 //import { Link } from 'react-router-dom';
 
 function BajaUsuario() {
     const [data, setData] = useState([]);
+    
+
+    /* Modal */
+    const [mensaje, setMensaje] = useState("");
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
 
- /*******************************************/
-/*          Montrar usuarios         */
-/******************************************/
+/*******************************************/
+/*             Montrar usuarios            */
+/*******************************************/
   useEffect(() => {
     fetch("/users")
       .then((res) => res.json())
@@ -24,20 +31,56 @@ function BajaUsuario() {
     const usuarios = data.map((usuario, index) => {
         return (
             <tr key={index}>
+                <td><img src={usuario.foto} alt="foto-user" width="500" height="600" /> </td>
                 <td>{usuario.dni}</td>
                 <td>{usuario.nombre} {usuario.apellido}</td>
-                <td className="d-xs-none">
+                <td >
                     <Link to={usuario.email}>
                         {usuario.email}
                     </Link>
                 </td>
                 <td className="d-xs-none">{usuario.fechaAlta}</td>
                 <td className="d-flex justify-content-center">
-                    <img src="./img/icons/trash.svg" alt="ico-home" /> 
+                    <img src="./img/icons/trash.svg" alt="ico-eliminar"/> 
                 </td>
             </tr>
         )
-     })
+    })
+    
+
+/*******************************************/
+/*             ELIMINAR USUARIO            */
+/*******************************************/
+    
+/* const deleteUser = () => { 
+    fetch("/users/delete", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+        body: JSON.stringify({
+            dni: dni
+        }
+    ),
+  })
+     .then(res => res.json())
+      .then(res => {
+        if (res.error === true) {
+          setMensaje(res.mensaje)
+          handleShow()
+          
+        } else {
+        setMensaje(res.mensaje)
+        setData(res.datos);
+        handleShow()
+       }  
+       });
+    }
+     */
+    
+
+
+    
 
     return (
         <main className="bg-home content p-0">
@@ -49,6 +92,7 @@ function BajaUsuario() {
                             <table className="table table-striped">
                                 <thead>
                                     <tr>
+                                        <th>Foto</th>
                                         <th>Dni</th>
                                         <th>Nombre Apellido</th>
                                         <th className="d-none d-md-table-cell d-xs-none">Email</th>
@@ -64,7 +108,13 @@ function BajaUsuario() {
                     </div>
                 </div>
 
-			</div>
+            </div>
+            
+    <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+        <Modal.Title>{ mensaje}</Modal.Title>
+        </Modal.Header>
+    </Modal>
 		</main>
     )
 }

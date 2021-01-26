@@ -416,13 +416,16 @@ tr {
 /* *************************************************** */
 input,
 textarea {
-  background-color: #fce4ec !important;
+  /*  background-color: #fce4ec !important; */
+  background-color: #fff !important;
   border-radius: 50px !important;
   padding: .75rem 1.5rem !important;
   width: 100%;
   box-sizing: border-box;
   border: none !important;
-  border: 1px solid #f3e5f5 !important;
+  border: 1px solid #bdbdbd !important;
+  /* border: 1px solid #4a0027 !important; */
+
   font-size: 16px !important;
   color: #000 !important;
   font-weight: 400;
@@ -2066,15 +2069,18 @@ progress {
   box-shadow: 0 0 0 0.2rem rgba(59, 125, 221, 0.25);
 }
 .form-control::-webkit-input-placeholder {
-  color: #6c757d;
+  /*  color: #6c757d; */
+  color: #999 !important;
   opacity: 1;
 }
 .form-control::-ms-input-placeholder {
-  color: #6c757d;
+  /*  color: #6c757d; */
+  color: #999 !important;
   opacity: 1;
 }
 .form-control::placeholder {
-  color: #6c757d;
+  /*  color: #6c757d; */
+  color: #999 !important;
   opacity: 1;
 }
 .form-control:disabled,
@@ -12053,11 +12059,9 @@ a.sidebar-link svg {
   top: 1.4rem;
 }
 .sidebar-brand {
-  font-weight: 600;
-  font-size: 1.15rem;
-  padding: 1.15rem 1.5rem;
-  display: block;
-  color: #f8f9fa;
+  display: flex;
+  justify-content: center;
+  padding: 12px 0;
 }
 .sidebar-brand:hover {
   text-decoration: none;
@@ -18015,8 +18019,9 @@ span.flatpickr-weekday {
 }
 
 .login-wrapper #logo {
-  width: 70px;
-  height: 60px;
+  max-width: 300px;
+  margin-bottom: 1rem;
+  /*  height: 60px; */
 }
 
 .login-wrapper .heading {
@@ -18024,16 +18029,16 @@ span.flatpickr-weekday {
 }
 
 .login-wrapper  ::placeholder {
-  color: #000 !important;
+  color: #999 !important;
   opacity: 1;
 }
 
 .login-wrapper  :-ms-input-placeholder {
-  color: #000 !important;
+  color: #999 !important;
 }
 
 ::-ms-input-placeholder {
-  color: #000 !important;
+  color: #999 !important;
 }
 
 .login-wrapper .msg-info {
@@ -18153,6 +18158,10 @@ span.flatpickr-weekday {
 .img-login {
   height: 100vh;
   overflow: hidden;
+}
+
+#sidebar #logo {
+  max-width: 120px;
 }
 
 /* *************************************************** */
@@ -18344,5 +18353,99 @@ input[type='checkbox'] {
   border-radius: 50%;
 }
 
+/* Modificación de los botones para que se ajusten a resoluciones grandes */
+
+button[class~="btn"] {
+  width: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+@media screen and (max-width: 992px) {
+  button[class~="btn-xs-block"] {
+    width: 100%;
+  }
+}
+
+/* Input disabled */
+
+input:disabled {
+  background: #f4f4f4 !important;
+}
+
+/* Enlaces area derecha */
+
+a.area-enlaces,
+a.area-enlaces:hover {
+  text-decoration: 0;
+}
+
+.card-enlace,
+.card-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* .card-info {
+  border: 3px solid #f50057;
+
+} */
+
+.card-enlace:hover {
+  box-shadow: 0 0 0.875rem 0 rgba(33, 37, 41, 0.25);
+  cursor: pointer;
+}
+
+.card-info ul {
+  list-style: none;
+  padding-left: 3px;
+}
+
+.card-enlace .card-img,
+.card-info .card-img {
+  width: 80px;
+  /*  background-color: #f4f4f4; */
+  padding: 6px;
+}
 
 
+
+.aside {
+  padding: 0 1.25rem;
+ 
+}
+
+.aside h4 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+  padding: 10px;
+  background-color: #f4f4f4;
+}
+
+/* Historial de reservas */
+
+.reservas {
+  border-top: 1px solid #f50057;
+  padding: 0.75rem 0;
+}
+
+.reservas:last-child {
+  border-bottom: 1px solid #f50057;
+
+}
+
+
+.reservas p {
+  margin-right: 1rem;
+  margin-bottom: 0;
+}
+
+.reservas p span {
+  display: inline-block;
+  font-weight: 700;
+  margin-left: 0.25rem;
+  background-color: #e0e0e0;
+  padding: 0.2rem 0.45rem;
+}

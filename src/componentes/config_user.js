@@ -1,9 +1,103 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-//import { Modal } from 'react-bootstrap';
+import { useState, useEffect } from 'react';
+import { Modal } from 'react-bootstrap';
 //import { Link } from 'react-router-dom';
 
-function ConfiguracionUsuario() {
+function ConfiguracionUsuario(props) {
+    
+    const [data, setData] = useState([]);
+    const [dni, setDni] = useState(props.dataUser.dni)
+    const [foto, setFoto] = useState(props.dataUser.foto)
+    const [nombre, setNombre] = useState(props.dataUser.nombre)
+    const [apellido, setApellido] = useState(props.dataUser.apellido)
+    const [tfno, setTfno] = useState(props.dataUser.tfno)
+    const [email, setEmail] = useState(props.dataUser.email)
+    const [password, setPassword] = useState(props.dataUser.password)
+ 
+  
+
+/* Modal */
+    const [mensaje, setMensaje] = useState("");
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+
+
+
+
+/************************************************/
+/*            CONFIGURACION USUARIO               */
+/************************************************/
+     
+
+const updateUser = () => { 
+    fetch("/users/update", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+        body: JSON.stringify (
+        {
+            email:email,
+            dni: dni,
+            foto : foto, 
+            nombre : nombre,
+            apellido : apellido,
+            tfno : tfno,
+            password: password,
+         
+        }
+    ),
+  })
+     .then(res => res.json())
+      .then(res => {
+        if (res.error === true) {
+          setMensaje(res.mensaje)
+            handleShow()
+            console.log(res.mensaje)
+          
+        } else {
+        setMensaje(res.mensaje)
+            setData(res.datos);
+             console.log(res.datos)
+        handleShow()
+       }  
+       });
+    }
+
+
+
+    const handleChangeDni = (e) => {
+        e.preventDefault();
+         setDni(e.target.value) 
+    }
+    const handleChangeFoto = (e) => {
+        e.preventDefault();
+         setFoto(e.target.value) 
+    }
+    const handleChangeNombre = (e) => {
+        e.preventDefault();
+         setNombre(e.target.value) 
+    }
+    const handleChangeApellido = (e) => {
+        e.preventDefault();
+         setApellido(e.target.value) 
+    }
+
+    const handleChangeTfno = (e) => {
+        e.preventDefault();
+         setTfno(e.target.value) 
+    }
+
+    const handleChangePassword = (e) => {
+        e.preventDefault();
+         setPassword(e.target.value) 
+    }
+
+
+
 
 
     return (
@@ -12,17 +106,23 @@ function ConfiguracionUsuario() {
                 <div className="row vh-100 px-4">
                     <div className="col-xs-12 col-lg-4 px-4">
                         <div className="area-foto">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBmfaerMMCR6jgdXwmlfYFycBhBCBKAXftOw&usqp=CAU" alt="foto-usuario" />
+                            <img src={ foto } alt="foto-usuario" />
                             <h5 className="text-white my-4">Cambiar foto</h5>
                         </div>
                     <div>
                             
-                        <div className="row">
-                                <div className="col-xs-12">
-                                    <label className="file-label" htmlFor="file-input">File:</label>
-                                    <input type="file" name="attachment[]"  multiple="multiple" /> 
-                                        <small>Max size 10MB.</small>
-                                </div>
+                     <div className="row">
+                            <div className="col-xs-12">
+                                <label
+                                    htmlFor="foto"
+                                    className="form-label text-white">Foto</label>
+                                <input
+                                    type="url"
+                                    className="form-control"
+                                    id="foto"
+                                    placeholder="NuevaFoto"
+                                    onChange={handleChangeFoto} />
+                            </div> 
                         </div>
                     </div>
                     </div>
@@ -33,45 +133,88 @@ function ConfiguracionUsuario() {
                             <div className="card mr-3">
                                 <div className="card-body">
                                     <h4 className="text-primary">Configuración de usuario</h4>
-                                    <div className="row">
-                                        <div className="col-xs-6 col-xl-6  mb-3">
-                                            <label htmlFor="dni" className="form-label">DNI</label>
-                                            <input type="text" className="form-control" id="dni"
-                                                placeholder="Ej:12345678P" />
-                                        </div>
-                                    </div>
-
+                                        
                                     <div className="row">
                                         <div className="col-xs-6 col-xl-6  mb-3">
                                             <label htmlFor="nombre" className="form-label">Nombre</label>
-                                            <input type="text" className="form-control" id="nombre"
-                                                placeholder="nombre" />
+                                                <input
+                                                    type="text"
+                                                    className="form-control"
+                                                    id="nombre"
+                                                     placeholder= { nombre }
+                                                    onChange={handleChangeNombre} 
+                                                />
                                         </div>
                                             
                                         <div className="col-xs-6 col-xl-6  mb-3">
                                             <label htmlFor="apellido" className="form-label">Apellido</label>
-                                            <input type="text" className="form-control" id="apellido"
-                                                placeholder="Apellido" />
+                                                <input
+                                                    type="text"
+                                                    className="form-control"
+                                                    id="apellido"
+                                                    placeholder= { apellido }
+                                                    onChange={handleChangeApellido} 
+                                                />
                                         </div>
                                     </div>
 
                                     <div className="row">
                                         <div className="col-xs-6 col-xl-6  mb-3">
-                                            <label htmlFor="email" className="form-label">Email</label>
-                                            <input type="email" className="form-control" id="email"
-                                                placeholder="Ej:napellido@empresa.es" />
+                                            <label htmlFor="dni" className="form-label">DNI</label>
+                                                <input
+                                                    type="text"
+                                                    className="form-control"
+                                                    id="dni"
+                                                    placeholder= { dni }
+                                                    onChange={handleChangeDni} 
+                                                />
                                             </div>
                                             
-                                                <div className="col-xs-6 col-xl-6 mb-3">
+                                             <div className="col-xs-6 col-xl-6 mb-3">
                                             <label htmlFor="telefono" className="form-label">Teléfono</label>
-                                            <input type="tel" className="form-control" id="telefono"
-                                                placeholder="Ej:600123123" />
+                                                <input
+                                                    type="tel"
+                                                    className="form-control"
+                                                    id="telefono"
+                                                    placeholder= { tfno }
+                                                    onChange={handleChangeTfno} 
+                                                />
                                         </div>
+                                    </div>
+
+                                  
+
+                                    <div className="row">
+                                        <div className="col-xs-6 col-xl-6  mb-3">
+                                            <label htmlFor="email" className="form-label">Email</label>
+                                                <input
+                                                    type="email"
+                                                    autocomplete="off"
+                                                    className="form-control"
+                                                    id="email"
+                                                    placeholder={email}
+                                                    disabled
+
+                                                 
+                                                  
+                                                />
+                                            </div>
+
+                                        <div className="col-xs-6 col-xl-6 mb-3">
+                                            <label htmlFor="passsword" className="form-label">Password</label>
+                                                <input type="password"
+                                                autocomplete="off"
+                                                className="form-control"
+                                                id="passwors"
+                                                placeholder="password"
+                                                onChange={handleChangePassword} />
+                                        </div>
+                                       
                                         </div>
                                         
 
                                     <div className="row justify-content-center my-3 px-3">
-                                        <Button variant="btn btn-xs-block  mt-4">Actualizar</Button>
+                                            <Button variant="btn btn-xs-block  mt-4" onClick={ updateUser}>Actualizar Perfil</Button>
                                     </div>
 
                                             
@@ -82,7 +225,14 @@ function ConfiguracionUsuario() {
                 </div>
             </div>
             </div> 
-        </div>
+            </div>
+            
+
+                 <Modal show={props.show} onHide={props.handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>{props.mensaje}</Modal.Title>
+                    </Modal.Header>
+                </Modal>
     </main>
     )
 }

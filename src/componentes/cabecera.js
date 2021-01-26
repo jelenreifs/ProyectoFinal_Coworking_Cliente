@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 
 function Cabecera(props) {
+
+	
+
 
 	
     return (
@@ -28,8 +32,8 @@ function Cabecera(props) {
 							</div>
 						</li>
 					<li className="nav-item dropdown">
-							<Link to="/login" >
-								<img className="ml-2" src="./img/icons/power_white.svg" alt="ico-desonectar" /> 
+							<Link to="/" >
+							<img className="ml-2" src="./img/icons/power_white.svg" alt="ico-desonectar" onClick={props.logout } /> 
 							</Link>							
 						</li>
 					</ul>
