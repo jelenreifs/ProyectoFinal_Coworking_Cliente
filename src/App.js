@@ -8,7 +8,8 @@ import Sidebar from "./componentes/sidebar";
 import SidebarAdmin from "./componentes/sidebar_admin";
 import Cabecera from "./componentes/cabecera";
 import Home from "./componentes/home";
-import Reserva from "./componentes/reserva_puesto";
+import HomeAdmin from "./componentes/home";
+import ReservaPuesto from "./componentes/reserva_puesto";
 import ConfiguracionUsuario from "./componentes/config_user";
 import AltaUsuario from "./componentes/alta_user";
 import BajaUsuario from "./componentes/baja_user";
@@ -29,7 +30,8 @@ function App() {
   const [administrador, setAdministrador] = useState(false);
   const [data, setData] = useState([]);
   const [dataUser, setDataUser] = useState([]);
-
+  const [sessionStorage, setSessionStorage] = useState("");
+ 
 
 
 
@@ -39,9 +41,8 @@ function App() {
   const handleShow = () => setShow(true);
   
   
-  /* Plano */
-const [puestoColor, setPuestoColor] = useState("st11");
-  //const [puestoId, setPuestoId] = useState("");
+ /* Plano */
+
  const [asientos, setAsientos] = useState([
     { id: "M1-1", estado: "libre" },
     { id: "M1-2", estado: "libre" },
@@ -87,9 +88,6 @@ const [puestoColor, setPuestoColor] = useState("st11");
     { id: "M7-6", estado: "libre" },
     { id: "M7-7", estado: "libre" },
   ]);
-
-
-
 
     const manejarEstado = (e) => {
     const newArray = asientos.map((asiento) => {
@@ -149,8 +147,10 @@ const [puestoColor, setPuestoColor] = useState("st11");
             setData(res.usuario)
             setLogueado(true)
             setAdministrador(res.usuario.administrador)
+           setSessionStorage(window.sessionStorage.setItem("usuario", "res.usuario"))
+          
           }
-        });
+        } )
     }
 
 /************************************************/
@@ -171,13 +171,14 @@ const [puestoColor, setPuestoColor] = useState("st11");
  /************************************************/
 /*               LOGOUT              */
 /************************************************/
-    const logout = () => {
-      setDataUser([])
-      setLogueado(false)
-    }
 
 
-  
+  const handleLogout = () => { 
+    setLogueado(false)
+    setDataUser([])
+    setAdministrador("")
+    setSessionStorage(window.sessionStorage.clear())
+	}
 
     
 
@@ -198,50 +199,50 @@ const [puestoColor, setPuestoColor] = useState("st11");
       
      <Route exact path="/home">
         <div className="wrapper">
-           { data.administrador ? <SidebarAdmin sidebar= { sidebar } /> :  <Sidebar sidebar= { sidebar } /> }
+           { data.administrador ? <SidebarAdmin sidebar= { sidebar }  logueado={logueado} /> :  <Sidebar sidebar= { sidebar }  logueado={logueado}/> }
           <div className="main">
             <Cabecera
               cambiarSidebar={handleHamburger}
               navFlexible={nav100}
-              logout={logout}
-              logueado={ logueado}
+               handleLogout={ handleLogout}
+                
             />
-            <Home />
+            <Home
+              logueado={logueado} />
           </div>
         </div>
       </Route>
 
       <Route exact path="/home-admin">
         <div className="wrapper">
-           { data.administrador ? <SidebarAdmin sidebar= { sidebar } /> :  <Sidebar sidebar= { sidebar } /> }
+           { data.administrador ? <SidebarAdmin sidebar= { sidebar }  logueado={logueado}/> :  <Sidebar sidebar= { sidebar }  logueado={logueado} /> }
           <div className="main">
             <Cabecera
               cambiarSidebar={handleHamburger}
               navFlexible={nav100}
-              logout={logout}
-               logueado={ logueado}
+              handleLogout={ handleLogout}
+             
             />
-            <Home />
+            <HomeAdmin
+                logueado={logueado} />
           </div>
         </div>
       </Route>
 
     <Route exact path="/reserva-puesto">
         <div className="wrapper">
-           { data.administrador ? <SidebarAdmin sidebar= { sidebar } /> : <Sidebar sidebar= { sidebar } /> }
+           { data.administrador ? <SidebarAdmin sidebar= { sidebar }  logueado={logueado}/> : <Sidebar sidebar= { sidebar }  logueado={logueado} /> }
           <div className="main">
             <Cabecera
               cambiarSidebar={handleHamburger}
               navFlexible={nav100}
-               logout={ logout }
+          handleLogout={ handleLogout}
             />
-            <Reserva
-             puestoColor={puestoColor}
+            <ReservaPuesto
               asientos={asientos}
               manejarEstado={manejarEstado} 
               dataUser={dataUser}
-             
-
+                logueado={logueado}
             />
           </div>
         </div>
@@ -250,14 +251,16 @@ const [puestoColor, setPuestoColor] = useState("st11");
 
     <Route exact path="/alta-usuario">
         <div className="wrapper">
-          <SidebarAdmin sidebar= { sidebar } /> 
+          <SidebarAdmin sidebar= { sidebar } logueado={logueado} /> 
           <div className="main">
             <Cabecera
               cambiarSidebar={handleHamburger} 
               navFlexible={nav100}
-              logout={ logout }
+           
+              handleLogout={ handleLogout}
             />
-            <AltaUsuario />
+            <AltaUsuario
+              logueado={logueado} />
           </div>
         </div>
       </Route>
@@ -265,14 +268,15 @@ const [puestoColor, setPuestoColor] = useState("st11");
 
     <Route exact path="/baja-usuario">
         <div className="wrapper">
-          <SidebarAdmin sidebar= { sidebar } /> 
+          <SidebarAdmin sidebar= { sidebar }  logueado={logueado} /> 
           <div className="main">
             <Cabecera
               cambiarSidebar={handleHamburger} 
               navFlexible={nav100}
-               logout={ logout }
+             handleLogout={ handleLogout}
             />
-            <BajaUsuario />
+            <BajaUsuario
+              logueado={logueado} />
           </div>
         </div>
       </Route>
@@ -280,16 +284,18 @@ const [puestoColor, setPuestoColor] = useState("st11");
 
       <Route exact path="/configuracion-usuario">
         <div className="wrapper">
-          { data.administrador ? <SidebarAdmin sidebar= { sidebar } /> : <Sidebar sidebar= { sidebar } /> }
+              { data.administrador ? <SidebarAdmin sidebar= { sidebar }  logueado={logueado} /> : <Sidebar sidebar= { sidebar }   logueado={logueado}/> }
           <div className="main">
             <Cabecera
               cambiarSidebar={handleHamburger}
               navFlexible={nav100}
-               logout={ logout }
+          
+              handleLogout={ handleLogout}
             
             />
             <ConfiguracionUsuario
-               dataUser= { dataUser }
+              dataUser={dataUser}
+                logueado={logueado}
             />
           </div>
         </div>
@@ -297,15 +303,16 @@ const [puestoColor, setPuestoColor] = useState("st11");
 
       <Route exact path="/mis-reservas">
         <div className="wrapper">
-          { data.administrador ? <SidebarAdmin sidebar= { sidebar } /> : <Sidebar sidebar= { sidebar } /> }
+              { data.administrador ? <SidebarAdmin sidebar= { sidebar }  logueado={logueado} /> : <Sidebar sidebar= { sidebar }   logueado={logueado}/> }
           <div className="main">
             <Cabecera
               cambiarSidebar={handleHamburger}
               navFlexible={nav100}
-              logout={ logout }
+              handleLogout={ handleLogout}
             />
             <MisReservas 
-                dataUser= { dataUser }
+              dataUser={dataUser}
+                logueado={logueado}
             />
           </div>
         </div>
@@ -315,18 +322,19 @@ const [puestoColor, setPuestoColor] = useState("st11");
 
     <Route exact path="/dashboard">
         <div className="wrapper">
-           { data.administrador ? <SidebarAdmin sidebar= { sidebar } /> : <Sidebar sidebar= { sidebar } /> }
+           { data.administrador ? <SidebarAdmin sidebar= { sidebar }  logueado={logueado} /> : <Sidebar sidebar= { sidebar }   logueado={logueado}/> }
           <div className="main">
             <Cabecera
               cambiarSidebar={handleHamburger}
               navFlexible={nav100}
-               logout={ logout }
+        
+              handleLogout={ handleLogout}
             />
-            <Dashboard />
+            <Dashboard
+              logueado={logueado}/>
           </div>
         </div>
       </Route>
-
     </BrowserRouter>
   )
   
