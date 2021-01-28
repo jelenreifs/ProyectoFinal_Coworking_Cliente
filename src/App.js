@@ -30,8 +30,9 @@ function App() {
   const [administrador, setAdministrador] = useState(false);
   const [data, setData] = useState([]);
   const [dataUser, setDataUser] = useState([]);
-  const [sessionStorage, setSessionStorage] = useState("");
- 
+  //const [session, setSession] = useState("");
+  
+  console.log(dataUser)
 
 
 
@@ -87,7 +88,8 @@ function App() {
     { id: "M7-5", estado: "libre" },
     { id: "M7-6", estado: "libre" },
     { id: "M7-7", estado: "libre" },
-  ]);
+ ]);
+  
 
     const manejarEstado = (e) => {
     const newArray = asientos.map((asiento) => {
@@ -147,8 +149,7 @@ function App() {
             setData(res.usuario)
             setLogueado(true)
             setAdministrador(res.usuario.administrador)
-           setSessionStorage(window.sessionStorage.setItem("usuario", "res.usuario"))
-          
+         
           }
         } )
     }
@@ -163,6 +164,7 @@ function App() {
      .then(res => res.json())
       .then(res => {
         setDataUser(res.usuario);
+        //setSession(sessionStorage.setItem("usuario", JSON.stringify(dataUser)))
        });
     }, []);
   
@@ -177,7 +179,9 @@ function App() {
     setLogueado(false)
     setDataUser([])
     setAdministrador("")
-    setSessionStorage(window.sessionStorage.clear())
+   /*  let data = sessionStorage.getItem("usuario");
+    setDataUser(JSON.parse(data)) */
+   
 	}
 
     
@@ -239,9 +243,9 @@ function App() {
           handleLogout={ handleLogout}
             />
             <ReservaPuesto
-              asientos={asientos}
-              manejarEstado={manejarEstado} 
-              dataUser={dataUser}
+                asientos={asientos}
+                manejarEstado={manejarEstado} 
+                dataUser={dataUser}
                 logueado={logueado}
             />
           </div>
@@ -256,7 +260,6 @@ function App() {
             <Cabecera
               cambiarSidebar={handleHamburger} 
               navFlexible={nav100}
-           
               handleLogout={ handleLogout}
             />
             <AltaUsuario
@@ -273,8 +276,7 @@ function App() {
             <Cabecera
               cambiarSidebar={handleHamburger} 
               navFlexible={nav100}
-             handleLogout={ handleLogout}
-            />
+             handleLogout={ handleLogout} />
             <BajaUsuario
               logueado={logueado} />
           </div>
@@ -289,13 +291,12 @@ function App() {
             <Cabecera
               cambiarSidebar={handleHamburger}
               navFlexible={nav100}
-          
               handleLogout={ handleLogout}
             
             />
             <ConfiguracionUsuario
               dataUser={dataUser}
-                logueado={logueado}
+              logueado={logueado}
             />
           </div>
         </div>
@@ -312,7 +313,7 @@ function App() {
             />
             <MisReservas 
               dataUser={dataUser}
-                logueado={logueado}
+              logueado={logueado}
             />
           </div>
         </div>
@@ -327,7 +328,6 @@ function App() {
             <Cabecera
               cambiarSidebar={handleHamburger}
               navFlexible={nav100}
-        
               handleLogout={ handleLogout}
             />
             <Dashboard

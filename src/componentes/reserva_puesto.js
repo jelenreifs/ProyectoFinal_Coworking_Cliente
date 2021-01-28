@@ -1,8 +1,8 @@
 import React from 'react';
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Calendar from 'react-calendar';
 import moment from 'moment';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 
 import { Modal } from 'react-bootstrap';
@@ -21,71 +21,56 @@ function ReservaPuesto(props) {
      let history = useHistory();
 
     const [mensaje, setMensaje] = useState("");
-    const [dni, setDni] = useState("");
-    const [nombre, setNombre] = useState("");
-    const [apellido, setApellido] = useState("");
+ 
 
-    const [daySelected, onChange] = useState(new Date());
-    const [data, setData] = useState([]);
 
-    /* Formateo de Fecha */
-    //moment.locale('es');
-    const diaSelect = moment(daySelected).format("DD/MM/YYYY")
-    console.log(diaSelect)
+ 
    
-    
+
+   
     /* Modal */
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
 
+const [daySelected, onChange] = useState(new Date());
+const [data, setData] = useState(new Date());
 
+    
 
- 
-
-/*************************************************/
-/*                AÑADIR RESERVA                */
-/************************************************/
-   
- /*    const addReserva = () => {
-        fetch("/reservaPuesto/add", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                dni: props.dataUser.dni,
-                nombre: props.dataUser.nombre,
-                apellido: props.dataUser.apellido,
-                id: props.asientos[0].id,
-                fecha: diaSelect
-            }),
-        })
-            .then(res => res.json())
-            .then(res => {
-                if (res.error === true) {
-                    setMensaje(res.mensaje)
-                    handleShow()
-                
-                } else {
-                    setMensaje(res.mensaje)
-                    setData(res.alta)
-                    handleShow()
-                }
-            });
-        
-    }  */
-
-
+   /* Formateo de Fecha */
+    //moment.locale('es');
+    const diaSelect = moment(daySelected).format("DD/MM/YYYY")
+    console.log(diaSelect)
     
 /*************************************************/
 /*                AÑADIR RESERVA                */
 /************************************************/
-    
-
-
+    const reservar = () => {
+    fetch("/reservaPuesto/add", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+        body: JSON.stringify({
+            fecha: diaSelect,
+            puestos: props.asientos
+        }),
+    })
+       .then((res) => res.json()) 
+      .then((res) => console.log(res));
    
+};
+
+    
+    
+    
+    
+    
+    
+    
+/*    
    const addReserva = () => {
         fetch("/reservaPuesto/add", {
             method: "POST",
@@ -110,20 +95,13 @@ function ReservaPuesto(props) {
                 }
             });
         
-    }  
+    }   */
+  
     
-    
+if (!props.logueado) {
+	history.push("/");	
+} else {
 
-/*    if (!props.logueado) {
-        return <Redirect exact to="/" />
-            
-    } else {  */
-    
-       if (!props.logueado) {
-		 history.push("/");	
-	} else {
-
-    
 
     return (
         <main className="bg-registro1 content p-0">
@@ -161,6 +139,8 @@ function ReservaPuesto(props) {
                                     <div className="calendar aside">
                                         <h4>Selecciona día y hora</h4>
                                         <div className="d-flex justify-content-center">
+                                            
+                                        
                                             <Calendar
                                                 onChange={onChange}
                                                 daySelected={daySelected}
@@ -168,7 +148,7 @@ function ReservaPuesto(props) {
                                         </div>
                                     </div>
                                     <div className="row justify-content-center align-items-center mt-3">
-                                        <Button variant="btn-block" onClick={addReserva}>Reservar puesto</Button>
+                                        <Button variant="btn-block" onClick={reservar}>Reservar puesto</Button>
                                     </div>
 
                                 </div>
