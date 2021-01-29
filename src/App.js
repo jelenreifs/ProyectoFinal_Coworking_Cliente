@@ -26,11 +26,35 @@ function App() {
   const [sidebarAdmin, setSidebarAdmin] = useState("sidebar");
   const [nav100, setNav100] = useState("navbar navbar-expand navbar-bg");
   const [mensaje, setMensaje] = useState("");
-  const [logueado, setLogueado] = useState(false);
-  const [administrador, setAdministrador] = useState(false);
+  const [logueado, setLogueado] = useState(() => { 
+    const usuario = JSON.parse(sessionStorage.getItem("usuario"))
+    console.log(usuario)
+    if (usuario === null) {
+      return false
+    } else { 
+      return true
+    }
+  });
+  const [administrador, setAdministrador] = useState(() => { 
+    const usuario = JSON.parse(sessionStorage.getItem("usuario"))
+    console.log(usuario)
+    if (usuario === null) {
+      return false
+    } else { 
+      return usuario.administrador
+    }
+  });
   const [data, setData] = useState([]);
-  const [dataUser, setDataUser] = useState([]);
-  //const [session, setSession] = useState("");
+  const [dataUser, setDataUser] = useState(() => { 
+    const usuario = JSON.parse(sessionStorage.getItem("usuario"))
+    console.log(usuario)
+    if (usuario === null) {
+      return []
+    } else { 
+      return usuario
+    }
+  }) ; 
+
   
   console.log(dataUser)
 
@@ -87,14 +111,20 @@ function App() {
     { id: "M7-4", estado: "libre" },
     { id: "M7-5", estado: "libre" },
     { id: "M7-6", estado: "libre" },
-    { id: "M7-7", estado: "libre" },
+    { id: "M8-1", estado: "libre" },
+    { id: "M8-2", estado: "libre" },
+    { id: "M8-3", estado: "libre" },
+    { id: "M8-4", estado: "libre" },
+    { id: "M8-5", estado: "libre" },
+    { id: "M8-6", estado: "libre" },
+    
  ]);
   
 
     const manejarEstado = (e) => {
     const newArray = asientos.map((asiento) => {
       if (asiento.id === e.target.id && asiento.estado === "libre") {
-        return { id: e.target.id, estado: "ocupado", nombre: dataUser.name };
+        return { id: e.target.id, estado: "ocupado" };
       } else if (asiento.id === e.target.id && asiento.estado === "ocupado") {
         return { id: e.target.id, estado: "libre" };
       } else {
@@ -149,6 +179,7 @@ function App() {
             setData(res.usuario)
             setLogueado(true)
             setAdministrador(res.usuario.administrador)
+            sessionStorage.setItem("usuario", JSON.stringify(res.usuario))
          
           }
         } )
@@ -164,7 +195,7 @@ function App() {
      .then(res => res.json())
       .then(res => {
         setDataUser(res.usuario);
-        //setSession(sessionStorage.setItem("usuario", JSON.stringify(dataUser)))
+      
        });
     }, []);
   
@@ -179,10 +210,8 @@ function App() {
     setLogueado(false)
     setDataUser([])
     setAdministrador("")
-   /*  let data = sessionStorage.getItem("usuario");
-    setDataUser(JSON.parse(data)) */
-   
-	}
+    sessionStorage.removeItem("usuario")
+  	}
 
     
 
@@ -203,7 +232,7 @@ function App() {
       
      <Route exact path="/home">
         <div className="wrapper">
-           { data.administrador ? <SidebarAdmin sidebar= { sidebar }  logueado={logueado} /> :  <Sidebar sidebar= { sidebar }  logueado={logueado}/> }
+           {administrador ? <SidebarAdmin sidebar= { sidebar }  logueado={logueado} /> :  <Sidebar sidebar= { sidebar }  logueado={logueado}/> }
           <div className="main">
             <Cabecera
               cambiarSidebar={handleHamburger}
@@ -219,7 +248,7 @@ function App() {
 
       <Route exact path="/home-admin">
         <div className="wrapper">
-           { data.administrador ? <SidebarAdmin sidebar= { sidebar }  logueado={logueado}/> :  <Sidebar sidebar= { sidebar }  logueado={logueado} /> }
+           { administrador ? <SidebarAdmin sidebar= { sidebar }  logueado={logueado}/> :  <Sidebar sidebar= { sidebar }  logueado={logueado} /> }
           <div className="main">
             <Cabecera
               cambiarSidebar={handleHamburger}
@@ -246,7 +275,8 @@ function App() {
                 asientos={asientos}
                 manejarEstado={manejarEstado} 
                 dataUser={dataUser}
-                logueado={logueado}
+              logueado={logueado}
+             
             />
           </div>
         </div>

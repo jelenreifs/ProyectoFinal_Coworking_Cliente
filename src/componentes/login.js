@@ -22,11 +22,11 @@ function Login(props) {
     }
 
     if (props.logueado) {
-         if (props.usuario.administrador === false) {
-             return <Redirect to="/home" />
+         if (props.administrador) {
+             return <Redirect to="/home-admin" />
              
         } else { 
-             return <Redirect to="/home-admin" /> 
+             return <Redirect to="/home" /> 
         }
  
 

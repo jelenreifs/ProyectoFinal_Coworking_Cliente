@@ -7,8 +7,8 @@
 .st0 {
   fill-rule: evenodd;
   clip-rule: evenodd;
-  fill: url(#SVGID_1_);
-  stroke: #757575;
+  fill: #f4f4f4;
+  stroke: #333;
 }
 
 .st1 {
@@ -34,22 +34,22 @@
 .st4 {
   fill-rule: evenodd;
   clip-rule: evenodd;
-  fill: url(#SVGID_4_);
-  stroke: #6aa228;
+  fill: #fff;
+  stroke: #333;
 }
 
 .st5 {
   fill-rule: evenodd;
   clip-rule: evenodd;
   fill: url(#SVGID_5_);
-  stroke: #6aa228;
+  stroke: #666;
 }
 
 .st6 {
   fill-rule: evenodd;
   clip-rule: evenodd;
-  fill: url(#SVGID_6_);
-  stroke: #6aa228;
+  fill: #333;
+  stroke: #000;
 }
 
 .st7 {
@@ -69,8 +69,8 @@
 .st9 {
   fill-rule: evenodd;
   clip-rule: evenodd;
-  fill: url(#SVGID_9_);
-  stroke: #6aa228;
+  fill: #90caf9;
+  stroke: #1976d2;
 }
 
 .st10 {
@@ -111,7 +111,7 @@
   fill-rule: evenodd;
   clip-rule: evenodd;
   fill: red;
-  stroke: red;
+  stroke: #c00;
   cursor: pointer;
 }
 
@@ -125,8 +125,8 @@
 .libre {
   fill-rule: evenodd;
   clip-rule: evenodd;
-  fill: #ccc;
-  stroke: #ccc;
+  fill: #000;
+  stroke: #333;
   cursor: pointer;
 }
 
@@ -139,15 +139,15 @@
 .st13 {
   fill-rule: evenodd;
   clip-rule: evenodd;
-  fill: #7f7f7f;
-  stroke: #3d3d3d;
+    fill: #f4f4f4;
+  stroke: #333;
 }
 
 .st14 {
   fill-rule: evenodd;
   clip-rule: evenodd;
-  fill: #3d3d3d;
-  stroke: #5b5b5b;
+   fill: #f4f4f4;
+  stroke: #333;
 }
 
 .st15 {
@@ -159,15 +159,15 @@
 .st16 {
   fill-rule: evenodd;
   clip-rule: evenodd;
-  fill: #cccccc;
-  stroke: #757575;
+  fill: #f4f4f4;
+  stroke: #333;
 }
 
 .st17 {
   fill-rule: evenodd;
   clip-rule: evenodd;
-  fill: #abd5f4;
-  stroke: #265d99;
+  fill: #cccccc;
+  stroke: #757575;
 }
 
 .st18 {
@@ -196,7 +196,7 @@
 }
 
 .st23 {
-  fill: #757575;
+  fill: #fff;
 }
 
 .st24 {
@@ -236,8 +236,9 @@
 }
 
 .st30 {
-  fill: url(#SVGID_20_);
-  stroke: #757575;
+  /*   fill: url(#SVGID_20_); */
+  fill: #f8bbd0;
+  stroke: #4a0027;
 }
 
 .st31 {
@@ -279,8 +280,8 @@
 .st37 {
   fill-rule: evenodd;
   clip-rule: evenodd;
-  fill: #efbc7a;
-  stroke: #993300;
+  fill: #fff;
+  stroke: #666;
 }
 
 .st38 {
@@ -299,14 +300,15 @@
   fill-rule: evenodd;
   clip-rule: evenodd;
   fill: url(#SVGID_27_);
-  stroke: #993300;
+  stroke: #ccc;
 }
 
 .st41 {
   fill-rule: evenodd;
   clip-rule: evenodd;
   fill: url(#SVGID_28_);
-  stroke: #993300;
+  /*  stroke: #993300; */
+  stroke: #999;
 }
 
 .st42 {
@@ -319,8 +321,10 @@
 .st43 {
   fill-rule: evenodd;
   clip-rule: evenodd;
-  fill: url(#SVGID_30_);
-  stroke: #993300;
+  fill: #333;
+  stroke: #333;
+  font-weight: Arial;
+  font-size: 1.75rem;
 }
 
 .st44 {
@@ -333,8 +337,10 @@
 .st45 {
   fill-rule: evenodd;
   clip-rule: evenodd;
-  fill: url(#SVGID_32_);
-  stroke: #993300;
+  fill: #999;
+  stroke: #ccc;
+  font-weight: Arial;
+  font-size: 1.75rem;
 }
 
 .st46 {

@@ -18449,3 +18449,7 @@ a.area-enlaces:hover {
   background-color: #e0e0e0;
   padding: 0.2rem 0.45rem;
 }
+
+.react-calendar {
+    width: 100%;
+}

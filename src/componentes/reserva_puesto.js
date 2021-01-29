@@ -15,7 +15,7 @@ import './Plano/plano.css';
 
 
 function ReservaPuesto(props) {
-    console.log(props.dataUser)
+    console.log(props.usuario)
     console.log(props.asientos)
 
      let history = useHistory();
@@ -55,7 +55,8 @@ const [data, setData] = useState(new Date());
       },
         body: JSON.stringify({
             fecha: diaSelect,
-            puestos: props.asientos
+            puestos: props.asientos,
+          nombre: props.daraUser.name 
         }),
     })
        .then((res) => res.json()) 
@@ -124,7 +125,7 @@ if (!props.logueado) {
                         </div>
                     
                         <div className="row">
-                            <div className="col-xs-12 bg-white p-3 mx-3">
+                            <div className="col-xs-12 bg-white px-0">
                                 <Plano manejarEstado={props.manejarEstado} asientos={props.asientos} />
                             </div>
                         </div>
