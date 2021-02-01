@@ -10,10 +10,14 @@ function BajaUsuario(props) {
     let history = useHistory();
     
     const [data, setData] = useState([]);
-    
+    const [index, setIndex] = useState([]);
+  
+    const [boolean, setBoolean] = useState(false);
+  
+  console.log(index)
 
     /* Modal */
-    const [mensaje, setMensaje] = useState("");
+   const [mensaje, setMensaje] = useState("");
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -28,13 +32,60 @@ function BajaUsuario(props) {
             .then((res) => {
                 setData(res);
             });
-    }, []);
+    }, [boolean]);
+
+/**********************************************/
+/*            MODIFICAR USUARIO              */
+/**********************************************/
+    
+     const handleUpdate = (e) => {
+      //  e.currentTarget.getAttribute('value')
+         setIndex(e.target.id)
+         const usuarioModif = data.find(item => item.dni === e.target.id)
+         return usuarioModif
+    }
+
+
+
+
+ /******************************************/
+/*             ELIMINAR USUARIO           */
+/*******************************************/
+    
+     const handleDelete = (id) => {
+    
+        fetch("/users/delete", {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                id: id
+            }
+            ),
+        })
+            .then(res => res.json())
+            .then(res => {
+                if (res.error === true) {
+                   setMensaje(res.mensaje)
+                    handleShow() 
+              
+                } else {
+                     setMensaje(res.mensaje)
+                    handleShow() 
+                    setBoolean( !boolean)
+                }
+            });
+    }
+
+
+
     
     const usuarios = data.map((usuario, index) => {
         return (
-            <tr key={index}>
-                <td><img src={usuario.foto} alt="foto-user" width="500" height="600" /> </td>
-                <td>{usuario.dni}</td>
+            <tr key={index} >
+                <td><img src={usuario.foto} alt="foto-user" /> </td>
+                <td id="dni">{usuario.dni}</td>
                 <td>{usuario.nombre} {usuario.apellido}</td>
                 <td >
                     <Link to={usuario.email}>
@@ -42,43 +93,18 @@ function BajaUsuario(props) {
                     </Link>
                 </td>
                 <td className="d-xs-none">{usuario.fechaAlta}</td>
-                <td className="d-flex justify-content-center">
-                    <img src="./img/icons/trash.svg" alt="ico-eliminar" />
+                <td className="d-flex justify-content-center table-stripped-actions">
+                    <Link to={"/modificar-usuario/" + usuario._id} >
+                        <img src="./img/icons/edit-2.svg" alt="ico-modificar" />
+                    </Link>
+                       <img src="./img/icons/trash.svg" alt="ico-eliminar" onClick={()=> handleDelete(usuario._id)} />
                 </td>
             </tr>
         )
     })
     
 
-    /*******************************************/
-    /*             ELIMINAR USUARIO            */
-    /*******************************************/
-    
-    /* const deleteUser = () => { 
-        fetch("/users/delete", {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-            body: JSON.stringify({
-                dni: dni
-            }
-        ),
-      })
-         .then(res => res.json())
-          .then(res => {
-            if (res.error === true) {
-              setMensaje(res.mensaje)
-              handleShow()
-              
-            } else {
-            setMensaje(res.mensaje)
-            setData(res.datos);
-            handleShow()
-           }  
-           });
-        }
-         */
+   
     
 
 /*     if (!props.logueado) {
@@ -120,7 +146,7 @@ function BajaUsuario(props) {
 
                 </div>
             
-                <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
                         <Modal.Title>{mensaje}</Modal.Title>
                     </Modal.Header>

@@ -21,6 +21,7 @@ function Login(props) {
         setPassword(e.target.value)
     }
 
+
     if (props.logueado) {
          if (props.administrador) {
              return <Redirect to="/home-admin" />
@@ -42,7 +43,8 @@ function Login(props) {
                                         <div className="col-md-8 col-10 my-5">
                                             <div className="row justify-content-center px-3 mb-3">
                                                 <img id="logo" src="./img/Logo_Coowork_1.svg" alt="logotipo" />
-                                            </div>                                          <div className="form-group">
+                                            </div>
+                                            <div className="form-group">
                                                 <label className="form-control-label">Email</label>
                                                 <input
                                                     type="email"

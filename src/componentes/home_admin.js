@@ -21,7 +21,7 @@ function HomeAdmin(props) {
 
 
         return (
-            <main className="bg-home content p-0">
+            <main className="bg-home-admin content p-0">
                 <div className="container-fluid p-0">
                     <div className="row vh-100 px-4">
                         <div className="col-xs-12 col-lg-6 home-description p-4">

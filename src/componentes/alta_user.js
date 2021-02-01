@@ -116,6 +116,7 @@ function AltaUsuario(props) {
                     setMensaje(res.mensaje)
                     setData(res);
                     handleShow()
+                    
                 }
             });
     }
@@ -190,10 +191,7 @@ function AltaUsuario(props) {
                                             placeholder="NuevaFoto"
                                             onChange={handleChangeFoto} />
                                     </div>
-                                
-                                    <div className="row justify-content-center my-3 px-3">
-                                        <Button variant="btn btn-xs-block mt-4">Actualizar foto</Button>
-                                    </div>
+                                   
                     
                                 </div>
 
@@ -237,7 +235,10 @@ function AltaUsuario(props) {
                                                         className="form-control"
                                                         id="dni"
                                                         placeholder="Ej:12345678P"
-                                                        onChange={handleChangeDni} />
+                                                        onChange={handleChangeDni}
+                                                        required
+                                                    />
+                                                  
                                                 </div>
                                             
                                                 <div className="col-xs-6 col-xl-6 mb-3">
@@ -260,6 +261,7 @@ function AltaUsuario(props) {
                                                         className="form-control"
                                                         id="email"
                                                         placeholder="Ej:napellido@empresa.es"
+                                                        autocomplete="off"
                                                         onChange={handleChangeEmail} />
                                                 </div>
                                                 <div className="col-xs-6 col-xl-6 mb-3">

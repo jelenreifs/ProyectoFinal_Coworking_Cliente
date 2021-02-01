@@ -1,11 +1,11 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import moment from 'moment';
 //import { useHistory } from "react-router-dom";
-//import feather  from 'feather-icons';
 import Login from './componentes/login';
 import Sidebar from "./componentes/sidebar";
-import SidebarAdmin from "./componentes/sidebar_admin";
+//import SidebarAdmin from "./componentes/sidebar_admin";
 import Cabecera from "./componentes/cabecera";
 import Home from "./componentes/home";
 import HomeAdmin from "./componentes/home";
@@ -15,6 +15,7 @@ import AltaUsuario from "./componentes/alta_user";
 import BajaUsuario from "./componentes/baja_user";
 import Dashboard from "./componentes/dashboard";
 import MisReservas from "./componentes/mis_reservas";
+import ModificarUsuario from "./componentes/modificar_user";
 
 
 import './App.css';
@@ -55,8 +56,14 @@ function App() {
     }
   }) ; 
 
-  
-  console.log(dataUser)
+
+/* Formateo de Fecha */
+  const [daySelected, onChange] = useState(new Date());
+  //const [data, setData] = useState(new Date());
+
+const diaSelect = moment(daySelected).format("DD/MM/YYYY")
+//console.log(diaSelect)
+
 
 
 
@@ -66,8 +73,15 @@ function App() {
   const handleShow = () => setShow(true);
   
   
- /* Plano */
 
+/************************************************/
+/*                 PUESTOS                     */
+/************************************************/
+  
+/* Array de asientos sin reservar */
+
+
+  /* Array de asientos sin reservar */
  const [asientos, setAsientos] = useState([
     { id: "M1-1", estado: "libre" },
     { id: "M1-2", estado: "libre" },
@@ -120,11 +134,12 @@ function App() {
     
  ]);
   
-
+ 
+ /* Seleccíon de fecha, asiento para realiar la reserva */
     const manejarEstado = (e) => {
     const newArray = asientos.map((asiento) => {
       if (asiento.id === e.target.id && asiento.estado === "libre") {
-        return { id: e.target.id, estado: "ocupado" };
+        return { id: e.target.id, estado: "ocupado", nombre: dataUser.nombre, apellido: dataUser.apellido, creditos: dataUser.creditos   };
       } else if (asiento.id === e.target.id && asiento.estado === "ocupado") {
         return { id: e.target.id, estado: "libre" };
       } else {
@@ -135,8 +150,42 @@ function App() {
   };
 
 
+  
+/*  MOSTRAR RESERVA POR DIA    */
+        
+/*   useEffect(() => {
+   const fecha = moment(daySelected).format("DD/MM/YYYY");
+    console.log(fecha);
+   // fetch(`/api/reserva/get`, {
+    fetch("/reservaPuesto/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ fecha: fecha }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res[0] === undefined) {
+          setAsientos(asientosLibres);
+          console.log("no hay ninguna reserva este dia");
+        } else {
+          setAsientos(res[0].puestos);
+        }
+      });
+  }, [daySelected]);
+     */
 
-    /* Sidebar */
+
+
+
+
+
+
+/************************************************/
+/*                   SIDEBAR                   */
+/************************************************/
+
     const handleHamburger = (e) => {
       e.preventDefault();
       if (sidebar === "sidebar" && sidebarAdmin === "sidebar") {
@@ -177,9 +226,10 @@ function App() {
           } else {
             setMensaje("")
             setData(res.usuario)
+            setDataUser(res.usuario)
             setLogueado(true)
-            setAdministrador(res.usuario.administrador)
-            sessionStorage.setItem("usuario", JSON.stringify(res.usuario))
+          setAdministrador(res.usuario.administrador)
+      sessionStorage.setItem("usuario", JSON.stringify(res.usuario))
          
           }
         } )
@@ -211,12 +261,16 @@ function App() {
     setDataUser([])
     setAdministrador("")
     sessionStorage.removeItem("usuario")
-  	}
+  }
+  
+
+
 
     
 
   return (
     <BrowserRouter>
+      
       <Route exact path="/">
         <Login
           loginUser={loginUser}
@@ -232,15 +286,13 @@ function App() {
       
      <Route exact path="/home">
         <div className="wrapper">
-           {administrador ? <SidebarAdmin sidebar= { sidebar }  logueado={logueado} /> :  <Sidebar sidebar= { sidebar }  logueado={logueado}/> }
+            <Sidebar sidebar={sidebar} logueado={logueado} dataUser={dataUser} administrador={administrador} /> 
           <div className="main">
             <Cabecera
               cambiarSidebar={handleHamburger}
               navFlexible={nav100}
-               handleLogout={ handleLogout}
-                
-            />
-            <Home
+               handleLogout={ handleLogout} />
+             <Home
               logueado={logueado} />
           </div>
         </div>
@@ -248,15 +300,15 @@ function App() {
 
       <Route exact path="/home-admin">
         <div className="wrapper">
-           { administrador ? <SidebarAdmin sidebar= { sidebar }  logueado={logueado}/> :  <Sidebar sidebar= { sidebar }  logueado={logueado} /> }
+      
+            <Sidebar sidebar={sidebar} logueado={logueado} dataUser={dataUser} administrador={administrador} /> 
+ 
           <div className="main">
             <Cabecera
               cambiarSidebar={handleHamburger}
               navFlexible={nav100}
-              handleLogout={ handleLogout}
-             
-            />
-            <HomeAdmin
+              handleLogout={ handleLogout} />
+             <HomeAdmin
                 logueado={logueado} />
           </div>
         </div>
@@ -264,18 +316,22 @@ function App() {
 
     <Route exact path="/reserva-puesto">
         <div className="wrapper">
-           { data.administrador ? <SidebarAdmin sidebar= { sidebar }  logueado={logueado}/> : <Sidebar sidebar= { sidebar }  logueado={logueado} /> }
+          <Sidebar
+            sidebar={sidebar}
+            logueado={logueado}
+            dataUser={dataUser}
+            administrador={administrador} /> 
           <div className="main">
             <Cabecera
               cambiarSidebar={handleHamburger}
               navFlexible={nav100}
-          handleLogout={ handleLogout}
+            handleLogout={ handleLogout}
             />
             <ReservaPuesto
                 asientos={asientos}
                 manejarEstado={manejarEstado} 
                 dataUser={dataUser}
-              logueado={logueado}
+                logueado={logueado}
              
             />
           </div>
@@ -285,7 +341,11 @@ function App() {
 
     <Route exact path="/alta-usuario">
         <div className="wrapper">
-          <SidebarAdmin sidebar= { sidebar } logueado={logueado} /> 
+       <Sidebar
+            sidebar={sidebar}
+            logueado={logueado}
+            dataUser={dataUser}
+            administrador={administrador} /> 
           <div className="main">
             <Cabecera
               cambiarSidebar={handleHamburger} 
@@ -301,14 +361,41 @@ function App() {
 
     <Route exact path="/baja-usuario">
         <div className="wrapper">
-          <SidebarAdmin sidebar= { sidebar }  logueado={logueado} /> 
+            <Sidebar
+            sidebar={sidebar}
+            logueado={logueado}
+            dataUser={dataUser}
+            administrador={administrador} /> 
           <div className="main">
             <Cabecera
               cambiarSidebar={handleHamburger} 
               navFlexible={nav100}
              handleLogout={ handleLogout} />
             <BajaUsuario
-              logueado={logueado} />
+              logueado={logueado}
+              />
+          </div>
+        </div>
+      </Route>
+
+         <Route exact path="/modificar-usuario/:id">
+        <div className="wrapper">
+            <Sidebar
+            sidebar={sidebar}
+            logueado={logueado}
+            dataUser={dataUser}
+            administrador={administrador} /> 
+          <div className="main">
+            <Cabecera
+              cambiarSidebar={handleHamburger}
+              navFlexible={nav100}
+              handleLogout={ handleLogout}
+            />
+            <ModificarUsuario
+              dataUser={dataUser}
+              logueado={logueado}
+           
+            />
           </div>
         </div>
       </Route>
@@ -316,13 +403,16 @@ function App() {
 
       <Route exact path="/configuracion-usuario">
         <div className="wrapper">
-              { data.administrador ? <SidebarAdmin sidebar= { sidebar }  logueado={logueado} /> : <Sidebar sidebar= { sidebar }   logueado={logueado}/> }
+            <Sidebar
+            sidebar={sidebar}
+            logueado={logueado}
+            dataUser={dataUser}
+            administrador={administrador} /> 
           <div className="main">
             <Cabecera
               cambiarSidebar={handleHamburger}
               navFlexible={nav100}
               handleLogout={ handleLogout}
-            
             />
             <ConfiguracionUsuario
               dataUser={dataUser}
@@ -334,7 +424,11 @@ function App() {
 
       <Route exact path="/mis-reservas">
         <div className="wrapper">
-              { data.administrador ? <SidebarAdmin sidebar= { sidebar }  logueado={logueado} /> : <Sidebar sidebar= { sidebar }   logueado={logueado}/> }
+           <Sidebar
+            sidebar={sidebar}
+            logueado={logueado}
+            dataUser={dataUser}
+            administrador={administrador} /> 
           <div className="main">
             <Cabecera
               cambiarSidebar={handleHamburger}
@@ -353,7 +447,11 @@ function App() {
 
     <Route exact path="/dashboard">
         <div className="wrapper">
-           { data.administrador ? <SidebarAdmin sidebar= { sidebar }  logueado={logueado} /> : <Sidebar sidebar= { sidebar }   logueado={logueado}/> }
+          <Sidebar
+            sidebar={sidebar}
+            logueado={logueado}
+            dataUser={dataUser}
+            administrador={administrador} /> 
           <div className="main">
             <Cabecera
               cambiarSidebar={handleHamburger}
@@ -367,7 +465,6 @@ function App() {
       </Route>
     </BrowserRouter>
   )
-  
 }
 
 export default App;

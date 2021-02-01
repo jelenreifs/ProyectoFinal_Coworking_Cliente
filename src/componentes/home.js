@@ -21,17 +21,58 @@ function Home(props) {
             <main className="bg-home content p-0">
                 <div className="container-fluid p-0">
                     <div className="row vh-100 px-4">
-                        <div className="col-xs-12 col-lg-6 home-description p-4">
-                            <h3 className="text-white">Poner un slogan</h3>
-                            <p className="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        <br />
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                        <div className="col-xs-12 col-lg-6 col-xxl-8 home-info-wrapper ">
+                            <div className="home-description p-4">
+                                <h3 className="text-white">Un lugar de trabajo centrado en las personas</h3>
+                                <p className="text-white">
+                                    <span>¡Simplemente vida de oficina! </span>
+                                      <span>   Para mayor bienestar, compromiso y productividad </span>
+                                </p>
+                            </div>
+                           
+                            
+                            
+                            
+                        <div className="icos-home-wrapper">
+                             <div>
+                                    <img src="./img/icons/ico_internet.svg" alt="icono internet" />
+                                    <p>Internet</p>
+                                </div>
+                                        <div>
+                                    <img src="./img/icons/ico_telefono.svg" alt="icono telefono" />
+                                    <p>Teléfono</p>
+                            </div>
+                                <div>
+                                    <img src="./img/icons/ico_proyector.svg" alt="ico proyector" />
+                                    <p>Recursos de oficina</p>
+                            </div>
+                            <div>
+                                    <img src="./img/icons/ico_dispensador.svg" alt="icono dispensador" />
+                                    <p>Aquaservice</p>
+                            </div>
+                            <div>
+                                    <img src="./img/icons/ico_coffe.svg" alt="icono café" />
+                                    <p>Máquina de café</p>
+                            </div>
+                            <div>
+                                    <img src="./img/icons/ico_vending.svg" alt="icono vendind" />
+                                    <p>Máquina de vending</p>
+                            </div>
+                            <div>
+                                    <img src="./img/icons/ico_parking.svg" alt="icono parking" />
+                                    <p>Parking</p>
+                            </div>
+                                <div>
+                                    <img src="./img/icons/ico_limpieza.svg" alt="icono limpieza" />
+                                    <p>Limpiesza diaria</p>
+                            </div>
+                        </div>
                         </div>
 
-                        <div className="col-xs-12 col-lg-6 bg-cards-dark pl-4">
-                            <div className="col-xs-12 col-lg-8">
+                     
+
+                        <div className="col-xs-12 col-lg-6 col-xxl-4 bg-cards-dark pl-4">
+                            <div className="col-xs-12">
                                 <div className="card card-home mt-3 mr-3 h-25">
                                     <div className="card-body">
                                         <div className="card-title-ico mb-3">
@@ -40,14 +81,22 @@ function Home(props) {
                                                 <img src="./img/icons/arrow-right-white.svg" alt="ico-flecha" />
                                             </Link>
                                         </div>
-                                        <p className="card-text">
-                                            <span>Reserva</span>Espacios de trabajo en bloque para trabajar en equipo.
+                                    
+                                            <p className="card-text">
+                                            Reserva un puesto individual, o en bloque para un equipo.
                                     </p>
+                                        
+                                        <div className="card-image">
+                                             <img src="./img/icons/ico_reserva_puesto.svg" alt="ico-reserva" />
+                                           
+                                    </div>
+                                        
+                                        
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="col-xs-12 col-lg-8 opacity">
+                            <div className="col-xs-12 opacity">
                                 <div className="card card-home mt-3 mr-3 h-25">
                                     <div className="card-body">
                                         <div className="card-title-ico mb-3">
@@ -64,7 +113,7 @@ function Home(props) {
                             </div>
 
 
-                            <div className="col-xs-12 col-lg-8 opacity">
+                            <div className="col-xs-12 opacity">
                                 <div className="card card-home mt-3 mr-3 h-25">
                                     <div className="card-body">
                                         <div className="card-title-ico mb-3">

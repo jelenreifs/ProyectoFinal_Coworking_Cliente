@@ -11802,6 +11802,12 @@ a.list-group-item {
   transition: width 1s;
 }
 
+@media screen and (max-width: 992px) {
+  .navbar-bg {
+    width: calc(100% - 5px);
+  }
+}
+
 .navbar-bg2 {
   /* background: #fff; */
   background: transparent;
@@ -12062,6 +12068,7 @@ a.sidebar-link svg {
   display: flex;
   justify-content: center;
   padding: 12px 0;
+  height: 140px;
 }
 .sidebar-brand:hover {
   text-decoration: none;
@@ -18134,10 +18141,16 @@ span.flatpickr-weekday {
   display: flex;
   background-color: #4a0027;
 }
+
+.sidebar-user:hover {
+  background-color: #000;
+}
+
 .sidebar-user .sidebar-link {
   display: flex;
   background-color: transparent;
 }
+
 .sidebar-user .avatar {
   height: 40px;
   width: 40px;
@@ -18168,13 +18181,24 @@ span.flatpickr-weekday {
 /*                       HOME                          */
 /* *************************************************** */
 
-.bg-home {
+.bg-home-admin {
   flex-direction: column;
   align-items: center;
   justify-content: top;
   overflow-x: hidden;
   height: 100%;
   background: #333 url("img/home.jpg") no-repeat -10rem 0;
+  background-size: cover;
+  display: flex;
+}
+
+.bg-home {
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
+  overflow-x: hidden;
+  height: 100%;
+  background: #333 url("img/home2.jpg") no-repeat -10rem 0;
   background-size: cover;
   display: flex;
 }
@@ -18198,12 +18222,16 @@ div[class~="container-fluid"] {
   background-color: #f50057;
 }
 
+.sidebar-link a.sidebar-item:hover {
+  background-color: #f50057 !important;
+}
+
 .bg-cards-dark {
   background-color: rgba(0, 0, 0, 0.5);
   position: relative;
-  top: -65px;
+  /*  top: -65px;*/
   right: -10px;
-  padding-top: 3.75rem;
+  padding-top: 2rem;
 }
 
 .bg-cards-light {
@@ -18267,6 +18295,10 @@ div[class~="container-fluid"] {
 
 .opacity {
   opacity: 0.2;
+}
+
+.opacity2 {
+  opacity: 0.4;
 }
 
 /* **************************************************** */
@@ -18339,16 +18371,32 @@ input[type='checkbox'] {
 
 .table-striped img {
   background-color: #f4f4f4;
-  width: 32px;
-  height: 32px;
+  width: 45px;
+  height: 45px;
   padding: 6px;
   border-radius: 50%;
 }
 
 .table-striped img:hover {
-  background-color: #ccc;
-  width: 32px;
-  height: 32px;
+  background-color: #f50057;
+  width: 45px;
+  height: 45px;
+  padding: 6px;
+  border-radius: 50%;
+}
+
+.table-stripped-actions img {
+  background-color: #e8eaf6;
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  border-radius: 50%;
+}
+
+.table-stripped-actions img:hover {
+  background-color: #f50057;
+  width: 36px;
+  height: 36px;
   padding: 6px;
   border-radius: 50%;
 }
@@ -18409,11 +18457,8 @@ a.area-enlaces:hover {
   padding: 6px;
 }
 
-
-
 .aside {
   padding: 0 1.25rem;
- 
 }
 
 .aside h4 {
@@ -18433,9 +18478,7 @@ a.area-enlaces:hover {
 
 .reservas:last-child {
   border-bottom: 1px solid #f50057;
-
 }
-
 
 .reservas p {
   margin-right: 1rem;
@@ -18451,5 +18494,79 @@ a.area-enlaces:hover {
 }
 
 .react-calendar {
-    width: 100%;
+  width: 100%;
+}
+
+/* Home textos */
+.home-description p span {
+  display: block;
+  background-color: #000;
+  width: max-content;
+  padding: 0.45rem 0.75rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+}
+
+/*  home accesos directos*/
+.card-home .card-image {
+  max-height: 120px;
+  overflow: hidden;
+}
+
+.card-home .card-image img {
+  width: 95%;
+}
+
+/* Home-iconos */
+
+.home-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 6rem;
+}
+
+.icos-home-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.icos-home-wrapper > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  margin: 1rem 0;
+}
+
+.icos-home-wrapper img {
+  max-width: 140px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  padding: 1.5rem;
+}
+
+.icos-home-wrapper p {
+  color: #f4f4f4;
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin-top: .5rem;
+}
+
+@media screen and (max-width: 1420px) {
+  .icos-home-wrapper > div {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .icos-home-wrapper > div {
+    width: 30%;
+  }
 }
