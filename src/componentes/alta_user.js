@@ -116,6 +116,8 @@ function AltaUsuario(props) {
                     setMensaje(res.mensaje)
                     setData(res);
                     handleShow()
+                    setNombre("");
+                    
                     
                 }
             });
@@ -165,7 +167,6 @@ function AltaUsuario(props) {
 		 history.push("/");	
 	} else {
 
-    
 
         return (
             <main className="bg-home content p-0">
@@ -212,7 +213,10 @@ function AltaUsuario(props) {
                                                         className="form-control"
                                                         id="nombre"
                                                         placeholder="nombre"
-                                                        onChange={handleChangeNombre} />
+                                                        value={ nombre}
+                                                        onChange={handleChangeNombre}
+                                                        autocomplete="off" />
+                                                    
                                                 </div>
                                             
                                                 <div className="col-xs-6 col-xl-6  mb-3">
@@ -222,6 +226,7 @@ function AltaUsuario(props) {
                                                         className="form-control"
                                                         id="apellido"
                                                         placeholder="Apellido"
+                                                         value={ apellido}
                                                         onChange={handleChangeApellido} />
                                                 </div>
                                             </div>
@@ -235,6 +240,7 @@ function AltaUsuario(props) {
                                                         className="form-control"
                                                         id="dni"
                                                         placeholder="Ej:12345678P"
+                                                         value={ dni}
                                                         onChange={handleChangeDni}
                                                         required
                                                     />
@@ -248,6 +254,7 @@ function AltaUsuario(props) {
                                                         className="form-control"
                                                         id="telefono"
                                                         placeholder="Ej:600123123"
+                                                         value={ tfno}
                                                         onChange={handleChangeTfno} />
                                                 </div>
                                             </div>
@@ -261,6 +268,7 @@ function AltaUsuario(props) {
                                                         className="form-control"
                                                         id="email"
                                                         placeholder="Ej:napellido@empresa.es"
+                                                        value={ email}
                                                         autocomplete="off"
                                                         onChange={handleChangeEmail} />
                                                 </div>
@@ -268,8 +276,10 @@ function AltaUsuario(props) {
                                                     <label htmlFor="passsword" className="form-label">Password</label>
                                                     <input type="password"
                                                         className="form-control"
-                                                        id="passwors"
+                                                        value={password}
+                                                        id="password"
                                                         placeholder="password"
+                                                        autocomplete="off"
                                                         onChange={handleChangePassword} />
                                                 </div>
                                           
@@ -284,7 +294,9 @@ function AltaUsuario(props) {
                                                         type="date"
                                                         className="form-control"
                                                         id="alta"
+                                                         value={ fechaAlta}
                                                         placeholder="fecha alta"
+                                                         autocomplete="off"
                                                         onChange={handleChangeFechaAlta} />
                                                 </div>
                                                 <div className="col-xs-6 col-xl-6 mb-3">
@@ -294,6 +306,8 @@ function AltaUsuario(props) {
                                                         className="form-control"
                                                         id="baja"
                                                         placeholder="fecha baja"
+                                                        value={fechaBaja}
+                                                         autocomplete="off"
                                                         onChange={handleChangeFechaBaja} />
                                                 </div>
                                             </div>
@@ -307,6 +321,8 @@ function AltaUsuario(props) {
                                                         className="form-control"
                                                         id="creditos"
                                                         placeholder="Créditos"
+                                                        value={creditos}
+                                                         autocomplete="off"
                                                         onChange={handleChangeCreditos} />
                                                 </div>
                                         
@@ -319,10 +335,11 @@ function AltaUsuario(props) {
                                                             value={administrador}
                                                             checked={administrador}
                                                             id="administrador"
+                                                             autocomplete="off"
                                                             onChange={handleChangeAdministrador}
                                                         />
                                                     
-                                                        <label className="form-check-label" htmlFor="administrador">
+                                                    <label className="form-check-label" htmlFor="administrador">
                                                             Administrador
                                                     </label>
                                                     </div>

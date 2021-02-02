@@ -18174,7 +18174,7 @@ span.flatpickr-weekday {
 }
 
 #sidebar #logo {
-  max-width: 120px;
+  max-width: 180px;
 }
 
 /* *************************************************** */
@@ -18491,6 +18491,16 @@ a.area-enlaces:hover {
   margin-left: 0.25rem;
   background-color: #e0e0e0;
   padding: 0.2rem 0.45rem;
+}
+
+.reservas .usuario {
+  display: flex;
+  flex-direction: column;
+  min-width: 220px;
+}
+.reservas .usuario span {
+  display: flex;
+margin-bottom: .5rem;
 }
 
 .react-calendar {

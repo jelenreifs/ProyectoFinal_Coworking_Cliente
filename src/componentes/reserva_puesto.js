@@ -1,7 +1,7 @@
 import React from 'react';
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Calendar from 'react-calendar';
-import moment from 'moment';
+//import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 
@@ -16,8 +16,6 @@ import './Plano/plano.css';
 
 function ReservaPuesto(props) {
     let history = useHistory();
-
-    const [dataPuestos, setDataPuestos] = useState([]);
     
 
     
@@ -27,72 +25,6 @@ function ReservaPuesto(props) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-
-const [daySelected, onChange] = useState(new Date());
-const [data, setData] = useState(new Date());
-
-    
-     const [asientosLibres, setAsientosLibres] = useState([
-    { id: "M1-1", estado: "libre" },
-    { id: "M1-2", estado: "libre" },
-    { id: "M1-3", estado: "libre" },
-    { id: "M1-4", estado: "libre" },
-    { id: "M1-5", estado: "libre" },
-    { id: "M1-6", estado: "libre" },
-    { id: "M2-1", estado: "libre" },
-    { id: "M2-2", estado: "libre" },
-    { id: "M2-3", estado: "libre" },
-    { id: "M2-4", estado: "libre" },
-    { id: "M2-5", estado: "libre" },
-    { id: "M2-6", estado: "libre" },
-    { id: "M3-1", estado: "libre" },
-    { id: "M3-2", estado: "libre" },
-    { id: "M3-3", estado: "libre" },
-    { id: "M3-4", estado: "libre" },
-    { id: "M3-5", estado: "libre" },
-    { id: "M3-6", estado: "libre" },
-    { id: "M4-1", estado: "libre" },
-    { id: "M4-2", estado: "libre" },
-    { id: "M4-3", estado: "libre" },
-    { id: "M4-4", estado: "libre" },
-    { id: "M4-5", estado: "libre" },
-    { id: "M4-6", estado: "libre" },
-    { id: "M5-1", estado: "libre" },
-    { id: "M5-2", estado: "libre" },
-    { id: "M5-3", estado: "libre" },
-    { id: "M5-4", estado: "libre" },
-    { id: "M5-5", estado: "libre" },
-    { id: "M5-6", estado: "libre" },
-    { id: "M6-1", estado: "libre" },
-    { id: "M6-2", estado: "libre" },
-    { id: "M6-3", estado: "libre" },
-    { id: "M6-4", estado: "libre" },
-    { id: "M6-5", estado: "libre" },
-    { id: "M6-6", estado: "libre" },
-    { id: "M7-1", estado: "libre" },
-    { id: "M7-2", estado: "libre" },
-    { id: "M7-3", estado: "libre" },
-    { id: "M7-4", estado: "libre" },
-    { id: "M7-5", estado: "libre" },
-    { id: "M7-6", estado: "libre" },
-    { id: "M8-1", estado: "libre" },
-    { id: "M8-2", estado: "libre" },
-    { id: "M8-3", estado: "libre" },
-    { id: "M8-4", estado: "libre" },
-    { id: "M8-5", estado: "libre" },
-    { id: "M8-6", estado: "libre" },
-    
- ]);
-  
-
-    
-
-    
-
-/* Formateo de Fecha */
-//moment.locale('es');
-const diaSelect = moment(daySelected).format("DD/MM/YYYY")
-console.log(diaSelect)
 
 /*************************************************/
 /*                AÑADIR RESERVA                */
@@ -104,7 +36,7 @@ console.log(diaSelect)
         "Content-Type": "application/json",
       },
         body: JSON.stringify({
-            fecha: diaSelect,
+            fecha: props.diaSelect,
             puestos: props.asientos,
          
         }),
@@ -112,37 +44,6 @@ console.log(diaSelect)
     .then((res) => res.json()) 
       .then((res) => console.log(res));
     };
-
-
- /*************************************************/
-/*                MUSTRAR RESERVA POR DIA                */
-/************************************************/
-    
-      useEffect(() => {
-   const fecha = moment(daySelected).format("DD/MM/YYYY");
-    console.log(fecha);
-   // fetch(`/api/reserva/get`, {
-    fetch("/reservaPuesto/get", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ fecha: fecha }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res[0] === undefined) {
-          props.setAsientos(asientosLibres);
-          console.log("no hay ninguna reserva este dia");
-        } else {
-            props.setAsientos(res[0].puestos);
-            console.log(res[0].puestos)
-        }
-      });
-      }, [daySelected]);
-    
-   
-     
 
 
   
@@ -191,8 +92,10 @@ if (!props.logueado) {
                                             
                                         
                                             <Calendar
-                                                onChange={onChange}
-                                                daySelected={daySelected}
+                                                onChange={props.onChange}
+                                                daySelected={props.daySelected}
+                                                reservado={()=>props.reservado }
+                                                
                                                // onClick={ puestosDia}
                                             />
                                         </div>

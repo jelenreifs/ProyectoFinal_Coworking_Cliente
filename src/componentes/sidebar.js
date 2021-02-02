@@ -93,7 +93,7 @@ function Sidebar(props) {
 
 	const [bajaActive, setBajaActive] = useState(() => {
 	
-		if (location.pathname === "/baja-usuario") {
+		if (location.pathname === "/bajaModif-usuario") {
 			const initialState = "sidebar-item active";
 			return initialState;
 		} else {
@@ -119,21 +119,20 @@ function Sidebar(props) {
 					</Link>
 
 					<ul className="sidebar-nav">
-					<li className="sidebar-user">
-					<Link to="/configuracion-usuario" className="sidebar-link">
-									<img src={ props.dataUser.foto} className="avatar" alt="Imagen" />
+						<li className="sidebar-user">
+							<Link to="/configuracion-usuario" className="sidebar-link">
+								<img src={props.dataUser.foto} className="avatar" alt="Imagen" />
 								<div className="sidebar-user-info">
-									<span>Nombre Apellido</span>
-									<p>100 créditos</p>
+									<span>{props.dataUser.nombre} {props.dataUser.apellido}</span>
+										<p>{props.dataUser.creditos}</p>
 								</div>
 							</Link>
-						
 						</li>
 
 						<li className={homeActive}>
 							<Link to="/home" className="sidebar-link">
 								<img className="align-middle" src="./img/icons/home.svg" alt="ico-home" />
-								<i className="align-middle" data-feather="sliders"></i>
+								<i className="align-middle"></i>
 								<span className="align-middle">Home</span>
 							</Link>
 						</li>
@@ -192,10 +191,10 @@ function Sidebar(props) {
 					<ul className="sidebar-nav">
 						<li className="sidebar-user">
 						<Link to="/configuracion-usuario" className="sidebar-link">
-									<img src={ props.dataUser.foto} className="avatar" alt="Imagen" />
+								<img src={props.dataUser.foto} className="avatar" alt="Imagen" />
 								<div className="sidebar-user-info">
-									<span>Nombre Apellido</span>
-									<p>100 créditos</p>
+									<span>{props.dataUser.nombre} {props.dataUser.apellido}</span>
+										<p>{props.dataUser.creditos}</p>
 								</div>
 							</Link>
 						</li>
@@ -228,9 +227,9 @@ function Sidebar(props) {
 						</li>
 
 						<li className={bajaActive}>
-							<Link to="/baja-usuario" className="sidebar-link">
+							<Link to="/bajaModif-usuario" className="sidebar-link">
 								<img className="align-middle" src="./img/icons/baja-user.svg" alt="ico-baja-usuario" />
-								<span className="align-middle">Baja de usuario</span>
+								<span className="align-middle">Baja y modificar usuario</span>
 							</Link>
 						</li>
 

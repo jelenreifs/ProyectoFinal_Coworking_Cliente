@@ -12,26 +12,48 @@ function MisReservas(props) {
 
 
   /*******************************************/
-  /*             Montrar usuarios            */
-  /*******************************************/
+  /*             Montrar Reservas            */
+/********************************************/
+  
   useEffect(() => {
     fetch("/reservaPuesto")
       .then((res) => res.json())
       .then((res) => {
         setData(res);
       });
-  }, []);
+  }, []); 
+
+  const reservas = data.map((reserva, index) => {
+     return (
+     <tr key={index}>
+         {reserva.puestos.filter((item => item.dni === props.dataUser.dni)).map(elemento => {
+           return (
+             <tr>
+               <td>{elemento.id}</td>
+            </tr>
+           )
+            } )
+         }
+      </tr>
+      )
+
+
+   })
+
+
+
+ // const misReservas = data.map(reserva => {return( <td> (reserva.puesto.filter(item => item.dni === props.dataUser.dni)) </td> )}
+   /*  return (
+     <tr>
+        <td> {item.fecha} </td>
+        <td> {item.nombre} </td>
+        <td> {item.creditos} </td>
+      </tr>
+      ) */
+
+
   
  
-  const userLogueado = data.filter(element => element.dni === props.dataUser.dni);
-  const reservasUser = userLogueado.map(item =>
-    <tr>
-      <td> {item.fecha} </td>
-      <td> {item.id} </td>
-      <td> {props.dataUser.creditos} </td>
-    </tr>
-  )
-  
 
 
 /*   if (!props.logueado) {
@@ -60,7 +82,7 @@ function MisReservas(props) {
                     </tr>
                   </thead>
                   <tbody>
-                    {reservasUser}
+                    { reservas}
                   </tbody>
                 </table>
               </div>

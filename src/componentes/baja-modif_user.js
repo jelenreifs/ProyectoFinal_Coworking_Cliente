@@ -6,7 +6,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { Modal } from 'react-bootstrap';
 import { useHistory } from "react-router-dom";
 
-function BajaUsuario(props) {
+function BajaModifUsuario(props) {
     let history = useHistory();
     
     const [data, setData] = useState([]);
@@ -33,18 +33,6 @@ function BajaUsuario(props) {
                 setData(res);
             });
     }, [boolean]);
-
-/**********************************************/
-/*            MODIFICAR USUARIO              */
-/**********************************************/
-    
-     const handleUpdate = (e) => {
-      //  e.currentTarget.getAttribute('value')
-         setIndex(e.target.id)
-         const usuarioModif = data.find(item => item.dni === e.target.id)
-         return usuarioModif
-    }
-
 
 
 
@@ -103,8 +91,6 @@ function BajaUsuario(props) {
         )
     })
     
-
-   
     
 
 /*     if (!props.logueado) {
@@ -157,4 +143,4 @@ function BajaUsuario(props) {
 }
 
 
-export default BajaUsuario;
+export default BajaModifUsuario;

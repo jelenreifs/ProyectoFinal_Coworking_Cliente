@@ -8,7 +8,28 @@ import { useHistory } from "react-router-dom";
 function Dashboard(props) {
      let history = useHistory();
 
-  
+     let series = [{
+        name: 'Puestos',
+        data: [],
+    }];
+
+
+    let options = {
+        chart: {
+            height: 240,
+            type: 'bar',
+        },
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    position: 'top', // top, center, bottom
+                },
+            }
+        },
+    };
+ 
+   const [chart, setChart] = useState(options);
+    const [datosChart, setDatosChart] = useState(series);
     const [data, setData] = useState([]);
 
 
@@ -21,7 +42,11 @@ function Dashboard(props) {
         fetch("/reservaPuesto")
             .then((res) => res.json())
             .then((res) => {
-             
+                const mostrarPuestos = res.map(item => item.fechas)
+                setDatosChart([{
+                    name: 'Puestos',
+                    data: mostrarPuestos
+                }]) 
                 setData(res);
             });
     }, []);
@@ -33,20 +58,11 @@ function Dashboard(props) {
             <div key={index} className="reservas">
                 <h5>{reserva.nombre} {reserva.apellido}</h5>
                 <div className="d-flex justify-content-sm-left justify-content-lg-between">
-                    <p className="fecha"> Día:<span> {reserva.fecha}</span> </p>
-                    <p className="usuario"> Puesto: 
-                        {(reserva.puestos.filter(puesto => puesto.estado === "ocupado").map(item => {
-                            return (
-                                <span>
-                                    <p>{item.id}: </p>
-                                    <p>{item.nombre} {item.apellido} </p>
-                                </span>
-                            )
-                        })
-                        
-                        )}
+                    <p> Día:<span> {reserva.fecha}</span> </p>
+                    <p> Puesto: <span>
+                        {(reserva.puestos.filter(puesto => puesto.estado === "ocupado").map(item => <span>{item.id}</span>))}
 
-                   </p>
+                    </span> </p>
                     
                 </div>
             </div>
@@ -80,7 +96,12 @@ function Dashboard(props) {
                                         <div className="card-body">
                                             <h5 className="card-title">Los meses más reservados</h5>
                                             <div className="card-grafico">
-                                1              
+                                1               <Chart
+                                                    options={chart}
+                                                    series={datosChart}
+                                                    type="bar"
+                                                    width="480"
+                                                />
                                                 
                                             </div>
                                             <div>

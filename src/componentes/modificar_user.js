@@ -39,6 +39,13 @@ function ModificarUsuario(props) {
             .then((res) => res.json())
             .then((res) => {
                 setDni(res.datos[0].dni);
+                setNombre(res.datos[0].nombre);
+                setNombre(res.datos[0].nombre);
+                setApellido(res.datos[0].apellido);
+                setTfno(res.datos[0].tfno);
+                setEmail(res.datos[0].email);
+                setPassword(res.datos[0].password);
+                setFoto(res.datos[0].foto);
                 console.log(res)
             });
       }, [id]);
@@ -148,7 +155,8 @@ if (!props.logueado) {
                                             type="url"
                                             className="form-control"
                                             id="foto"
-                                            placeholder="NuevaFoto"
+                                            value={ foto}
+                                            placeholder={ foto}
                                             onChange={handleChangeFoto} />
                                     </div>
                                 </div>
@@ -170,6 +178,7 @@ if (!props.logueado) {
                                                         className="form-control"
                                                         id="nombre"
                                                         placeholder={nombre}
+                                                         value={nombre}
                                                         onChange={handleChangeNombre}
                                                     />
                                                 </div>
@@ -181,6 +190,7 @@ if (!props.logueado) {
                                                         className="form-control"
                                                         id="apellido"
                                                         placeholder={apellido}
+                                                        value={apellido}
                                                         onChange={handleChangeApellido}
                                                     />
                                                 </div>
@@ -206,6 +216,7 @@ if (!props.logueado) {
                                                         className="form-control"
                                                         id="telefono"
                                                         placeholder={tfno}
+                                                        value={tfno}
                                                         onChange={handleChangeTfno}
                                                     />
                                                 </div>
@@ -222,6 +233,7 @@ if (!props.logueado) {
                                                         className="form-control"
                                                         id="email"
                                                         placeholder={email}
+                                                        value={email}
                                                         onChange={handleChangeEmail}
                                                     />
                                                 </div>
@@ -233,6 +245,7 @@ if (!props.logueado) {
                                                         className="form-control"
                                                         id="passwors"
                                                         placeholder="password"
+                                                         value={password}
                                                         onChange={handleChangePassword} />
                                                 </div>
                                        

@@ -12,7 +12,7 @@ import HomeAdmin from "./componentes/home";
 import ReservaPuesto from "./componentes/reserva_puesto";
 import ConfiguracionUsuario from "./componentes/config_user";
 import AltaUsuario from "./componentes/alta_user";
-import BajaUsuario from "./componentes/baja_user";
+import BajaModifUsuario from "./componentes/baja-modif_user";
 import Dashboard from "./componentes/dashboard";
 import MisReservas from "./componentes/mis_reservas";
 import ModificarUsuario from "./componentes/modificar_user";
@@ -59,10 +59,14 @@ function App() {
 
 /* Formateo de Fecha */
   const [daySelected, onChange] = useState(new Date());
-  //const [data, setData] = useState(new Date());
+  //const [date, setDate] = useState(new Date());
 
 const diaSelect = moment(daySelected).format("DD/MM/YYYY")
 //console.log(diaSelect)
+  
+
+
+
 
 
 
@@ -78,10 +82,8 @@ const diaSelect = moment(daySelected).format("DD/MM/YYYY")
 /*                 PUESTOS                     */
 /************************************************/
   
-/* Array de asientos sin reservar */
+/* Array de asientos sin reservados */
 
-
-  /* Array de asientos sin reservar */
  const [asientos, setAsientos] = useState([
     { id: "M1-1", estado: "libre" },
     { id: "M1-2", estado: "libre" },
@@ -135,11 +137,66 @@ const diaSelect = moment(daySelected).format("DD/MM/YYYY")
  ]);
   
  
+/* Array de asientos sin reservar */
+ const [asientosLibres, setAsientosLibres] = useState([
+    { id: "M1-1", estado: "libre" },
+    { id: "M1-2", estado: "libre" },
+    { id: "M1-3", estado: "libre" },
+    { id: "M1-4", estado: "libre" },
+    { id: "M1-5", estado: "libre" },
+    { id: "M1-6", estado: "libre" },
+    { id: "M2-1", estado: "libre" },
+    { id: "M2-2", estado: "libre" },
+    { id: "M2-3", estado: "libre" },
+    { id: "M2-4", estado: "libre" },
+    { id: "M2-5", estado: "libre" },
+    { id: "M2-6", estado: "libre" },
+    { id: "M3-1", estado: "libre" },
+    { id: "M3-2", estado: "libre" },
+    { id: "M3-3", estado: "libre" },
+    { id: "M3-4", estado: "libre" },
+    { id: "M3-5", estado: "libre" },
+    { id: "M3-6", estado: "libre" },
+    { id: "M4-1", estado: "libre" },
+    { id: "M4-2", estado: "libre" },
+    { id: "M4-3", estado: "libre" },
+    { id: "M4-4", estado: "libre" },
+    { id: "M4-5", estado: "libre" },
+    { id: "M4-6", estado: "libre" },
+    { id: "M5-1", estado: "libre" },
+    { id: "M5-2", estado: "libre" },
+    { id: "M5-3", estado: "libre" },
+    { id: "M5-4", estado: "libre" },
+    { id: "M5-5", estado: "libre" },
+    { id: "M5-6", estado: "libre" },
+    { id: "M6-1", estado: "libre" },
+    { id: "M6-2", estado: "libre" },
+    { id: "M6-3", estado: "libre" },
+    { id: "M6-4", estado: "libre" },
+    { id: "M6-5", estado: "libre" },
+    { id: "M6-6", estado: "libre" },
+    { id: "M7-1", estado: "libre" },
+    { id: "M7-2", estado: "libre" },
+    { id: "M7-3", estado: "libre" },
+    { id: "M7-4", estado: "libre" },
+    { id: "M7-5", estado: "libre" },
+    { id: "M7-6", estado: "libre" },
+    { id: "M8-1", estado: "libre" },
+    { id: "M8-2", estado: "libre" },
+    { id: "M8-3", estado: "libre" },
+    { id: "M8-4", estado: "libre" },
+    { id: "M8-5", estado: "libre" },
+    { id: "M8-6", estado: "libre" },
+    
+ ]);
+  
+  
+ 
  /* Seleccíon de fecha, asiento para realiar la reserva */
     const manejarEstado = (e) => {
     const newArray = asientos.map((asiento) => {
       if (asiento.id === e.target.id && asiento.estado === "libre") {
-        return { id: e.target.id, estado: "ocupado", nombre: dataUser.nombre, apellido: dataUser.apellido, creditos: dataUser.creditos   };
+        return { id: e.target.id, estado: "ocupado", dni: dataUser.dni, nombre: dataUser.nombre, apellido: dataUser.apellido, creditos: dataUser.creditos   };
       } else if (asiento.id === e.target.id && asiento.estado === "ocupado") {
         return { id: e.target.id, estado: "libre" };
       } else {
@@ -150,19 +207,19 @@ const diaSelect = moment(daySelected).format("DD/MM/YYYY")
   };
 
 
-  
-/*  MOSTRAR RESERVA POR DIA    */
-        
-/*   useEffect(() => {
-   const fecha = moment(daySelected).format("DD/MM/YYYY");
-    console.log(fecha);
-   // fetch(`/api/reserva/get`, {
-    fetch("/reservaPuesto/", {
+
+
+/*************************************************/
+/*                MUSTRAR RESERVA POR DIA                */
+/************************************************/
+    
+    const reservado =  useEffect(() => {
+    fetch("/reservaPuesto/get", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ fecha: fecha }),
+      body: JSON.stringify({ fecha: diaSelect }),
     })
       .then((res) => res.json())
       .then((res) => {
@@ -171,15 +228,12 @@ const diaSelect = moment(daySelected).format("DD/MM/YYYY")
           console.log("no hay ninguna reserva este dia");
         } else {
           setAsientos(res[0].puestos);
+            console.log(res[0].puestos)
         }
       });
-  }, [daySelected]);
-     */
-
-
-
-
-
+      }, [daySelected]); 
+    
+  
 
 
 /************************************************/
@@ -228,9 +282,9 @@ const diaSelect = moment(daySelected).format("DD/MM/YYYY")
             setData(res.usuario)
             setDataUser(res.usuario)
             setLogueado(true)
-          setAdministrador(res.usuario.administrador)
-      sessionStorage.setItem("usuario", JSON.stringify(res.usuario))
-         
+            setAdministrador(res.usuario.administrador)
+            sessionStorage.setItem("usuario", JSON.stringify(res.usuario))
+              
           }
         } )
     }
@@ -238,14 +292,13 @@ const diaSelect = moment(daySelected).format("DD/MM/YYYY")
 /************************************************/
 /*               USUARIO LOGUEADO              */
 /************************************************/
-  
 
-    useEffect(() => {
+  useEffect(() => {
     fetch("/api/user")
-     .then(res => res.json())
+      .then(res => res.json())
       .then(res => {
-        setDataUser(res.usuario);
-      
+          setDataUser(res.usuario);
+        
        });
     }, []);
   
@@ -255,7 +308,6 @@ const diaSelect = moment(daySelected).format("DD/MM/YYYY")
 /*               LOGOUT              */
 /************************************************/
 
-
   const handleLogout = () => { 
     setLogueado(false)
     setDataUser([])
@@ -263,10 +315,6 @@ const diaSelect = moment(daySelected).format("DD/MM/YYYY")
     sessionStorage.removeItem("usuario")
   }
   
-
-
-
-    
 
   return (
     <BrowserRouter>
@@ -286,7 +334,11 @@ const diaSelect = moment(daySelected).format("DD/MM/YYYY")
       
      <Route exact path="/home">
         <div className="wrapper">
-            <Sidebar sidebar={sidebar} logueado={logueado} dataUser={dataUser} administrador={administrador} /> 
+          <Sidebar
+            sidebar={sidebar}
+            logueado={logueado}
+            dataUser={dataUser}
+            administrador={administrador} /> 
           <div className="main">
             <Cabecera
               cambiarSidebar={handleHamburger}
@@ -300,9 +352,11 @@ const diaSelect = moment(daySelected).format("DD/MM/YYYY")
 
       <Route exact path="/home-admin">
         <div className="wrapper">
-      
-            <Sidebar sidebar={sidebar} logueado={logueado} dataUser={dataUser} administrador={administrador} /> 
- 
+          <Sidebar
+            sidebar={sidebar}
+            logueado={logueado}
+            dataUser={dataUser}
+            administrador={administrador} /> 
           <div className="main">
             <Cabecera
               cambiarSidebar={handleHamburger}
@@ -328,10 +382,15 @@ const diaSelect = moment(daySelected).format("DD/MM/YYYY")
             handleLogout={ handleLogout}
             />
             <ReservaPuesto
-                asientos={asientos}
-                manejarEstado={manejarEstado} 
-                dataUser={dataUser}
-                logueado={logueado}
+              dataUser={dataUser}
+              logueado={logueado}
+              asientos={asientos}
+              manejarEstado={manejarEstado}
+              reservado={reservado}
+              asientosLibres={asientosLibres}
+              daySelected={daySelected}
+              onChange={onChange}
+              diaSelect={diaSelect}
              
             />
           </div>
@@ -359,7 +418,7 @@ const diaSelect = moment(daySelected).format("DD/MM/YYYY")
       </Route>
 
 
-    <Route exact path="/baja-usuario">
+    <Route exact path="/bajaModif-usuario">
         <div className="wrapper">
             <Sidebar
             sidebar={sidebar}
@@ -371,14 +430,13 @@ const diaSelect = moment(daySelected).format("DD/MM/YYYY")
               cambiarSidebar={handleHamburger} 
               navFlexible={nav100}
              handleLogout={ handleLogout} />
-            <BajaUsuario
-              logueado={logueado}
-              />
+            <BajaModifUsuario
+              logueado={logueado} />
           </div>
         </div>
       </Route>
 
-         <Route exact path="/modificar-usuario/:id">
+      <Route exact path="/modificar-usuario/:id">
         <div className="wrapper">
             <Sidebar
             sidebar={sidebar}
@@ -438,6 +496,7 @@ const diaSelect = moment(daySelected).format("DD/MM/YYYY")
             <MisReservas 
               dataUser={dataUser}
               logueado={logueado}
+              asientos={asientos}
             />
           </div>
         </div>
@@ -459,7 +518,9 @@ const diaSelect = moment(daySelected).format("DD/MM/YYYY")
               handleLogout={ handleLogout}
             />
             <Dashboard
-              logueado={logueado}/>
+              logueado={logueado}
+              dataUser={dataUser}
+            />
           </div>
         </div>
       </Route>
