@@ -22,7 +22,6 @@ function AltaUsuario(props) {
     const [creditos, setCreditos] = useState('')
     const [password, setPassword] = useState('')
     const [administrador, setAdministrador] = useState(false)
-    console.log(administrador)
 
     /* Modal */
     const [mensaje, setMensaje] = useState("");
@@ -100,7 +99,7 @@ function AltaUsuario(props) {
                     tfno: tfno,
                     fechaAlta: fechaAlta,
                     fechaBaja: fechaBaja,
-                    creditos: creditos,
+                    creditos: parseInt(creditos),
                     password: password,
                     administrador: administrador
                 }
@@ -116,7 +115,15 @@ function AltaUsuario(props) {
                     setMensaje(res.mensaje)
                     setData(res);
                     handleShow()
+                    setDni("");
                     setNombre("");
+                    setApellido("");
+                    setTfno("");
+                    setEmail("");
+                    setFechaAlta("");
+                    setFechaBaja("");
+                    setCreditos("");
+                    setPassword("");
                     
                     
                 }
@@ -126,42 +133,6 @@ function AltaUsuario(props) {
 
 
     
-    /* /************************************************/
-    /*                MODIFICAR FOTO              */
-    /************************************************/
-    
-    /*const updatePhoto = () => { 
-        fetch("/users", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-            body: JSON.stringify (
-            {
-                foto : foto, 
-            }
-        ),
-      })
-         .then(res => res.json())
-          .then(res => {
-            if (res.error === true) {
-              setMensaje(res.mensaje)
-              handleShow()
-              
-            } else {
-            setMensaje(res.mensaje)
-            setData(res);
-            handleShow()
-           }  
-           });
-      } */
-
-    
-    
-/*     if (!props.logueado) {
-        return <Redirect exact to="/" />
-        
-    } else { */
     
     if (!props.logueado) {
 		 history.push("/");	

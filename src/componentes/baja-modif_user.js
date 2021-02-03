@@ -10,11 +10,8 @@ function BajaModifUsuario(props) {
     let history = useHistory();
     
     const [data, setData] = useState([]);
-    const [index, setIndex] = useState([]);
-  
     const [boolean, setBoolean] = useState(false);
   
-  console.log(index)
 
     /* Modal */
    const [mensaje, setMensaje] = useState("");

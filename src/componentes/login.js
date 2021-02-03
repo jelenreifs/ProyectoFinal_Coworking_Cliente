@@ -28,10 +28,10 @@ function Login(props) {
              
         } else { 
              return <Redirect to="/home" /> 
-        }
+        } 
  
 
-    } else { 
+   } else {  
         return (
             <div className="login-wrapper">
                 <div className="container px-4 py-5 mx-auto">
@@ -78,8 +78,8 @@ function Login(props) {
                                 <div className="card login-description">
                                     <div className="my-auto mx-md-5 px-md-5 right text-white">
                                         <h3 className="text-white">MÁS FLEXIBILIDAD, PRODUCTIVIDAD Y EFICIENCA</h3>
-                                        <p className="login-description-text">Es una solución inteligente para simplificar el uso y la gestión de los puestos de trabajo en entornos de «smart working ».
-                                        Los empleados pueden utilizar sus smartphones u otros dispositivos para encontrar un puesto libre y reservar salas de reuniones o puestos de trabajo que se ajusten a sus necesidades.
+                                        <p className="login-description-text">Es una solución inteligente para simplificar el uso y la gestión de los puestos de trabajo.<br/><br/>
+                                        Podrás encontrar un puesto libre y reservar salas de reuniones o puestos de trabajo que se ajusten a sus necesidades desde cualquier parte.
                                    </p>
                                     </div>
                                 </div>

@@ -18435,10 +18435,11 @@ a.area-enlaces:hover {
   align-items: center;
 }
 
-/* .card-info {
-  border: 3px solid #f50057;
 
-} */
+ .card-info li{
+  font-weight: bold;
+  font-size: 1.35rem ;
+} 
 
 .card-enlace:hover {
   box-shadow: 0 0 0.875rem 0 rgba(33, 37, 41, 0.25);

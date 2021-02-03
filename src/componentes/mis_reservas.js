@@ -23,37 +23,30 @@ function MisReservas(props) {
       });
   }, []); 
 
-  const reservas = data.map((reserva, index) => {
-     return (
-     <tr key={index}>
-         {reserva.puestos.filter((item => item.dni === props.dataUser.dni)).map(elemento => {
-           return (
-             <tr>
-               <td>{elemento.id}</td>
-            </tr>
-           )
-            } )
-         }
-      </tr>
-      )
 
 
-   })
-
-
-
- // const misReservas = data.map(reserva => {return( <td> (reserva.puesto.filter(item => item.dni === props.dataUser.dni)) </td> )}
-   /*  return (
-     <tr>
-        <td> {item.fecha} </td>
-        <td> {item.nombre} </td>
-        <td> {item.creditos} </td>
-      </tr>
-      ) */
-
-
+    const reservas = data.map((reserva, index) => {
+    return ( 
+      <>
+     
+          {(reserva.puestos.filter(puesto => puesto.dni === props.dataUser.dni).map(item => {
+            return (
+            <tr key={index}>
+                  <td>{ reserva.fecha}</td>
+                  <td>{item.id} </td>
+                  <td>{item.creditos}</td>
+              </tr>
+            )
+            
+          })
+          )}
+      </>
+    )
+  })
+       
+     
   
- 
+  console.log(reservas)
 
 
 /*   if (!props.logueado) {

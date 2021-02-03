@@ -3,8 +3,6 @@ import { Link, useLocation, Redirect } from 'react-router-dom';
 import { useState } from 'react';
 import { useHistory } from "react-router-dom";
 
-//import { Modal } from 'react-bootstrap';
-
 
 function Sidebar(props) {
 
@@ -110,7 +108,7 @@ function Sidebar(props) {
 
 	console.log(props.dataUser)
 
-	if (!props.administrador) {
+	if (props.administrador===false) {
 			return (
 			<nav id="sidebar" className={props.sidebar} >
 				<div className="sidebar-content js-simplebar">

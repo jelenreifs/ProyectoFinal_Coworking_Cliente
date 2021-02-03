@@ -2,7 +2,6 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import { Modal } from 'react-bootstrap';
-import { Link, Redirect } from 'react-router-dom';
 import { useHistory, useParams} from "react-router-dom";
 
 function ModificarUsuario(props) {
@@ -44,9 +43,7 @@ function ModificarUsuario(props) {
                 setApellido(res.datos[0].apellido);
                 setTfno(res.datos[0].tfno);
                 setEmail(res.datos[0].email);
-                setPassword(res.datos[0].password);
                 setFoto(res.datos[0].foto);
-                console.log(res)
             });
       }, [id]);
     
@@ -83,7 +80,6 @@ function ModificarUsuario(props) {
                 } else {
                     setMensaje(res.mensaje)
                     setData(res.datos);
-                    console.log(res.datos)
                     handleShow()
                 }
             });
@@ -135,7 +131,8 @@ if (!props.logueado) {
 
 
 
-        return (
+    return (
+       
             <main className="bg-home content p-0">
                 <div className="container-fluid p-0">
                     <div className="row vh-100 px-4">
@@ -267,12 +264,13 @@ if (!props.logueado) {
                 </div>
             
 
-                <Modal show={props.show} onHide={props.handleClose}>
+                <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
-                        <Modal.Title>{props.mensaje}</Modal.Title>
+                        <Modal.Title>{mensaje}</Modal.Title>
                     </Modal.Header>
                 </Modal>
             </main>
+        
         )
     }
 }

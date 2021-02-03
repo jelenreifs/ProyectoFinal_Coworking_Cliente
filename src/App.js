@@ -5,7 +5,6 @@ import moment from 'moment';
 //import { useHistory } from "react-router-dom";
 import Login from './componentes/login';
 import Sidebar from "./componentes/sidebar";
-//import SidebarAdmin from "./componentes/sidebar_admin";
 import Cabecera from "./componentes/cabecera";
 import Home from "./componentes/home";
 import HomeAdmin from "./componentes/home";
@@ -64,11 +63,6 @@ function App() {
 const diaSelect = moment(daySelected).format("DD/MM/YYYY")
 //console.log(diaSelect)
   
-
-
-
-
-
 
 
     /* Modal */
@@ -191,9 +185,13 @@ const diaSelect = moment(daySelected).format("DD/MM/YYYY")
  ]);
   
   
+const [infoAsiento, setInfoAsiento] = useState("");
+   
  
  /* Seleccíon de fecha, asiento para realiar la reserva */
-    const manejarEstado = (e) => {
+    
+  const manejarEstado = (e) => {
+    setInfoAsiento(e.target.id)
     const newArray = asientos.map((asiento) => {
       if (asiento.id === e.target.id && asiento.estado === "libre") {
         return { id: e.target.id, estado: "ocupado", dni: dataUser.dni, nombre: dataUser.nombre, apellido: dataUser.apellido, creditos: dataUser.creditos   };
@@ -213,7 +211,8 @@ const diaSelect = moment(daySelected).format("DD/MM/YYYY")
 /*                MUSTRAR RESERVA POR DIA                */
 /************************************************/
     
-    const reservado =  useEffect(() => {
+   
+  const reservado = useEffect(() => {
     fetch("/reservaPuesto/get", {
       method: "POST",
       headers: {
@@ -273,6 +272,7 @@ const diaSelect = moment(daySelected).format("DD/MM/YYYY")
         .then(res => res.json())
          
         .then(res => {
+          console.log(res)
           if (res.error === true) {
             setMensaje(res.mensaje)
             handleShow()
@@ -343,7 +343,7 @@ const diaSelect = moment(daySelected).format("DD/MM/YYYY")
             <Cabecera
               cambiarSidebar={handleHamburger}
               navFlexible={nav100}
-               handleLogout={ handleLogout} />
+              handleLogout={ handleLogout} />
              <Home
               logueado={logueado} />
           </div>
@@ -391,6 +391,7 @@ const diaSelect = moment(daySelected).format("DD/MM/YYYY")
               daySelected={daySelected}
               onChange={onChange}
               diaSelect={diaSelect}
+              infoAsiento={ infoAsiento}
              
             />
           </div>
@@ -431,7 +432,9 @@ const diaSelect = moment(daySelected).format("DD/MM/YYYY")
               navFlexible={nav100}
              handleLogout={ handleLogout} />
             <BajaModifUsuario
-              logueado={logueado} />
+              logueado={logueado}
+               dataUser={dataUser}
+            />
           </div>
         </div>
       </Route>

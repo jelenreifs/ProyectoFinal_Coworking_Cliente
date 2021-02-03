@@ -1,32 +1,59 @@
 import React from 'react';
 import { useState, useEffect } from "react";
+//import moment from 'moment';
 import Chart from "react-apexcharts";
-import { Link, Redirect } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 
 
 function Dashboard(props) {
-     let history = useHistory();
-
-  
+    let history = useHistory();
+    
+   
     const [data, setData] = useState([]);
+  
+       let series = [{
+        name: 'Puestos',
+        data: [],
+    }];
+
+
+    let options = {
+        chart: {
+            height: 240,
+            type: 'bar',
+        },
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    position: 'top', // top, center, bottom
+                },
+            }
+        },
+    };
+ 
+   const [chart, setChart] = useState(options);
+    const [datosChart, setDatosChart] = useState(series);
 
 
 
 
-    /************************************************/
-    /*          MOSTRAR HISTORIAL DE RESERVAS          */
-    /************************************************/
+
+/************************************************/
+/*          MOSTRAR HISTORIAL DE RESERVAS          */
+/************************************************/
     useEffect(() => {
         fetch("/reservaPuesto")
             .then((res) => res.json())
             .then((res) => {
-             
                 setData(res);
             });
     }, []);
 
 
+
+
+
+/*    Map del istado     */
 
     const reservas = data.map((reserva, index) => {
         return (
@@ -42,15 +69,11 @@ function Dashboard(props) {
                                     <p>{item.nombre} {item.apellido} </p>
                                 </span>
                             )
-                        })
-                        
-                        )}
-
+                         })
+                         )}
                    </p>
-                    
                 </div>
             </div>
-          
         )
     })
 
@@ -63,7 +86,6 @@ function Dashboard(props) {
         if (!props.logueado) {
 		 history.push("/");	
 	} else {
-
 
  
         return (
@@ -80,7 +102,15 @@ function Dashboard(props) {
                                         <div className="card-body">
                                             <h5 className="card-title">Los meses más reservados</h5>
                                             <div className="card-grafico">
-                                1              
+                                                
+                                                <Chart
+                                                    options={chart}
+                                                    series={datosChart}
+                                                    type="bar"
+                                                    width="480"
+                                                />
+                                              
+                                                
                                                 
                                             </div>
                                             <div>
@@ -96,6 +126,12 @@ function Dashboard(props) {
                                         <div className="card-body">
                                             <h5 className="card-title">Los puestos más reservados</h5>
                                             <div className="card-grafico">
+                                                 <Chart
+                                                    options={chart}
+                                                    series={datosChart}
+                                                    type="bar"
+                                                    width="480"
+                                                />
                                       
                                             </div>
                                             <div>
