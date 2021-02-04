@@ -37,13 +37,14 @@ function ModificarUsuario(props) {
         fetch("/users/usuario/" + id)
             .then((res) => res.json())
             .then((res) => {
-                setDni(res.datos[0].dni);
-                setNombre(res.datos[0].nombre);
-                setNombre(res.datos[0].nombre);
-                setApellido(res.datos[0].apellido);
-                setTfno(res.datos[0].tfno);
-                setEmail(res.datos[0].email);
-                setFoto(res.datos[0].foto);
+                console.log(res)
+                setDni(res[0].dni);
+                setNombre(res[0].nombre);
+                setNombre(res[0].nombre);
+                setApellido(res[0].apellido);
+                setTfno(res[0].tfno);
+                setEmail(res[0].email);
+                setFoto(res[0].foto);
             });
       }, [id]);
     
@@ -165,7 +166,7 @@ if (!props.logueado) {
                                 <div className="col-xs-12">
                                     <div className="card mr-3">
                                         <div className="card-body">
-                                            <h4 className="text-primary">Configuración de usuario</h4>
+                                            <h4 className="text-primary">Modificar usuario</h4>
                                         
                                             <div className="row">
                                                 <div className="col-xs-6 col-xl-6  mb-3">
@@ -175,7 +176,7 @@ if (!props.logueado) {
                                                         className="form-control"
                                                         id="nombre"
                                                         placeholder={nombre}
-                                                         value={nombre}
+                                                        value={nombre}
                                                         onChange={handleChangeNombre}
                                                     />
                                                 </div>

@@ -15,6 +15,7 @@ import BajaModifUsuario from "./componentes/baja-modif_user";
 import Dashboard from "./componentes/dashboard";
 import MisReservas from "./componentes/mis_reservas";
 import ModificarUsuario from "./componentes/modificar_user";
+import SidebarConfig from "./componentes/sidebar_config";
 
 
 import './App.css';
@@ -441,7 +442,7 @@ const [infoAsiento, setInfoAsiento] = useState("");
 
       <Route exact path="/modificar-usuario/:id">
         <div className="wrapper">
-            <Sidebar
+            <SidebarConfig
             sidebar={sidebar}
             logueado={logueado}
             dataUser={dataUser}

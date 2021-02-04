@@ -109,7 +109,6 @@ if (!props.logueado) {
 	} else {
 
 
-
         return (
             <main className="bg-home content p-0">
                 <div className="container-fluid p-0">
@@ -238,9 +237,9 @@ if (!props.logueado) {
                 </div>
             
 
-                <Modal show={props.show} onHide={props.handleClose}>
+                <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
-                        <Modal.Title>{props.mensaje}</Modal.Title>
+                        <Modal.Title>{mensaje}</Modal.Title>
                     </Modal.Header>
                 </Modal>
             </main>
