@@ -18581,3 +18581,12 @@ margin-bottom: .5rem;
     width: 30%;
   }
 }
+
+
+.grafico1 .apexcharts-bar-area {
+  fill:#f50057;
+}
+
+.grafico2 .apexcharts-bar-area {
+  fill:#5E35B1;
+}
