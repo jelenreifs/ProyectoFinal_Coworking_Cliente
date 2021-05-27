@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/ProyectoFinal_Coworking_Cliente/static/css/main.b7f9178a.chunk.css",
+    "main.js": "/ProyectoFinal_Coworking_Cliente/static/js/main.6e6a192b.chunk.js",
+    "main.js.map": "/ProyectoFinal_Coworking_Cliente/static/js/main.6e6a192b.chunk.js.map",
+    "runtime-main.js": "/ProyectoFinal_Coworking_Cliente/static/js/runtime-main.a4edec04.js",
+    "runtime-main.js.map": "/ProyectoFinal_Coworking_Cliente/static/js/runtime-main.a4edec04.js.map",
+    "static/css/2.8cebfa1f.chunk.css": "/ProyectoFinal_Coworking_Cliente/static/css/2.8cebfa1f.chunk.css",
+    "static/js/2.5157c118.chunk.js": "/ProyectoFinal_Coworking_Cliente/static/js/2.5157c118.chunk.js",
+    "static/js/2.5157c118.chunk.js.map": "/ProyectoFinal_Coworking_Cliente/static/js/2.5157c118.chunk.js.map",
+    "static/js/3.49138635.chunk.js": "/ProyectoFinal_Coworking_Cliente/static/js/3.49138635.chunk.js",
+    "static/js/3.49138635.chunk.js.map": "/ProyectoFinal_Coworking_Cliente/static/js/3.49138635.chunk.js.map",
+    "index.html": "/ProyectoFinal_Coworking_Cliente/index.html",
+    "static/css/2.8cebfa1f.chunk.css.map": "/ProyectoFinal_Coworking_Cliente/static/css/2.8cebfa1f.chunk.css.map",
+    "static/css/main.b7f9178a.chunk.css.map": "/ProyectoFinal_Coworking_Cliente/static/css/main.b7f9178a.chunk.css.map",
+    "static/js/2.5157c118.chunk.js.LICENSE.txt": "/ProyectoFinal_Coworking_Cliente/static/js/2.5157c118.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/ProyectoFinal_Coworking_Cliente/static/media/login.3230e9da.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a4edec04.js",
+    "static/css/2.8cebfa1f.chunk.css",
+    "static/js/2.5157c118.chunk.js",
+    "static/css/main.b7f9178a.chunk.css",
+    "static/js/main.6e6a192b.chunk.js"
+  ]
+}
