@@ -47,6 +47,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 * [REACT](https://es.reactjs.org/) - Librería open source de JavaScript para desarrollar interfaces de usuario. Permite desarrollar aplicaciones web de una manera más ordenada y con menos código que usando Javascript puro o librerías como jQuery centradas en la manipulación del DOM. Permite que las vistas se asocien con los datos, de modo que si cambian los datos, también cambian las vistas. 
 * [EXPRESS](https://expressjs.com/es/) - Infraestructura de aplicaciones web Node.js mínima y flexible que proporciona un conjunto sólido de características para las aplicaciones web y móviles.
 * [MONGO DB](https://www.mongodb.com/) - Sistema de base de datos NoSQL orientado a documentos de código abierto y escrito en C++, que en lugar de guardar los datos en tablas lo hace en estructuras de datos BSON (similar a JSON) con un esquema dinámico.
+* [CHARTS.JA](https://www.chartjs.org/docs/latest/) - Libreria javascript para generar distintos tipos de gráficas personalizables y animadas.
 * [MOMENTS JS](https://momentjs.com/) - Librería de JavaScript que ayuda a administrar las fechas, tanto en el navegador como en Node.js.
 * [ADOBE ILLUSTRATOR](https://www.adobe.com) - Editor de gráficos vectoriales.
 * [HTML5](https://www.w3.org/TR/html52/) - “HyperText Markup Language”, para definir una estructura básica y un código para la definición de contenido de una página web, como texto, imágenes, videos, juegos, entre otros.
