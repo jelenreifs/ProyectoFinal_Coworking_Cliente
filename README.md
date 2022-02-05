@@ -58,5 +58,5 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Autora ✒️
 * **Elena Reifs**
-*  - [Github](https://github.com/jelenreifs)
-*  - [Linkedin](https://www.linkedin.com/in/elena-reifs/)
+- [Github](https://github.com/jelenreifs)
+- [Linkedin](https://www.linkedin.com/in/elena-reifs/)
